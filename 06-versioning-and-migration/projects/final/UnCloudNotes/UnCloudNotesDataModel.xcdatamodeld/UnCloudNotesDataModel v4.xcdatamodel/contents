@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14877.5" systemVersion="18F132" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Attachment" representedClassName="UnCloudNotes.Attachment" syncable="YES">
+        <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="attachments" inverseEntity="Note"/>
+    </entity>
+    <entity name="ImageAttachment" representedClassName=".ImageAttachment" parentEntity="Attachment" syncable="YES">
+        <attribute name="caption" attributeType="String"/>
+        <attribute name="height" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Transformable" valueTransformerName="ImageTransformer" customClassName="."/>
+        <attribute name="width" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Note" representedClassName="UnCloudNotes.Note" syncable="YES">
+        <attribute name="body" attributeType="String"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="displayIndex" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="attachments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attachment" inverseName="note" inverseEntity="Attachment"/>
+    </entity>
+    <elements>
+        <element name="Attachment" positionX="151" positionY="9" width="128" height="75"/>
+        <element name="ImageAttachment" positionX="153" positionY="153" width="128" height="105"/>
+        <element name="Note" positionX="-63" positionY="-18" width="128" height="118"/>
+    </elements>
+</model>

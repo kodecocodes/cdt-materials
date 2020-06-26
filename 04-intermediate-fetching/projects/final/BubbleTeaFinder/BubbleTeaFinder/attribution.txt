@@ -1,0 +1,4 @@
+JSON data provided by Foursquare's Venue API.
+Category ID for Bubble Tea Shops is 52e81612bcbc57f1066b7a0c
+
+Source: https://developer.foursquare.com

@@ -1,0 +1,1952 @@
+{
+  "meta": {
+    "code": 200
+  },
+  "response": {
+    "venues": [
+               {
+               "id": "4e3c89c8aeb73139a16d84ee",
+               "name": "Kung Fu Tea 功夫茶",
+               "contact": {
+               "phone": "2123343536",
+               "formattedPhone": "(212) 334-3536"
+               },
+               "location": {
+               "address": "234 Canal St",
+               "crossStreet": "at Centre St.",
+               "lat": 40.717854,
+               "lng": -74.000208,
+               "distance": 4787,
+               "postalCode": "10013",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "234 Canal St (at Centre St.)",
+                                    "New York, NY 10013",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": true,
+               "stats": {
+               "checkinsCount": 6820,
+               "usersCount": 3530,
+               "tipCount": 60
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/kung-fu-tea-%E5%8A%9F%E5%A4%AB%E8%8C%B6/4e3c89c8aeb73139a16d84ee/menu",
+               "mobileUrl": "https://foursquare.com/v/4e3c89c8aeb73139a16d84ee/device_menu"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "535aabd5498e00b596216d81",
+               "name": "Vivi Bubble Tea",
+               "contact": {},
+               "location": {
+               "address": "226 E 14th St",
+               "crossStreet": "Btwn 2nd & 3rd Ave.",
+               "lat": 40.732855695951706,
+               "lng": -73.98604752728492,
+               "distance": 2936,
+               "postalCode": "10003",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "226 E 14th St (Btwn 2nd & 3rd Ave.)",
+                                    "New York, NY 10003",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 424,
+               "usersCount": 281,
+               "tipCount": 5
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 1,
+               "summary": "One person here",
+               "groups": [
+                          {
+                          "type": "others",
+                          "name": "Other people here",
+                          "count": 1,
+                          "items": []
+                          }
+                          ]
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4a83505ef964a520bffa1fe3",
+               "name": "Vivi Bubble Tea",
+               "contact": {
+               "phone": "2125666833",
+               "formattedPhone": "(212) 566-6833",
+               "twitter": "vivibubbleteany"
+               },
+               "location": {
+               "address": "49 Bayard St",
+               "crossStreet": "Btwn Elizabeth St. & Bowery",
+               "lat": 40.71536265913705,
+               "lng": -73.99739330354717,
+               "distance": 4998,
+               "postalCode": "10013",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "49 Bayard St (Btwn Elizabeth St. & Bowery)",
+                                    "New York, NY 10013",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": true,
+               "stats": {
+               "checkinsCount": 5906,
+               "usersCount": 3066,
+               "tipCount": 51
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "url": "http://www.vivibubbletea.com",
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/vivi-bubble-tea-new-york-ny/4a83505ef964a520bffa1fe3/menu",
+               "mobileUrl": "https://foursquare.com/v/4a83505ef964a520bffa1fe3/device_menu"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "venuePage": {
+               "id": "46133748"
+               },
+               "storeId": "",
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4e5ecc4a52b1425a3776f4db",
+               "name": "Kung Fu Tea (功夫茶)",
+               "contact": {
+               "phone": "6462884936",
+               "formattedPhone": "(646) 288-4936"
+               },
+               "location": {
+               "address": "73 Chrystie St",
+               "lat": 40.71703791618347,
+               "lng": -73.99436831474304,
+               "distance": 4765,
+               "postalCode": "10002",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "73 Chrystie St",
+                                    "New York, NY 10002",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": true,
+               "stats": {
+               "checkinsCount": 3969,
+               "usersCount": 2030,
+               "tipCount": 37
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 7,
+               "summary": "7 people here",
+               "groups": [
+                          {
+                          "type": "others",
+                          "name": "Other people here",
+                          "count": 7,
+                          "items": []
+                          }
+                          ]
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4d8393ded5fab60c2654cf9b",
+               "name": "CoCo Fresh Tea & Juice",
+               "contact": {
+               "phone": "2125188808",
+               "formattedPhone": "(212) 518-8808"
+               },
+               "location": {
+               "address": "459 Lexington Ave",
+               "crossStreet": "at E 45th St.",
+               "lat": 40.75338271988277,
+               "lng": -73.97444280771313,
+               "distance": 1077,
+               "postalCode": "10017",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "459 Lexington Ave (at E 45th St.)",
+                                    "New York, NY 10017",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 6800,
+               "usersCount": 2321,
+               "tipCount": 42
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "url": "http://www.coco-tea.com",
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/coco-fresh-tea--juice/4d8393ded5fab60c2654cf9b/menu",
+               "mobileUrl": "https://foursquare.com/v/4d8393ded5fab60c2654cf9b/device_menu"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 1,
+               "summary": "One person here",
+               "groups": [
+                          {
+                          "type": "others",
+                          "name": "Other people here",
+                          "count": 1,
+                          "items": []
+                          }
+                          ]
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "533f6cbd498e931121c75f05",
+               "name": "Kung Fu Tea 功夫茶",
+               "contact": {
+               "phone": "9172851285",
+               "formattedPhone": "(917) 285-1285"
+               },
+               "location": {
+               "address": "28 Saint Marks Pl",
+               "lat": 40.7289975022495,
+               "lng": -73.98844643727924,
+               "distance": 3378,
+               "postalCode": "10003",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "28 Saint Marks Pl",
+                                    "New York, NY 10003",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 723,
+               "usersCount": 515,
+               "tipCount": 7
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4d472e2d14aa8cfa2733853d",
+               "name": "CoCo Fresh Tea & Juice",
+               "contact": {
+               "phone": "2128516618",
+               "formattedPhone": "(212) 851-6618"
+               },
+               "location": {
+               "address": "38 Lexington Ave",
+               "crossStreet": "at E 24th St.",
+               "lat": 40.740135957616545,
+               "lng": -73.98425119467512,
+               "distance": 2123,
+               "postalCode": "10010",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "38 Lexington Ave (at E 24th St.)",
+                                    "New York, NY 10010",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 4881,
+               "usersCount": 1855,
+               "tipCount": 47
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$$"
+               },
+               "url": "http://www.coco-tea.com",
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/coco-fresh-tea--juice/4d472e2d14aa8cfa2733853d/menu",
+               "mobileUrl": "https://foursquare.com/v/4d472e2d14aa8cfa2733853d/device_menu"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "52fc1720498e39f0cf085d06",
+               "name": "The Bao Shoppe",
+               "contact": {
+               "phone": "7187771883",
+               "formattedPhone": "(718) 777-1883",
+               "facebook": "164249483780715",
+               "facebookUsername": "TheBaoShoppe",
+               "facebookName": "The Bao Shoppe"
+               },
+               "location": {
+               "address": "3066 Steinway St",
+               "crossStreet": "btwn 30th Ave & 31st Ave",
+               "lat": 40.762339215575345,
+               "lng": -73.91644892857384,
+               "distance": 5760,
+               "postalCode": "11103",
+               "cc": "US",
+               "city": "Astoria",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "3066 Steinway St (btwn 30th Ave & 31st Ave)",
+                                    "Astoria, NY 11103",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "4bf58dd8d48988d142941735",
+                              "name": "Asian Restaurant",
+                              "pluralName": "Asian Restaurants",
+                              "shortName": "Asian",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/asian_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 485,
+               "usersCount": 357,
+               "tipCount": 15
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$$$"
+               },
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "http://www.menupages.com/restaurants/the-bao-shoppe/",
+               "mobileUrl": "http://www.menupages.com/restaurants/the-bao-shoppe/",
+               "externalUrl": "http://www.menupages.com/restaurants/the-bao-shoppe/"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 2,
+               "summary": "2 people here",
+               "groups": [
+                          {
+                          "type": "others",
+                          "name": "Other people here",
+                          "count": 2,
+                          "items": []
+                          }
+                          ]
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "522762a411d2b7710f19a74b",
+               "name": "Coco Fresh Tea & Juice",
+               "contact": {},
+               "location": {
+               "address": "33 Saint Marks Pl",
+               "crossStreet": "2nd Ave",
+               "lat": 40.72889904807027,
+               "lng": -73.98823983377046,
+               "distance": 3387,
+               "postalCode": "10003",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "33 Saint Marks Pl (2nd Ave)",
+                                    "New York, NY 10003",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 1521,
+               "usersCount": 778,
+               "tipCount": 20
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 4,
+               "summary": "4 people here",
+               "groups": [
+                          {
+                          "type": "others",
+                          "name": "Other people here",
+                          "count": 4,
+                          "items": []
+                          }
+                          ]
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4f5115e1e4b0c5e188ce8d33",
+               "name": "Vivi Bubble Tea",
+               "contact": {
+               "phone": "2123660688",
+               "formattedPhone": "(212) 366-0688",
+               "twitter": "vivibubbleteany"
+               },
+               "location": {
+               "address": "170 W 23rd St",
+               "crossStreet": "at 7th Ave",
+               "lat": 40.74407376579089,
+               "lng": -73.99540195891137,
+               "distance": 1913,
+               "postalCode": "10011",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "170 W 23rd St (at 7th Ave)",
+                                    "New York, NY 10011",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 1933,
+               "usersCount": 1106,
+               "tipCount": 18
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "url": "http://www.vivibubbletea.com",
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4f9349b4e4b0599b4ed52fb8",
+               "name": "Chatime 日出茶太",
+               "contact": {
+               "phone": "2125187891",
+               "formattedPhone": "(212) 518-7891"
+               },
+               "location": {
+               "address": "240A Canal St",
+               "crossStreet": "at Centre",
+               "lat": 40.718156166746176,
+               "lng": -74.0000675263211,
+               "distance": 4751,
+               "postalCode": "10013",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "240A Canal St (at Centre)",
+                                    "New York, NY 10013",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 2544,
+               "usersCount": 1546,
+               "tipCount": 28
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$$"
+               },
+               "url": "http://ichatime.com",
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "5202a19e498e523ddbb635a1",
+               "name": "Vivi Bubble Tea",
+               "contact": {},
+               "location": {
+               "address": "2 E Broadway",
+               "crossStreet": "Catherine",
+               "lat": 40.71370342451995,
+               "lng": -73.99733017766593,
+               "distance": 5177,
+               "postalCode": "10038",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "2 E Broadway (Catherine)",
+                                    "New York, NY 10038",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 492,
+               "usersCount": 338,
+               "tipCount": 8
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4b2ebc57f964a520e3e524e3",
+               "name": "Teado",
+               "contact": {
+               "phone": "2122267687",
+               "formattedPhone": "(212) 226-7687"
+               },
+               "location": {
+               "address": "145D Hester St",
+               "crossStreet": "btw Chrystie St & Bowery",
+               "lat": 40.717034,
+               "lng": -73.995154,
+               "distance": 4778,
+               "postalCode": "10002",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "145D Hester St (btw Chrystie St & Bowery)",
+                                    "New York, NY 10002",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "4bf58dd8d48988d1dc931735",
+                              "name": "Tea Room",
+                              "pluralName": "Tea Rooms",
+                              "shortName": "Tea Room",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/tearoom_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 1976,
+               "usersCount": 785,
+               "tipCount": 22
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 1,
+               "summary": "One person here",
+               "groups": [
+                          {
+                          "type": "others",
+                          "name": "Other people here",
+                          "count": 1,
+                          "items": []
+                          }
+                          ]
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "538e1ee8498ef7fef4337a01",
+               "name": "Gong Cha",
+               "contact": {
+               "phone": "2124863481",
+               "formattedPhone": "(212) 486-3481",
+               "twitter": "gongchatea"
+               },
+               "location": {
+               "address": "149 E. 60th Street",
+               "lat": 40.76261396163918,
+               "lng": -73.96744061060404,
+               "distance": 1498,
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "149 E. 60th Street",
+                                    "New York, NY",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": true,
+               "stats": {
+               "checkinsCount": 187,
+               "usersCount": 95,
+               "tipCount": 3
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "url": "http://www.gongchausa.com",
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "storeId": "",
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4e0e6550c65ba20da2206031",
+               "name": "Bubbly Tea",
+               "contact": {
+               "phone": "2126083688",
+               "formattedPhone": "(212) 608-3688"
+               },
+               "location": {
+               "address": "55B Bayard St",
+               "lat": 40.71546839730884,
+               "lng": -73.99738311767578,
+               "distance": 4986,
+               "postalCode": "10013",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "55B Bayard St",
+                                    "New York, NY 10013",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": true,
+               "stats": {
+               "checkinsCount": 2669,
+               "usersCount": 1078,
+               "tipCount": 25
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/bubbly-tea/4e0e6550c65ba20da2206031/menu",
+               "mobileUrl": "https://foursquare.com/v/4e0e6550c65ba20da2206031/device_menu"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 1,
+               "summary": "One person here",
+               "groups": [
+                          {
+                          "type": "others",
+                          "name": "Other people here",
+                          "count": 1,
+                          "items": []
+                          }
+                          ]
+               },
+               "venuePage": {
+               "id": "34387651"
+               },
+               "storeId": "",
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4a9569f4f964a520212320e3",
+               "name": "Boba Life NYC",
+               "contact": {
+               "phone": "2125666788",
+               "formattedPhone": "(212) 566-6788"
+               },
+               "location": {
+               "address": "11 Pell St",
+               "crossStreet": "btwn Doyers & Bowery St",
+               "lat": 40.71473728191187,
+               "lng": -73.99777205839798,
+               "distance": 5073,
+               "postalCode": "10013",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "11 Pell St (btwn Doyers & Bowery St)",
+                                    "New York, NY 10013",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 2999,
+               "usersCount": 1505,
+               "tipCount": 39
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/boba-life-nyc/4a9569f4f964a520212320e3/menu",
+               "mobileUrl": "https://foursquare.com/v/4a9569f4f964a520212320e3/device_menu"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "51c5e9a5498e967b084f17c5",
+               "name": "Patea Bubble Tea",
+               "contact": {
+               "phone": "2122266808",
+               "formattedPhone": "(212) 226-6808",
+               "facebook": "122613664615381",
+               "facebookUsername": "afternoonPaTea",
+               "facebookName": "PaTea Bubble Tea"
+               },
+               "location": {
+               "address": "135 Mott Street",
+               "lat": 40.718504897774004,
+               "lng": -73.99656692672868,
+               "distance": 4641,
+               "postalCode": "10013",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "135 Mott Street",
+                                    "New York, NY 10013",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": true,
+               "stats": {
+               "checkinsCount": 312,
+               "usersCount": 209,
+               "tipCount": 3
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "delivery": {
+               "url": "http://www.seamless.com/food-delivery/restaurant.29591.r?a=1026&utm_source=Foursquare&utm_medium=affiliate&utm_campaign=SeamlessOrderDeliveryLink",
+               "provider": {
+               "name": "seamless"
+               }
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "venuePage": {
+               "id": "60848855"
+               },
+               "storeId": "",
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "500c4710e4b01eff31c1a82c",
+               "name": "Chatime",
+               "contact": {
+               "phone": "2126088822",
+               "formattedPhone": "(212) 608-8822"
+               },
+               "location": {
+               "address": "22-B Bowery",
+               "lat": 40.71466675505874,
+               "lng": -73.99689977337584,
+               "distance": 5065,
+               "postalCode": "10013",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "22-B Bowery",
+                                    "New York, NY 10013",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 664,
+               "usersCount": 364,
+               "tipCount": 5
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/chatime-new-york-ny/500c4710e4b01eff31c1a82c/menu",
+               "mobileUrl": "https://foursquare.com/v/500c4710e4b01eff31c1a82c/device_menu"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "53861e0d498ec1985aa8b0a2",
+               "name": "Vivi Bubble Tea",
+               "contact": {},
+               "location": {
+               "address": "183 Hester St",
+               "crossStreet": "Hester/Mott",
+               "lat": 40.717926386881565,
+               "lng": -73.99756546493582,
+               "distance": 4723,
+               "postalCode": "10013",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "183 Hester St (Hester/Mott)",
+                                    "New York, NY 10013",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 113,
+               "usersCount": 94,
+               "tipCount": 1
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "5203ea60498e334e70ac945c",
+               "name": "Kung Fu Tea",
+               "contact": {},
+               "location": {
+               "address": "31 Waverly Pl",
+               "crossStreet": "University Pl",
+               "lat": 40.730495104377134,
+               "lng": -73.99517240776751,
+               "distance": 3317,
+               "postalCode": "10003",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "31 Waverly Pl (University Pl)",
+                                    "New York, NY 10003",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 1070,
+               "usersCount": 511,
+               "tipCount": 11
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "url": "http://kfteausa.com",
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 1,
+               "summary": "One person here",
+               "groups": [
+                          {
+                          "type": "others",
+                          "name": "Other people here",
+                          "count": 1,
+                          "items": []
+                          }
+                          ]
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "526214fe11d29e2c229a61ab",
+               "name": "Pomme LES",
+               "contact": {
+               "phone": "6469186134",
+               "formattedPhone": "(646) 918-6134",
+               "facebook": "637501426282369",
+               "facebookUsername": "PommeLES",
+               "facebookName": "Pomme LES Crepes and Puddings"
+               },
+               "location": {
+               "address": "132 Ludlow St",
+               "crossStreet": "Rivington and Stanton",
+               "lat": 40.72015194776989,
+               "lng": -73.98837183048228,
+               "distance": 4359,
+               "postalCode": "10002",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "132 Ludlow St (Rivington and Stanton)",
+                                    "New York, NY 10002",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b79f2",
+                              "name": "Creperie",
+                              "pluralName": "Creperies",
+                              "shortName": "Creperie",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/creperie_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": true,
+               "stats": {
+               "checkinsCount": 335,
+               "usersCount": 279,
+               "tipCount": 10
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "delivery": {
+               "url": "http://www.seamless.com/food-delivery/restaurant.30218.r?a=1026&utm_source=Foursquare&utm_medium=affiliate&utm_campaign=SeamlessOrderDeliveryLink",
+               "provider": {
+               "name": "seamless"
+               }
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "venuePage": {
+               "id": "70453019"
+               },
+               "storeId": "",
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "51017650e4b0b335c3535c61",
+               "name": "Vivi Bubble Tea",
+               "contact": {
+               "phone": "2123236969",
+               "formattedPhone": "(212) 323-6969",
+               "twitter": "vivibubbleteany"
+               },
+               "location": {
+               "address": "39 John St",
+               "crossStreet": "at Nassau St.",
+               "lat": 40.709477836056244,
+               "lng": -74.00833672135317,
+               "distance": 5886,
+               "postalCode": "10038",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "39 John St (at Nassau St.)",
+                                    "New York, NY 10038",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 1206,
+               "usersCount": 520,
+               "tipCount": 11
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "url": "http://www.vivibubbletea.com",
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/vivi-bubble-tea/51017650e4b0b335c3535c61/menu",
+               "mobileUrl": "https://foursquare.com/v/51017650e4b0b335c3535c61/device_menu"
+               },
+               "specials": {
+               "count": 1,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "53068e78498e20d84bbee61a",
+               "name": "Tbaar",
+               "contact": {},
+               "location": {
+               "address": "25th Street",
+               "crossStreet": "Between Lexington And Third Avenue",
+               "lat": 40.740646326504326,
+               "lng": -73.98371745682837,
+               "distance": 2068,
+               "postalCode": "10010",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "25th Street (Between Lexington And Third Avenue)",
+                                    "New York, NY 10010",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "4bf58dd8d48988d16d941735",
+                              "name": "Café",
+                              "pluralName": "Cafés",
+                              "shortName": "Café",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/cafe_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 149,
+               "usersCount": 104,
+               "tipCount": 4
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "delivery": {
+               "url": "http://www.seamless.com/food-delivery/restaurant.35696.r?a=1026&utm_source=Foursquare&utm_medium=affiliate&utm_campaign=SeamlessOrderDeliveryLink",
+               "provider": {
+               "name": "seamless"
+               }
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "528bf04f498ebd37943cba80",
+               "name": "Chatime 日出茶太",
+               "contact": {
+               "phone": "2129888878",
+               "formattedPhone": "(212) 988-8878"
+               },
+               "location": {
+               "address": "858 Lexington Ave",
+               "crossStreet": "btwn 64th & 65th St",
+               "lat": 40.76578731205113,
+               "lng": -73.96552357127595,
+               "distance": 1770,
+               "postalCode": "10065",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "858 Lexington Ave (btwn 64th & 65th St)",
+                                    "New York, NY 10065",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 279,
+               "usersCount": 164,
+               "tipCount": 10
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 1,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "52cd915b498eee10ccde09e9",
+               "name": "Smoocha",
+               "contact": {},
+               "location": {
+               "address": "315 5th Ave",
+               "lat": 40.747057614516436,
+               "lng": -73.98494562556753,
+               "distance": 1353,
+               "postalCode": "10016",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "315 5th Ave",
+                                    "New York, NY 10016",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 317,
+               "usersCount": 229,
+               "tipCount": 2
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 3,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "533f47ff498eb76534dfe1f3",
+               "name": "Red Bubble",
+               "contact": {},
+               "location": {
+               "address": "97 Chrystie St",
+               "crossStreet": "Grand",
+               "lat": 40.71783469888291,
+               "lng": -73.99408777489505,
+               "distance": 4674,
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "97 Chrystie St (Grand)",
+                                    "New York, NY",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 100,
+               "usersCount": 75,
+               "tipCount": 1
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "delivery": {
+               "url": "http://www.seamless.com/food-delivery/restaurant.35180.r?a=1026&utm_source=Foursquare&utm_medium=affiliate&utm_campaign=SeamlessOrderDeliveryLink",
+               "provider": {
+               "name": "seamless"
+               }
+               },
+               "specials": {
+               "count": 2,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "53e7bce6498ee825dbee9acc",
+               "name": "Monkey King",
+               "contact": {},
+               "location": {
+               "lat": 40.76552541713249,
+               "lng": -73.91906686259051,
+               "distance": 5573,
+               "cc": "US",
+               "city": "Queens",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "Queens, NY",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 15,
+               "usersCount": 15,
+               "tipCount": 2
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "538a1b82498e279098ddef6b",
+               "name": "City Wings Cafe",
+               "contact": {
+               "phone": "2129828291",
+               "formattedPhone": "(212) 982-8291",
+               "facebook": "1431029670482749",
+               "facebookUsername": "citywingscafe",
+               "facebookName": "City Wings Cafe"
+               },
+               "location": {
+               "address": "347 1st Ave",
+               "lat": 40.73515341212668,
+               "lng": -73.97959098193002,
+               "distance": 2711,
+               "postalCode": "10010",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "347 1st Ave",
+                                    "New York, NY 10010",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "4bf58dd8d48988d14c941735",
+                              "name": "Wings Joint",
+                              "pluralName": "Wings Joints",
+                              "shortName": "Wings",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/wings_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 25,
+               "usersCount": 16,
+               "tipCount": 2
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "url": "http://www.citywingscafe.com",
+               "delivery": {
+               "url": "http://www.seamless.com/food-delivery/restaurant.35204.r?a=1026&utm_source=Foursquare&utm_medium=affiliate&utm_campaign=SeamlessOrderDeliveryLink",
+               "provider": {
+               "name": "seamless"
+               }
+               },
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "http://www.citywingscafe.com/menu.html",
+               "mobileUrl": "http://www.citywingscafe.com/menu.html",
+               "externalUrl": "http://www.citywingscafe.com/menu.html"
+               },
+               "specials": {
+               "count": 4,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "5243325511d2e8aa8c36a30d",
+               "name": "Vivi Bubble Tea",
+               "contact": {},
+               "location": {
+               "address": "18 Beaver St",
+               "lat": 40.70500254403681,
+               "lng": -74.01235928864523,
+               "distance": 6471,
+               "postalCode": "10004",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "18 Beaver St",
+                                    "New York, NY 10004",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "52e81612bcbc57f1066b7a0c",
+                              "name": "Bubble Tea Shop",
+                              "pluralName": "Bubble Tea Shops",
+                              "shortName": "Bubble Tea",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/bubble_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": false,
+               "stats": {
+               "checkinsCount": 155,
+               "usersCount": 79,
+               "tipCount": 2
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "specials": {
+               "count": 0,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "referralId": "v-1408917566"
+               },
+               {
+               "id": "4bfaad735317a5931802037f",
+               "name": "Boi Noodles",
+               "contact": {
+               "phone": "2125750088",
+               "formattedPhone": "(212) 575-0088"
+               },
+               "location": {
+               "address": "240 W 40th St.",
+               "crossStreet": "btwn 7th & 8th Ave.",
+               "lat": 40.755854,
+               "lng": -73.989698,
+               "distance": 567,
+               "postalCode": "10018",
+               "cc": "US",
+               "city": "New York",
+               "state": "NY",
+               "country": "United States",
+               "formattedAddress": [
+                                    "240 W 40th St. (btwn 7th & 8th Ave.)",
+                                    "New York, NY 10018",
+                                    "United States"
+                                    ]
+               },
+               "categories": [
+                              {
+                              "id": "4bf58dd8d48988d14a941735",
+                              "name": "Vietnamese Restaurant",
+                              "pluralName": "Vietnamese Restaurants",
+                              "shortName": "Vietnamese",
+                              "icon": {
+                              "prefix": "https://ss1.4sqi.net/img/categories_v2/food/vietnamese_",
+                              "suffix": ".png"
+                              },
+                              "primary": true
+                              }
+                              ],
+               "verified": true,
+               "stats": {
+               "checkinsCount": 2783,
+               "usersCount": 1062,
+               "tipCount": 28
+               },
+               "price":{
+               "tier":1,
+               "message":"Cheap",
+               "currency":"$"
+               },
+               "url": "http://boinoodlesnyc.com",
+               "delivery": {
+               "url": "http://www.seamless.com/food-delivery/restaurant.8840.r?a=1026&utm_source=Foursquare&utm_medium=affiliate&utm_campaign=SeamlessOrderDeliveryLink",
+               "provider": {
+               "name": "seamless"
+               }
+               },
+               "menu": {
+               "type": "Menu",
+               "label": "Menu",
+               "anchor": "View Menu",
+               "url": "https://foursquare.com/v/boi-noodles/4bfaad735317a5931802037f/menu",
+               "mobileUrl": "https://foursquare.com/v/4bfaad735317a5931802037f/device_menu"
+               },
+               "specials": {
+               "count": 1,
+               "items": []
+               },
+               "hereNow": {
+               "count": 0,
+               "summary": "0 people here",
+               "groups": []
+               },
+               "venuePage": {
+               "id": "88535396"
+               },
+               "referralId": "v-1408917566"
+               }
+               ],
+    "confident": false
+  }
+}

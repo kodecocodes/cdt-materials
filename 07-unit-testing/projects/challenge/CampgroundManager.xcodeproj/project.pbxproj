@@ -1,0 +1,571 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		792BBDC319C183C2005667A2 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792BBDC219C183C2005667A2 /* TestCoreDataStack.swift */; };
+		792BBDC519C184C2005667A2 /* CamperServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792BBDC419C184C2005667A2 /* CamperServiceTests.swift */; };
+		792BBDC719C1E98B005667A2 /* CampSiteServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792BBDC619C1E98B005667A2 /* CampSiteServiceTests.swift */; };
+		792BBDC919C1F00E005667A2 /* ReservationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 792BBDC819C1F00E005667A2 /* ReservationServiceTests.swift */; };
+		9367E2C51B3D79D400229081 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9367E2C41B3D79D400229081 /* LaunchScreen.storyboard */; };
+		9367E2EE1B3D84A400229081 /* Camper+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9367E2E81B3D84A400229081 /* Camper+CoreDataProperties.swift */; };
+		9367E2EF1B3D84A400229081 /* Camper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9367E2E91B3D84A400229081 /* Camper.swift */; };
+		9367E2F01B3D84A400229081 /* CampSite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9367E2EA1B3D84A400229081 /* CampSite+CoreDataProperties.swift */; };
+		9367E2F11B3D84A400229081 /* CampSite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9367E2EB1B3D84A400229081 /* CampSite.swift */; };
+		9367E2F21B3D84A400229081 /* Reservation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9367E2EC1B3D84A400229081 /* Reservation+CoreDataProperties.swift */; };
+		9367E2F31B3D84A400229081 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9367E2ED1B3D84A400229081 /* Reservation.swift */; };
+		938C96F419AAEE9D0009D5EB /* CamperService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938C96F319AAEE9D0009D5EB /* CamperService.swift */; };
+		93CAF0D919AA98660028DCCE /* ReservationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CAF0D819AA98660028DCCE /* ReservationService.swift */; };
+		93CF1D7219A17A42003FBB14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF1D7119A17A42003FBB14 /* AppDelegate.swift */; };
+		93CF1D7519A17A42003FBB14 /* CampgroundManager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93CF1D7319A17A42003FBB14 /* CampgroundManager.xcdatamodeld */; };
+		93CF1D7719A17A42003FBB14 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF1D7619A17A42003FBB14 /* MasterViewController.swift */; };
+		93CF1D7919A17A42003FBB14 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF1D7819A17A42003FBB14 /* DetailViewController.swift */; };
+		93CF1D7C19A17A42003FBB14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93CF1D7A19A17A42003FBB14 /* Main.storyboard */; };
+		93CF1D7E19A17A42003FBB14 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93CF1D7D19A17A42003FBB14 /* Images.xcassets */; };
+		93CF1D9D19A23F01003FBB14 /* CampSiteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CF1D9C19A23F01003FBB14 /* CampSiteService.swift */; };
+		93DC421B19A6D4E900D015A8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DC421A19A6D4E900D015A8 /* CoreDataStack.swift */; };
+		93FC6E6322D14B4F00585AE5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC6E6222D14B4F00585AE5 /* main.swift */; };
+		93FC6E6522D14B7A00585AE5 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC6E6422D14B7A00585AE5 /* TestingAppDelegate.swift */; };
+		93FC6E6722D14BA200585AE5 /* TestingMode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FC6E6622D14BA200585AE5 /* TestingMode.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		93CF1D8419A17A42003FBB14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93CF1D6419A17A42003FBB14 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93CF1D6B19A17A42003FBB14;
+			remoteInfo = CampgroundManager;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		792BBDC219C183C2005667A2 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		792BBDC419C184C2005667A2 /* CamperServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamperServiceTests.swift; sourceTree = "<group>"; };
+		792BBDC619C1E98B005667A2 /* CampSiteServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampSiteServiceTests.swift; sourceTree = "<group>"; };
+		792BBDC819C1F00E005667A2 /* ReservationServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationServiceTests.swift; sourceTree = "<group>"; };
+		9367E2C41B3D79D400229081 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9367E2E81B3D84A400229081 /* Camper+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Camper+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9367E2E91B3D84A400229081 /* Camper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camper.swift; sourceTree = "<group>"; };
+		9367E2EA1B3D84A400229081 /* CampSite+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CampSite+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9367E2EB1B3D84A400229081 /* CampSite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampSite.swift; sourceTree = "<group>"; };
+		9367E2EC1B3D84A400229081 /* Reservation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Reservation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9367E2ED1B3D84A400229081 /* Reservation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
+		938C96F319AAEE9D0009D5EB /* CamperService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CamperService.swift; sourceTree = "<group>"; };
+		93CAF0D819AA98660028DCCE /* ReservationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationService.swift; sourceTree = "<group>"; };
+		93CF1D6C19A17A42003FBB14 /* CampgroundManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampgroundManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93CF1D7019A17A42003FBB14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93CF1D7119A17A42003FBB14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		93CF1D7419A17A42003FBB14 /* CampgroundManager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CampgroundManager.xcdatamodel; sourceTree = "<group>"; };
+		93CF1D7619A17A42003FBB14 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		93CF1D7819A17A42003FBB14 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		93CF1D7B19A17A42003FBB14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		93CF1D7D19A17A42003FBB14 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		93CF1D8319A17A42003FBB14 /* CampgroundManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CampgroundManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93CF1D8819A17A42003FBB14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93CF1D9419A17F25003FBB14 /* CampgroundManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CampgroundManager-Bridging-Header.h"; sourceTree = "<group>"; };
+		93CF1D9C19A23F01003FBB14 /* CampSiteService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampSiteService.swift; sourceTree = "<group>"; };
+		93DC421A19A6D4E900D015A8 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		93FC6E6222D14B4F00585AE5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		93FC6E6422D14B7A00585AE5 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		93FC6E6622D14BA200585AE5 /* TestingMode.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestingMode.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		93CF1D6919A17A42003FBB14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93CF1D8019A17A42003FBB14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		938C96F019AAE9520009D5EB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				792BBDC419C184C2005667A2 /* CamperServiceTests.swift */,
+				792BBDC619C1E98B005667A2 /* CampSiteServiceTests.swift */,
+				792BBDC819C1F00E005667A2 /* ReservationServiceTests.swift */,
+				792BBDC219C183C2005667A2 /* TestCoreDataStack.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		93CF1D6319A17A42003FBB14 = {
+			isa = PBXGroup;
+			children = (
+				93CF1D6E19A17A42003FBB14 /* CampgroundManager */,
+				93CF1D8619A17A42003FBB14 /* CampgroundManagerTests */,
+				93CF1D6D19A17A42003FBB14 /* Products */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+		};
+		93CF1D6D19A17A42003FBB14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				93CF1D6C19A17A42003FBB14 /* CampgroundManager.app */,
+				93CF1D8319A17A42003FBB14 /* CampgroundManagerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		93CF1D6E19A17A42003FBB14 /* CampgroundManager */ = {
+			isa = PBXGroup;
+			children = (
+				93CF1D9319A17EF6003FBB14 /* Model */,
+				93CF1D9B19A17F41003FBB14 /* Services */,
+				93CF1D7119A17A42003FBB14 /* AppDelegate.swift */,
+				93CF1D7819A17A42003FBB14 /* DetailViewController.swift */,
+				93CF1D7D19A17A42003FBB14 /* Images.xcassets */,
+				9367E2C41B3D79D400229081 /* LaunchScreen.storyboard */,
+				93CF1D7A19A17A42003FBB14 /* Main.storyboard */,
+				93FC6E6222D14B4F00585AE5 /* main.swift */,
+				93CF1D7619A17A42003FBB14 /* MasterViewController.swift */,
+				93CF1D6F19A17A42003FBB14 /* Supporting Files */,
+			);
+			path = CampgroundManager;
+			sourceTree = "<group>";
+		};
+		93CF1D6F19A17A42003FBB14 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				93CF1D9419A17F25003FBB14 /* CampgroundManager-Bridging-Header.h */,
+				93CF1D7019A17A42003FBB14 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93CF1D8619A17A42003FBB14 /* CampgroundManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				938C96F019AAE9520009D5EB /* Services */,
+				93CF1D8719A17A42003FBB14 /* Supporting Files */,
+				93FC6E6422D14B7A00585AE5 /* TestingAppDelegate.swift */,
+				93FC6E6622D14BA200585AE5 /* TestingMode.storyboard */,
+			);
+			path = CampgroundManagerTests;
+			sourceTree = "<group>";
+		};
+		93CF1D8719A17A42003FBB14 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				93CF1D8819A17A42003FBB14 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93CF1D9319A17EF6003FBB14 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9367E2E91B3D84A400229081 /* Camper.swift */,
+				9367E2E81B3D84A400229081 /* Camper+CoreDataProperties.swift */,
+				93CF1D7319A17A42003FBB14 /* CampgroundManager.xcdatamodeld */,
+				9367E2EB1B3D84A400229081 /* CampSite.swift */,
+				9367E2EA1B3D84A400229081 /* CampSite+CoreDataProperties.swift */,
+				9367E2ED1B3D84A400229081 /* Reservation.swift */,
+				9367E2EC1B3D84A400229081 /* Reservation+CoreDataProperties.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		93CF1D9B19A17F41003FBB14 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				938C96F319AAEE9D0009D5EB /* CamperService.swift */,
+				93CF1D9C19A23F01003FBB14 /* CampSiteService.swift */,
+				93DC421A19A6D4E900D015A8 /* CoreDataStack.swift */,
+				93CAF0D819AA98660028DCCE /* ReservationService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		93CF1D6B19A17A42003FBB14 /* CampgroundManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93CF1D8D19A17A42003FBB14 /* Build configuration list for PBXNativeTarget "CampgroundManager" */;
+			buildPhases = (
+				93CF1D6819A17A42003FBB14 /* Sources */,
+				93CF1D6919A17A42003FBB14 /* Frameworks */,
+				93CF1D6A19A17A42003FBB14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CampgroundManager;
+			productName = CampgroundManager;
+			productReference = 93CF1D6C19A17A42003FBB14 /* CampgroundManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+		93CF1D8219A17A42003FBB14 /* CampgroundManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93CF1D9019A17A42003FBB14 /* Build configuration list for PBXNativeTarget "CampgroundManagerTests" */;
+			buildPhases = (
+				93CF1D7F19A17A42003FBB14 /* Sources */,
+				93CF1D8019A17A42003FBB14 /* Frameworks */,
+				93CF1D8119A17A42003FBB14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93CF1D8519A17A42003FBB14 /* PBXTargetDependency */,
+			);
+			name = CampgroundManagerTests;
+			productName = CampgroundManagerTests;
+			productReference = 93CF1D8319A17A42003FBB14 /* CampgroundManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		93CF1D6419A17A42003FBB14 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = Razeware;
+				TargetAttributes = {
+					93CF1D6B19A17A42003FBB14 = {
+						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 1100;
+					};
+					93CF1D8219A17A42003FBB14 = {
+						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 1100;
+						TestTargetID = 93CF1D6B19A17A42003FBB14;
+					};
+				};
+			};
+			buildConfigurationList = 93CF1D6719A17A42003FBB14 /* Build configuration list for PBXProject "CampgroundManager" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 93CF1D6319A17A42003FBB14;
+			productRefGroup = 93CF1D6D19A17A42003FBB14 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				93CF1D6B19A17A42003FBB14 /* CampgroundManager */,
+				93CF1D8219A17A42003FBB14 /* CampgroundManagerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		93CF1D6A19A17A42003FBB14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9367E2C51B3D79D400229081 /* LaunchScreen.storyboard in Resources */,
+				93CF1D7C19A17A42003FBB14 /* Main.storyboard in Resources */,
+				93CF1D7E19A17A42003FBB14 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93CF1D8119A17A42003FBB14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93FC6E6722D14BA200585AE5 /* TestingMode.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		93CF1D6819A17A42003FBB14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93CF1D7219A17A42003FBB14 /* AppDelegate.swift in Sources */,
+				93CAF0D919AA98660028DCCE /* ReservationService.swift in Sources */,
+				93DC421B19A6D4E900D015A8 /* CoreDataStack.swift in Sources */,
+				93CF1D7519A17A42003FBB14 /* CampgroundManager.xcdatamodeld in Sources */,
+				93CF1D7719A17A42003FBB14 /* MasterViewController.swift in Sources */,
+				9367E2EE1B3D84A400229081 /* Camper+CoreDataProperties.swift in Sources */,
+				938C96F419AAEE9D0009D5EB /* CamperService.swift in Sources */,
+				93CF1D7919A17A42003FBB14 /* DetailViewController.swift in Sources */,
+				9367E2F01B3D84A400229081 /* CampSite+CoreDataProperties.swift in Sources */,
+				93CF1D9D19A23F01003FBB14 /* CampSiteService.swift in Sources */,
+				9367E2F21B3D84A400229081 /* Reservation+CoreDataProperties.swift in Sources */,
+				93FC6E6322D14B4F00585AE5 /* main.swift in Sources */,
+				9367E2EF1B3D84A400229081 /* Camper.swift in Sources */,
+				9367E2F31B3D84A400229081 /* Reservation.swift in Sources */,
+				9367E2F11B3D84A400229081 /* CampSite.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93CF1D7F19A17A42003FBB14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				93FC6E6522D14B7A00585AE5 /* TestingAppDelegate.swift in Sources */,
+				792BBDC719C1E98B005667A2 /* CampSiteServiceTests.swift in Sources */,
+				792BBDC319C183C2005667A2 /* TestCoreDataStack.swift in Sources */,
+				792BBDC919C1F00E005667A2 /* ReservationServiceTests.swift in Sources */,
+				792BBDC519C184C2005667A2 /* CamperServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		93CF1D8519A17A42003FBB14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93CF1D6B19A17A42003FBB14 /* CampgroundManager */;
+			targetProxy = 93CF1D8419A17A42003FBB14 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		93CF1D7A19A17A42003FBB14 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93CF1D7B19A17A42003FBB14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		93CF1D8B19A17A42003FBB14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		93CF1D8C19A17A42003FBB14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		93CF1D8E19A17A42003FBB14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = CampgroundManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CampgroundManager/CampgroundManager-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		93CF1D8F19A17A42003FBB14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = CampgroundManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CampgroundManager/CampgroundManager-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		93CF1D9119A17A42003FBB14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CampgroundManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CampgroundManager.app/CampgroundManager";
+			};
+			name = Debug;
+		};
+		93CF1D9219A17A42003FBB14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				INFOPLIST_FILE = CampgroundManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.razeware.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CampgroundManager.app/CampgroundManager";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		93CF1D6719A17A42003FBB14 /* Build configuration list for PBXProject "CampgroundManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93CF1D8B19A17A42003FBB14 /* Debug */,
+				93CF1D8C19A17A42003FBB14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93CF1D8D19A17A42003FBB14 /* Build configuration list for PBXNativeTarget "CampgroundManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93CF1D8E19A17A42003FBB14 /* Debug */,
+				93CF1D8F19A17A42003FBB14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93CF1D9019A17A42003FBB14 /* Build configuration list for PBXNativeTarget "CampgroundManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93CF1D9119A17A42003FBB14 /* Debug */,
+				93CF1D9219A17A42003FBB14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		93CF1D7319A17A42003FBB14 /* CampgroundManager.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				93CF1D7419A17A42003FBB14 /* CampgroundManager.xcdatamodel */,
+			);
+			currentVersion = 93CF1D7419A17A42003FBB14 /* CampgroundManager.xcdatamodel */;
+			path = CampgroundManager.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 93CF1D6419A17A42003FBB14 /* Project object */;
+}
