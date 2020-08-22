@@ -96,10 +96,11 @@ extension DepartmentDetailsViewController {
 
   func activeEmployees(_ department: String) -> String {
     let fetchRequest: NSFetchRequest<Employee> = Employee.fetchRequest()
-    fetchRequest.predicate = NSPredicate(format: "%K = %@ AND %@ = YES",
+    fetchRequest.predicate = NSPredicate(format: "%K = %@ AND %K = %d",
                                          argumentArray: [#keyPath(Employee.department),
                                                          department,
-                                                         #keyPath(Employee.active)])
+                                                         #keyPath(Employee.active),
+                                                         NSNumber(value: true)])
 
     do {
       let results = try coreDataStack.mainContext.fetch(fetchRequest)
