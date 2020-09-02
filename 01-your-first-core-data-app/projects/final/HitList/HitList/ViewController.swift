@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,90 +35,90 @@ import CoreData
 
 class ViewController: UIViewController {
 
-  var people: [NSManagedObject] = []
+    var people: [NSManagedObject] = []
 
-  @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-    title = "The List"
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-  }
-
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-      return
+        title = "The List"
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
-    let managedContext = appDelegate.persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
-    do {
-      people = try managedContext.fetch(fetchRequest)
-    } catch let error as NSError {
-      print("Could not fetch. \(error), \(error.userInfo)")
-    }
-  }
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
 
-  @IBAction func addName(_ sender: UIBarButtonItem) {
-    let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Person")
 
-    let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
-      guard let textField = alert.textFields?.first,
-        let nameToSave = textField.text else {
-          return
-      }
-
-      self.save(name: nameToSave)
-      self.tableView.reloadData()
+        do {
+            people = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
     }
 
-    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    @IBAction func addName(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
 
-    alert.addTextField()
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            guard let textField = alert.textFields?.first,
+                  let nameToSave = textField.text else {
+                return
+            }
 
-    alert.addAction(saveAction)
-    alert.addAction(cancelAction)
+            self.save(name: nameToSave)
+            self.tableView.reloadData()
+        }
 
-    present(alert, animated: true)
-  }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
-  func save(name: String) {
+        alert.addTextField()
 
-    guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-      return
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+
+        present(alert, animated: true)
     }
 
-    let managedContext = appDelegate.persistentContainer.viewContext
+    func save(name: String) {
 
-    let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)!
-    let person = NSManagedObject(entity: entity, insertInto: managedContext)
-    person.setValue(name, forKeyPath: "name")
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
 
-    do {
-      try managedContext.save()
-      people.append(person)
-    } catch let error as NSError {
-      print("Could not save. \(error), \(error.userInfo)")
+        let managedContext = appDelegate.persistentContainer.viewContext
+
+        let entity = NSEntityDescription.entity(forEntityName: "Person", in: managedContext)!
+        let person = NSManagedObject(entity: entity, insertInto: managedContext)
+        person.setValue(name, forKeyPath: "name")
+
+        do {
+            try managedContext.save()
+            people.append(person)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
-  }
 }
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return people.count
-  }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return people.count
+    }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-    let person = people[indexPath.row]
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    cell.textLabel?.text = person.value(forKeyPath: "name") as? String
-    return cell
-  }
+        let person = people[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = person.value(forKeyPath: "name") as? String
+        return cell
+    }
 }
