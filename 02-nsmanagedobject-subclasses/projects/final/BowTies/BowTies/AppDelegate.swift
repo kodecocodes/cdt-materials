@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,30 +35,30 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  
   var window: UIWindow?
-
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-      return true
+  
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    ColorAttributeTransformer.register()
+    return true
   }
-
+  
   // MARK: UISceneSession Lifecycle
-
+  
   func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
     // Called when a new scene session is being created.
     // Use this method to select a configuration to create the new scene with.
     return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
   }
-
+  
   func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     // Called when the user discards a scene session.
     // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
     // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
   }
-
+  
   // MARK: - Core Data stack
-
+  
   lazy var persistentContainer: NSPersistentContainer = {
     /*
      The persistent container for the application. This implementation
@@ -67,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       if let error = error as NSError? {
         // Replace this implementation with code to handle the error appropriately.
         // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-
+        
         /*
          Typical reasons for an error here include:
          * The parent directory does not exist, cannot be created, or disallows writing.
@@ -81,9 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     })
     return container
   }()
-
+  
   // MARK: - Core Data Saving support
-
+  
   func saveContext () {
     let context = persistentContainer.viewContext
     if context.hasChanges {
@@ -97,5 +101,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
     }
   }
-
 }

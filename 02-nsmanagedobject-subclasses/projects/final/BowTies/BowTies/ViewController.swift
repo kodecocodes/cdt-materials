@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,6 +35,8 @@ import CoreData
 
 class ViewController: UIViewController {
 
+  var window: UIWindow?
+
   // MARK: - IBOutlets
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var imageView: UIImageView!
@@ -42,11 +48,10 @@ class ViewController: UIViewController {
   @IBOutlet weak var wearButton: UIButton!
   @IBOutlet weak var rateButton: UIButton!
 
-
-  // MARK: - Properties
+  // MARK: Properties
   var managedContext: NSManagedObjectContext!
   var currentBowTie: BowTie!
-
+  
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -70,31 +75,8 @@ class ViewController: UIViewController {
     }
   }
 
-  func populate(bowtie: BowTie) {
-
-    guard let imageData = bowtie.photoData as Data?,
-      let lastWorn = bowtie.lastWorn as Date?,
-      let tintColor = bowtie.tintColor as? UIColor else {
-        return
-    }
-
-    imageView.image = UIImage(data: imageData)
-    nameLabel.text = bowtie.name
-    ratingLabel.text = "Rating: \(bowtie.rating)/5"
-
-    timesWornLabel.text = "# times worn: \(bowtie.timesWorn)"
-
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .short
-    dateFormatter.timeStyle = .none
-
-    lastWornLabel.text = "Last worn: " + dateFormatter.string(from: lastWorn)
-
-    favoriteLabel.isHidden = !bowtie.isFavorite
-    view.tintColor = tintColor
-  }
-
   // MARK: - IBActions
+
   @IBAction func segmentedControl(_ sender: UISegmentedControl) {
     guard let selectedValue = sender.titleForSegment(at: sender.selectedSegmentIndex) else {
       return
@@ -129,7 +111,7 @@ class ViewController: UIViewController {
 
   @IBAction func rate(_ sender: UIButton) {
 
-    let alert = UIAlertController(title: "New Rating", message: "Rate this bow tie", preferredStyle: .alert)
+    let alert = UIAlertController(title: "New Rating",  message: "Rate this bow tie", preferredStyle: .alert)
 
     alert.addTextField { (textField) in
       textField.keyboardType = .decimalPad
@@ -137,7 +119,9 @@ class ViewController: UIViewController {
 
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
-    let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+    let saveAction = UIAlertAction(title: "Save", style: .default) {
+      [unowned self] action in
+
       if let textField = alert.textFields?.first {
         self.update(rating: textField.text)
       }
@@ -147,30 +131,6 @@ class ViewController: UIViewController {
     alert.addAction(saveAction)
 
     present(alert, animated: true)
-  }
-
-  func update(rating: String?) {
-
-    guard let ratingString = rating,
-      let rating = Double(ratingString) else {
-        return
-    }
-
-    do {
-
-      currentBowTie.rating = rating
-      try managedContext.save()
-      populate(bowtie: currentBowTie)
-
-    } catch let error as NSError {
-
-      if error.domain == NSCocoaErrorDomain &&
-        (error.code == NSValidationNumberTooLargeError || error.code == NSValidationNumberTooSmallError) {
-        rate(rateButton)
-      } else {
-        print("Could not save \(error), \(error.userInfo)")
-      }
-    }
   }
 
   func insertSampleData() {
@@ -211,16 +171,65 @@ class ViewController: UIViewController {
     }
     try! managedContext.save()
   }
+
+  func populate(bowtie: BowTie) {
+
+    guard let imageData = bowtie.photoData as Data?,
+          let lastWorn = bowtie.lastWorn as Date?,
+          let tintColor = bowtie.tintColor as? UIColor else {
+      return
+    }
+
+    imageView.image = UIImage(data: imageData)
+    nameLabel.text = bowtie.name
+    ratingLabel.text = "Rating: \(bowtie.rating)/5"
+
+    timesWornLabel.text = "# times worn: \(bowtie.timesWorn)"
+
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = .short
+    dateFormatter.timeStyle = .none
+
+    lastWornLabel.text =
+      "Last worn: " + dateFormatter.string(from: lastWorn)
+
+    favoriteLabel.isHidden = !bowtie.isFavorite
+    view.tintColor = tintColor
+  }
+
+  func update(rating: String?) {
+
+    guard let ratingString = rating,
+          let rating = Double(ratingString) else {
+      return
+    }
+
+    do {
+      currentBowTie.rating = rating
+      try managedContext.save()
+      populate(bowtie: currentBowTie)
+
+    } catch let error as NSError {
+
+      if error.domain == NSCocoaErrorDomain &&
+          (error.code == NSValidationNumberTooLargeError ||
+            error.code == NSValidationNumberTooSmallError) {
+        rate(rateButton)
+      } else {
+        print("Could not save \(error), \(error.userInfo)")
+      }
+    }
+  }
 }
 
 private extension UIColor {
 
   static func color(dict: [String : Any]) -> UIColor? {
-
+    
     guard let red = dict["red"] as? NSNumber,
-      let green = dict["green"] as? NSNumber,
-      let blue = dict["blue"] as? NSNumber else {
-        return nil
+          let green = dict["green"] as? NSNumber,
+          let blue = dict["blue"] as? NSNumber else {
+      return nil
     }
 
     return UIColor(red: CGFloat(truncating: red) / 255.0,

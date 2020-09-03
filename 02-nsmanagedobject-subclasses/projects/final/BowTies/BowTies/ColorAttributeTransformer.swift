@@ -32,37 +32,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ColorAttributeTransformer: NSSecureUnarchiveFromDataTransformer {
 
-  var window: UIWindow?
-
-  // MARK: - IBOutlets
-  @IBOutlet weak var segmentedControl: UISegmentedControl!
-  @IBOutlet weak var imageView: UIImageView!
-  @IBOutlet weak var nameLabel: UILabel!
-  @IBOutlet weak var ratingLabel: UILabel!
-  @IBOutlet weak var timesWornLabel: UILabel!
-  @IBOutlet weak var lastWornLabel: UILabel!
-  @IBOutlet weak var favoriteLabel: UILabel!
-  @IBOutlet weak var wearButton: UIButton!
-  @IBOutlet weak var rateButton: UIButton!
-  
-  // MARK: - View Life Cycle
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  override static var allowedTopLevelClasses: [AnyClass] {
+    return [UIColor.self]
   }
 
-  // MARK: - IBActions
+  static func register() {
+    let className = String(describing: ColorAttributeTransformer.self)
+    let name = NSValueTransformerName(className)
 
-  @IBAction func segmentedControl(_ sender: UISegmentedControl) {
-
-  }
-
-  @IBAction func wear(_ sender: UIButton) {
-
-  }
-
-  @IBAction func rate(_ sender: UIButton) {
-
+    let transformer = ColorAttributeTransformer()
+    ValueTransformer.setValueTransformer(transformer, forName: name)
   }
 }

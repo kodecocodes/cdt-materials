@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -17,6 +17,10 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
+///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
 ///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -56,46 +60,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // MARK: - Core Data stack
 
   lazy var persistentContainer: NSPersistentContainer = {
-      /*
-       The persistent container for the application. This implementation
-       creates and returns a container, having loaded the store for the
-       application to it. This property is optional since there are legitimate
-       error conditions that could cause the creation of the store to fail.
-      */
-      let container = NSPersistentContainer(name: "BowTies")
-      container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-          if let error = error as NSError? {
-              // Replace this implementation with code to handle the error appropriately.
-              // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-               
-              /*
-               Typical reasons for an error here include:
-               * The parent directory does not exist, cannot be created, or disallows writing.
-               * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-               * The device is out of space.
-               * The store could not be migrated to the current model version.
-               Check the error message to determine what the actual problem was.
-               */
-              fatalError("Unresolved error \(error), \(error.userInfo)")
-          }
-      })
-      return container
+    /*
+     The persistent container for the application. This implementation
+     creates and returns a container, having loaded the store for the
+     application to it. This property is optional since there are legitimate
+     error conditions that could cause the creation of the store to fail.
+     */
+    let container = NSPersistentContainer(name: "BowTies")
+    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+      if let error = error as NSError? {
+        // Replace this implementation with code to handle the error appropriately.
+        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+
+        /*
+         Typical reasons for an error here include:
+         * The parent directory does not exist, cannot be created, or disallows writing.
+         * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+         * The device is out of space.
+         * The store could not be migrated to the current model version.
+         Check the error message to determine what the actual problem was.
+         */
+        fatalError("Unresolved error \(error), \(error.userInfo)")
+      }
+    })
+    return container
   }()
 
   // MARK: - Core Data Saving support
 
   func saveContext () {
-      let context = persistentContainer.viewContext
-      if context.hasChanges {
-          do {
-              try context.save()
-          } catch {
-              // Replace this implementation with code to handle the error appropriately.
-              // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-              let nserror = error as NSError
-              fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-          }
+    let context = persistentContainer.viewContext
+    if context.hasChanges {
+      do {
+        try context.save()
+      } catch {
+        // Replace this implementation with code to handle the error appropriately.
+        // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        let nserror = error as NSError
+        fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
       }
+    }
   }
 
 }
