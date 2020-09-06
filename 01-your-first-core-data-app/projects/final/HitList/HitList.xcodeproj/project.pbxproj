@@ -45,7 +45,9 @@
 				FE63A5FE24FE9BEB00AD52AC /* HitList */,
 				FE63A5FD24FE9BEB00AD52AC /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		FE63A5FD24FE9BEB00AD52AC /* Products */ = {
 			isa = PBXGroup;
