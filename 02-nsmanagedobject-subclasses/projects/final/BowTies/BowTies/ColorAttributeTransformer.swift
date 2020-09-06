@@ -35,7 +35,7 @@ import UIKit
 class ColorAttributeTransformer: NSSecureUnarchiveFromDataTransformer {
 
   override static var allowedTopLevelClasses: [AnyClass] {
-    return [UIColor.self]
+    [UIColor.self]
   }
 
   static func register() {

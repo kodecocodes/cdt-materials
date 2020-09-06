@@ -34,8 +34,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-  var window: UIWindow?
-
   // MARK: - IBOutlets
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var imageView: UIImageView!

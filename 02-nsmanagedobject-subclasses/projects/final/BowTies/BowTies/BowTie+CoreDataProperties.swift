@@ -32,6 +32,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension BowTie {
   
@@ -48,7 +49,7 @@ extension BowTie {
   @NSManaged public var timesWorn: Int32
   @NSManaged public var url: URL?
   @NSManaged public var photoData: Data?
-  @NSManaged public var tintColor: NSObject?
+  @NSManaged public var tintColor: UIColor?
 }
 
 extension BowTie : Identifiable {

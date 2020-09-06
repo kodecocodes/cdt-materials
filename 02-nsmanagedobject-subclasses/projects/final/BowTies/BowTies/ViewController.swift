@@ -35,8 +35,6 @@ import CoreData
 
 class ViewController: UIViewController {
 
-  var window: UIWindow?
-
   // MARK: - IBOutlets
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var imageView: UIImageView!
@@ -96,9 +94,7 @@ class ViewController: UIViewController {
   }
 
   @IBAction func wear(_ sender: UIButton) {
-
-    let times = currentBowTie.timesWorn
-    currentBowTie.timesWorn = times + 1
+    currentBowTie.timesWorn += 1
     currentBowTie.lastWorn = Date()
 
     do {
@@ -176,7 +172,7 @@ class ViewController: UIViewController {
 
     guard let imageData = bowtie.photoData as Data?,
           let lastWorn = bowtie.lastWorn as Date?,
-          let tintColor = bowtie.tintColor as? UIColor else {
+          let tintColor = bowtie.tintColor else {
       return
     }
 
@@ -210,7 +206,7 @@ class ViewController: UIViewController {
       populate(bowtie: currentBowTie)
 
     } catch let error as NSError {
-
+      
       if error.domain == NSCocoaErrorDomain &&
           (error.code == NSValidationNumberTooLargeError ||
             error.code == NSValidationNumberTooSmallError) {
