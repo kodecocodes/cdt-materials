@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE0027E52507DBE500DFB2D3 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0027E42507DBE500DFB2D3 /* CoreDataStack.swift */; };
+		FE0027E82507DCE300DFB2D3 /* DogWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE0027E62507DCE300DFB2D3 /* DogWalk.xcdatamodeld */; };
+		FE0027ED2508277900DFB2D3 /* Walk+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0027E92508277900DFB2D3 /* Walk+CoreDataClass.swift */; };
+		FE0027EE2508277900DFB2D3 /* Walk+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0027EA2508277900DFB2D3 /* Walk+CoreDataProperties.swift */; };
+		FE0027EF2508277900DFB2D3 /* Dog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0027EB2508277900DFB2D3 /* Dog+CoreDataClass.swift */; };
+		FE0027F02508277900DFB2D3 /* Dog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0027EC2508277900DFB2D3 /* Dog+CoreDataProperties.swift */; };
 		FE0EF93022FDDF4C00D0800D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF92F22FDDF4C00D0800D /* AppDelegate.swift */; };
 		FE0EF93222FDDF4C00D0800D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF93122FDDF4C00D0800D /* SceneDelegate.swift */; };
 		FE0EF93422FDDF4C00D0800D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF93322FDDF4C00D0800D /* ViewController.swift */; };
 		FE0EF93722FDDF4C00D0800D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0EF93522FDDF4C00D0800D /* Main.storyboard */; };
 		FE0EF93C22FDDF4D00D0800D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE0EF93B22FDDF4D00D0800D /* Assets.xcassets */; };
 		FE0EF93F22FDDF4D00D0800D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0EF93D22FDDF4D00D0800D /* LaunchScreen.storyboard */; };
-		FE0EF96722FDE6AE00D0800D /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF96622FDE6AE00D0800D /* CoreDataStack.swift */; };
-		FE0EF96A22FDEC8200D0800D /* DogWalk.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF96822FDEC8200D0800D /* DogWalk.xcdatamodeld */; };
-		FE0EF96F22FDEF0500D0800D /* Dog+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF96B22FDEF0500D0800D /* Dog+CoreDataClass.swift */; };
-		FE0EF97022FDEF0500D0800D /* Dog+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF96C22FDEF0500D0800D /* Dog+CoreDataProperties.swift */; };
-		FE0EF97122FDEF0500D0800D /* Walk+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF96D22FDEF0500D0800D /* Walk+CoreDataClass.swift */; };
-		FE0EF97222FDEF0500D0800D /* Walk+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0EF96E22FDEF0500D0800D /* Walk+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FE0027E42507DBE500DFB2D3 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FE0027E72507DCE300DFB2D3 /* DogWalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DogWalk.xcdatamodel; sourceTree = "<group>"; };
+		FE0027E92508277900DFB2D3 /* Walk+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FE0027EA2508277900DFB2D3 /* Walk+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Walk+CoreDataProperties.swift"; path = "DogWalk/Walk+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		FE0027EB2508277900DFB2D3 /* Dog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dog+CoreDataClass.swift"; path = "DogWalk/Dog+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		FE0027EC2508277900DFB2D3 /* Dog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Dog+CoreDataProperties.swift"; path = "DogWalk/Dog+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		FE0EF92C22FDDF4C00D0800D /* DogWalk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogWalk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE0EF92F22FDDF4C00D0800D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE0EF93122FDDF4C00D0800D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,12 +36,6 @@
 		FE0EF93B22FDDF4D00D0800D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE0EF93E22FDDF4D00D0800D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE0EF94022FDDF4D00D0800D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE0EF96622FDE6AE00D0800D /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		FE0EF96922FDEC8200D0800D /* DogWalk.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DogWalk.xcdatamodel; sourceTree = "<group>"; };
-		FE0EF96B22FDEF0500D0800D /* Dog+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FE0EF96C22FDEF0500D0800D /* Dog+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dog+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		FE0EF96D22FDEF0500D0800D /* Walk+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FE0EF96E22FDEF0500D0800D /* Walk+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Walk+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,18 +70,18 @@
 		FE0EF92E22FDDF4C00D0800D /* DogWalk */ = {
 			isa = PBXGroup;
 			children = (
-				FE0EF96B22FDEF0500D0800D /* Dog+CoreDataClass.swift */,
-				FE0EF96C22FDEF0500D0800D /* Dog+CoreDataProperties.swift */,
-				FE0EF96D22FDEF0500D0800D /* Walk+CoreDataClass.swift */,
-				FE0EF96E22FDEF0500D0800D /* Walk+CoreDataProperties.swift */,
+				FE0027E92508277900DFB2D3 /* Walk+CoreDataClass.swift */,
+				FE0027EA2508277900DFB2D3 /* Walk+CoreDataProperties.swift */,
+				FE0027EB2508277900DFB2D3 /* Dog+CoreDataClass.swift */,
+				FE0027EC2508277900DFB2D3 /* Dog+CoreDataProperties.swift */,
+				FE0027E42507DBE500DFB2D3 /* CoreDataStack.swift */,
 				FE0EF92F22FDDF4C00D0800D /* AppDelegate.swift */,
 				FE0EF93122FDDF4C00D0800D /* SceneDelegate.swift */,
 				FE0EF93322FDDF4C00D0800D /* ViewController.swift */,
-				FE0EF96622FDE6AE00D0800D /* CoreDataStack.swift */,
+				FE0027E62507DCE300DFB2D3 /* DogWalk.xcdatamodeld */,
 				FE0EF93522FDDF4C00D0800D /* Main.storyboard */,
 				FE0EF93B22FDDF4D00D0800D /* Assets.xcassets */,
 				FE0EF93D22FDDF4D00D0800D /* LaunchScreen.storyboard */,
-				FE0EF96822FDEC8200D0800D /* DogWalk.xcdatamodeld */,
 				FE0EF94022FDDF4D00D0800D /* Info.plist */,
 			);
 			path = DogWalk;
@@ -114,7 +114,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Razeware;
 				TargetAttributes = {
 					FE0EF92B22FDDF4C00D0800D = {
@@ -158,15 +158,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE0EF96F22FDEF0500D0800D /* Dog+CoreDataClass.swift in Sources */,
-				FE0EF97222FDEF0500D0800D /* Walk+CoreDataProperties.swift in Sources */,
-				FE0EF96722FDE6AE00D0800D /* CoreDataStack.swift in Sources */,
+				FE0027F02508277900DFB2D3 /* Dog+CoreDataProperties.swift in Sources */,
+				FE0027EF2508277900DFB2D3 /* Dog+CoreDataClass.swift in Sources */,
+				FE0027ED2508277900DFB2D3 /* Walk+CoreDataClass.swift in Sources */,
+				FE0027EE2508277900DFB2D3 /* Walk+CoreDataProperties.swift in Sources */,
 				FE0EF93422FDDF4C00D0800D /* ViewController.swift in Sources */,
 				FE0EF93022FDDF4C00D0800D /* AppDelegate.swift in Sources */,
 				FE0EF93222FDDF4C00D0800D /* SceneDelegate.swift in Sources */,
-				FE0EF96A22FDEC8200D0800D /* DogWalk.xcdatamodeld in Sources */,
-				FE0EF97122FDEF0500D0800D /* Walk+CoreDataClass.swift in Sources */,
-				FE0EF97022FDEF0500D0800D /* Dog+CoreDataProperties.swift in Sources */,
+				FE0027E52507DBE500DFB2D3 /* CoreDataStack.swift in Sources */,
+				FE0027E82507DCE300DFB2D3 /* DogWalk.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +218,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -242,7 +243,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -278,6 +279,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -296,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -364,12 +366,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FE0EF96822FDEC8200D0800D /* DogWalk.xcdatamodeld */ = {
+		FE0027E62507DCE300DFB2D3 /* DogWalk.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FE0EF96922FDEC8200D0800D /* DogWalk.xcdatamodel */,
+				FE0027E72507DCE300DFB2D3 /* DogWalk.xcdatamodel */,
 			);
-			currentVersion = FE0EF96922FDEC8200D0800D /* DogWalk.xcdatamodel */;
+			currentVersion = FE0027E72507DCE300DFB2D3 /* DogWalk.xcdatamodel */;
 			path = DogWalk.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
