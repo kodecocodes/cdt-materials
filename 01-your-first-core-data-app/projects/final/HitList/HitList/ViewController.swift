@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -31,9 +35,9 @@ import CoreData
 
 class ViewController: UIViewController {
 
-  var people: [NSManagedObject] = []
 
   @IBOutlet weak var tableView: UITableView!
+  var people: [NSManagedObject] = []
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -60,12 +64,14 @@ class ViewController: UIViewController {
   }
 
   @IBAction func addName(_ sender: UIBarButtonItem) {
-    let alert = UIAlertController(title: "New Name", message: "Add a new name", preferredStyle: .alert)
+    let alert = UIAlertController(title: "New Name",
+                                  message: "Add a new name",
+                                  preferredStyle: .alert)
 
     let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
       guard let textField = alert.textFields?.first,
-        let nameToSave = textField.text else {
-          return
+            let nameToSave = textField.text else {
+        return
       }
 
       self.save(name: nameToSave)
@@ -107,7 +113,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return people.count
+    people.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
