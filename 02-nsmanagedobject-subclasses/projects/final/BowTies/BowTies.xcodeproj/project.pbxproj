@@ -15,8 +15,9 @@
 		FEC6D48422ECFEB1004D739C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEC6D48322ECFEB1004D739C /* Assets.xcassets */; };
 		FEC6D48722ECFEB1004D739C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEC6D48522ECFEB1004D739C /* LaunchScreen.storyboard */; };
 		FEC6D48F22ED01C6004D739C /* SampleData.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEC6D48E22ED01C0004D739C /* SampleData.plist */; };
-		FEC6D49222ED45DB004D739C /* BowTie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC6D49022ED45DB004D739C /* BowTie+CoreDataClass.swift */; };
-		FEC6D49322ED45DB004D739C /* BowTie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC6D49122ED45DB004D739C /* BowTie+CoreDataProperties.swift */; };
+		FEFD1CCD250061BB002D69BF /* ColorAttributeTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFD1CCC250061BB002D69BF /* ColorAttributeTransformer.swift */; };
+		FEFD1CD025007D8F002D69BF /* BowTie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFD1CCE25007D8F002D69BF /* BowTie+CoreDataClass.swift */; };
+		FEFD1CD125007D8F002D69BF /* BowTie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFD1CCF25007D8F002D69BF /* BowTie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +31,9 @@
 		FEC6D48622ECFEB1004D739C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEC6D48822ECFEB1004D739C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEC6D48E22ED01C0004D739C /* SampleData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SampleData.plist; sourceTree = "<group>"; };
-		FEC6D49022ED45DB004D739C /* BowTie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BowTie+CoreDataClass.swift"; sourceTree = "<group>"; };
-		FEC6D49122ED45DB004D739C /* BowTie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BowTie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		FEFD1CCC250061BB002D69BF /* ColorAttributeTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorAttributeTransformer.swift; sourceTree = "<group>"; };
+		FEFD1CCE25007D8F002D69BF /* BowTie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BowTie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		FEFD1CCF25007D8F002D69BF /* BowTie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BowTie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,11 +68,12 @@
 		FEC6D47622ECFEB0004D739C /* BowTies */ = {
 			isa = PBXGroup;
 			children = (
-				FEC6D49022ED45DB004D739C /* BowTie+CoreDataClass.swift */,
-				FEC6D49122ED45DB004D739C /* BowTie+CoreDataProperties.swift */,
+				FEFD1CCE25007D8F002D69BF /* BowTie+CoreDataClass.swift */,
+				FEFD1CCF25007D8F002D69BF /* BowTie+CoreDataProperties.swift */,
 				FEC6D47722ECFEB0004D739C /* AppDelegate.swift */,
 				FEC6D47922ECFEB0004D739C /* SceneDelegate.swift */,
 				FEC6D47B22ECFEB0004D739C /* ViewController.swift */,
+				FEFD1CCC250061BB002D69BF /* ColorAttributeTransformer.swift */,
 				FEC6D47D22ECFEB0004D739C /* Main.storyboard */,
 				FEC6D48322ECFEB1004D739C /* Assets.xcassets */,
 				FEC6D48522ECFEB1004D739C /* LaunchScreen.storyboard */,
@@ -108,7 +111,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Razeware;
 				TargetAttributes = {
 					FEC6D47322ECFEB0004D739C = {
@@ -153,9 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEFD1CCD250061BB002D69BF /* ColorAttributeTransformer.swift in Sources */,
+				FEFD1CD125007D8F002D69BF /* BowTie+CoreDataProperties.swift in Sources */,
 				FEC6D47C22ECFEB0004D739C /* ViewController.swift in Sources */,
-				FEC6D49322ED45DB004D739C /* BowTie+CoreDataProperties.swift in Sources */,
-				FEC6D49222ED45DB004D739C /* BowTie+CoreDataClass.swift in Sources */,
+				FEFD1CD025007D8F002D69BF /* BowTie+CoreDataClass.swift in Sources */,
 				FEC6D48222ECFEB0004D739C /* BowTies.xcdatamodeld in Sources */,
 				FEC6D47822ECFEB0004D739C /* AppDelegate.swift in Sources */,
 				FEC6D47A22ECFEB0004D739C /* SceneDelegate.swift in Sources */,
@@ -210,6 +214,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -270,6 +275,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -304,6 +310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BowTies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,6 +328,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = BowTies/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
