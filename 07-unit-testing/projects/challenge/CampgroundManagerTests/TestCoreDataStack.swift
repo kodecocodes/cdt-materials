@@ -38,11 +38,8 @@ class TestCoreDataStack: CoreDataStack {
   override init() {
     super.init()
 
-    let persistentStoreDescription = NSPersistentStoreDescription()
-    persistentStoreDescription.type = NSInMemoryStoreType
-
     let container = NSPersistentContainer(name: CoreDataStack.modelName, managedObjectModel: CoreDataStack.model)
-    container.persistentStoreDescriptions = [persistentStoreDescription]
+    container.persistentStoreDescriptions[0].url = URL(fileURLWithPath: "/dev/null")
 
     container.loadPersistentStores { (storeDescription, error) in
       if let error = error as NSError? {
