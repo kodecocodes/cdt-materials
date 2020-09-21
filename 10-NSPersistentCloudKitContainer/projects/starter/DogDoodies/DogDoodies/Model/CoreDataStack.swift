@@ -53,9 +53,9 @@ class CoreDataStack {
         print("Unresolved error \(error), \(error.userInfo)")
       }
     }
-    
+
     container.viewContext.automaticallyMergesChangesFromParent = true
-    
+
     return container
   }()
 
