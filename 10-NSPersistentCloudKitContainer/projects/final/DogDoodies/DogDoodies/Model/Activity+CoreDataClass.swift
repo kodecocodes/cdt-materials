@@ -35,8 +35,8 @@ import CoreData
 
 @objc(Activity)
 public class Activity: NSManagedObject {
-    enum ActivityType: String {
-        case poop, pee, walk
-    }
+  enum ActivityType: String {
+    case poop, pee, walk
+  }
 
 }

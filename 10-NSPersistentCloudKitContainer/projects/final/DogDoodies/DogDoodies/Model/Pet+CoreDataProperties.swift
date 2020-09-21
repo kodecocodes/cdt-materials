@@ -36,30 +36,30 @@ import CoreData
 
 extension Pet {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Pet> {
-        return NSFetchRequest<Pet>(entityName: "Pet")
-    }
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<Pet> {
+    return NSFetchRequest<Pet>(entityName: "Pet")
+  }
 
-    @NSManaged public var animalType: String?
-    @NSManaged public var name: String?
-    @NSManaged public var visible: Bool
-    @NSManaged public var activities: NSSet?
+  @NSManaged public var animalType: String?
+  @NSManaged public var name: String?
+  @NSManaged public var visible: Bool
+  @NSManaged public var activities: NSSet?
 
 }
 
 // MARK: Generated accessors for activities
 extension Pet {
 
-    @objc(addActivitiesObject:)
-    @NSManaged public func addToActivities(_ value: Activity)
+  @objc(addActivitiesObject:)
+  @NSManaged public func addToActivities(_ value: Activity)
 
-    @objc(removeActivitiesObject:)
-    @NSManaged public func removeFromActivities(_ value: Activity)
+  @objc(removeActivitiesObject:)
+  @NSManaged public func removeFromActivities(_ value: Activity)
 
-    @objc(addActivities:)
-    @NSManaged public func addToActivities(_ values: NSSet)
+  @objc(addActivities:)
+  @NSManaged public func addToActivities(_ values: NSSet)
 
-    @objc(removeActivities:)
-    @NSManaged public func removeFromActivities(_ values: NSSet)
+  @objc(removeActivities:)
+  @NSManaged public func removeFromActivities(_ values: NSSet)
 
 }

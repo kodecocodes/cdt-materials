@@ -35,14 +35,14 @@ import CoreData
 
 
 extension Activity {
+  
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<Activity> {
+    return NSFetchRequest<Activity>(entityName: "Activity")
+  }
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Activity> {
-        return NSFetchRequest<Activity>(entityName: "Activity")
-    }
-
-    @NSManaged public var activityType: String?
-    @NSManaged public var date: Date?
-    @NSManaged public var notes: String?
-    @NSManaged public var pet: Pet?
+  @NSManaged public var activityType: String?
+  @NSManaged public var date: Date?
+  @NSManaged public var notes: String?
+  @NSManaged public var pet: Pet?
 
 }

@@ -34,69 +34,69 @@ import Foundation
 import CoreData
 
 struct PetService {
-    let context: NSManagedObjectContext
-    
-    func createPet(name: String) -> Pet {
-        let pet = Pet(context: context)
-        pet.name = name
-        pet.animalType = "dog"
-        
-        return pet
-    }
-    
-    func selectedPet() -> Pet? {
-        guard let url =
-            UserDefaults.standard.url(forKey: PetService.selectedPetKey),
-            let coordinator = context.persistentStoreCoordinator,
-            let objectID = coordinator.managedObjectID(forURIRepresentation: url)
-        else {
-            return nil
-        }
-        
-        do {
-             return try context.existingObject(with: objectID) as? Pet
-        } catch {
-            return nil
-        }
-    }
-    
-    func selectPet(_ pet: Pet) {
-        UserDefaults.standard.set(pet.objectID.uriRepresentation(), forKey: PetService.selectedPetKey)
-        UserDefaults.standard.synchronize()
-    }
-    
-    func latestActivity(for activityType: Activity.ActivityType) -> NSFetchRequest<Activity> {
-        let fetchRequest: NSFetchRequest<Activity> = Activity.fetchRequest()
-        
-        let activityTypePredicate = NSPredicate(format: "activityType == %@", argumentArray: [ activityType.rawValue ])
+  let context: NSManagedObjectContext
 
-        if let pet = selectedPet() {
-            let petPredicate = NSPredicate(format: "pet == %@", pet)
-            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [petPredicate, activityTypePredicate])
-        } else {
-            fetchRequest.predicate = activityTypePredicate
-        }
-        
-        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "date", ascending: false) ]
-        fetchRequest.fetchLimit = 1
-        
-        return fetchRequest
+  func createPet(name: String) -> Pet {
+    let pet = Pet(context: context)
+    pet.name = name
+    pet.animalType = "dog"
+
+    return pet
+  }
+
+  func selectedPet() -> Pet? {
+    guard let url =
+            UserDefaults.standard.url(forKey: PetService.selectedPetKey),
+          let coordinator = context.persistentStoreCoordinator,
+          let objectID = coordinator.managedObjectID(forURIRepresentation: url)
+    else {
+      return nil
     }
-    
-    func activitiesFetchRequest(for pet: Pet?) -> NSFetchRequest<Activity> {
-        let fetchRequest: NSFetchRequest<Activity> = Activity.fetchRequest()
-        
-        if let pet = pet {
-            let petPredicate = NSPredicate(format: "pet == %@", pet)
-            fetchRequest.predicate = petPredicate
-        }
-        
-        fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "date", ascending: false) ]
-        
-        return fetchRequest
+
+    do {
+      return try context.existingObject(with: objectID) as? Pet
+    } catch {
+      return nil
     }
+  }
+
+  func selectPet(_ pet: Pet) {
+    UserDefaults.standard.set(pet.objectID.uriRepresentation(), forKey: PetService.selectedPetKey)
+    UserDefaults.standard.synchronize()
+  }
+
+  func latestActivity(for activityType: Activity.ActivityType) -> NSFetchRequest<Activity> {
+    let fetchRequest: NSFetchRequest<Activity> = Activity.fetchRequest()
+
+    let activityTypePredicate = NSPredicate(format: "activityType == %@", argumentArray: [ activityType.rawValue ])
+
+    if let pet = selectedPet() {
+      let petPredicate = NSPredicate(format: "pet == %@", pet)
+      fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [petPredicate, activityTypePredicate])
+    } else {
+      fetchRequest.predicate = activityTypePredicate
+    }
+
+    fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "date", ascending: false) ]
+    fetchRequest.fetchLimit = 1
+
+    return fetchRequest
+  }
+
+  func activitiesFetchRequest(for pet: Pet?) -> NSFetchRequest<Activity> {
+    let fetchRequest: NSFetchRequest<Activity> = Activity.fetchRequest()
+
+    if let pet = pet {
+      let petPredicate = NSPredicate(format: "pet == %@", pet)
+      fetchRequest.predicate = petPredicate
+    }
+
+    fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "date", ascending: false) ]
+
+    return fetchRequest
+  }
 }
 
 extension PetService {
-    static let selectedPetKey = "SelectedPet"
+  static let selectedPetKey = "SelectedPet"
 }
