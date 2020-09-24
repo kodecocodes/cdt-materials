@@ -38,7 +38,7 @@ class ViewController: UIViewController {
   // MARK: - Properties
   fileprivate let teamCellIdentifier = "teamCellReuseIdentifier"
   lazy var  coreDataStack = CoreDataStack(modelName: "WorldCup")
-  var dataSource: UITableViewDiffableDataSource<String, Team>?
+  var dataSource: UITableViewDiffableDataSource<String, NSManagedObjectID>?
 
   lazy var fetchedResultsController: NSFetchedResultsController<Team> = {
     let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
@@ -128,10 +128,13 @@ extension ViewController {
 // MARK: - Internal
 extension ViewController {
 
-  func setupDataSource() -> UITableViewDiffableDataSource<String, Team> {
-    return UITableViewDiffableDataSource(tableView: tableView) { [unowned self](tableView, indexPath, team) -> UITableViewCell? in
+  func setupDataSource() -> UITableViewDiffableDataSource<String, NSManagedObjectID> {
+    return UITableViewDiffableDataSource(tableView: tableView) { [unowned self] (tableView, indexPath, managedObjectID) -> UITableViewCell? in
       let cell = tableView.dequeueReusableCell(withIdentifier: self.teamCellIdentifier, for: indexPath)
-      self.configure(cell: cell, for: team)
+
+      if let team = try? coreDataStack.managedContext.existingObject(with: managedObjectID) as? Team {
+        self.configure(cell: cell, for: team)
+      }
       return cell
     }
   }
@@ -232,25 +235,8 @@ extension ViewController {
 // MARK: - NSFetchedResultsControllerDelegate
 extension ViewController: NSFetchedResultsControllerDelegate {
 
-  func controller(
-    _ controller: NSFetchedResultsController<NSFetchRequestResult>,
-    didChangeContentWith
-    snapshot: NSDiffableDataSourceSnapshotReference) {
-
-    var diff = NSDiffableDataSourceSnapshot<String, Team>()
-    snapshot.sectionIdentifiers.forEach { section in
-
-      diff.appendSections([section as! String])
-
-      let items = snapshot.itemIdentifiersInSection(withIdentifier: section)
-        .map { (objectId: Any) -> Team in
-          let oid =  objectId as! NSManagedObjectID
-          return controller.managedObjectContext.object(with: oid) as! Team
-      }
-
-      diff.appendItems(items, toSection: section as? String)
-    }
-
-    dataSource?.apply(diff)
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
+    let snapshot = snapshot as NSDiffableDataSourceSnapshot<String, NSManagedObjectID>
+    dataSource?.apply(snapshot)
   }
 }
