@@ -120,11 +120,11 @@ extension EmployeeListViewController: NSFetchedResultsControllerDelegate {
 extension EmployeeListViewController {
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return fetchedResultController.sections!.count
+    fetchedResultController.sections!.count
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return fetchedResultController.sections![section].numberOfObjects
+    fetchedResultController.sections![section].numberOfObjects
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
