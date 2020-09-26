@@ -129,7 +129,7 @@ extension ViewController {
 extension ViewController {
 
   func setupDataSource() -> UITableViewDiffableDataSource<String, NSManagedObjectID> {
-    return UITableViewDiffableDataSource(tableView: tableView) { [unowned self] (tableView, indexPath, managedObjectID) -> UITableViewCell? in
+    UITableViewDiffableDataSource(tableView: tableView) { [unowned self] (tableView, indexPath, managedObjectID) -> UITableViewCell? in
       let cell = tableView.dequeueReusableCell(withIdentifier: self.teamCellIdentifier, for: indexPath)
 
       if let team = try? coreDataStack.managedContext.existingObject(with: managedObjectID) as? Team {
@@ -182,7 +182,7 @@ extension ViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 20
+    20
   }
 }
 
