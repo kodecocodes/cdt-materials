@@ -69,7 +69,7 @@ extension ViewController {
 extension ViewController: UITableViewDataSource {
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return walks.count
+    walks.count
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -80,6 +80,6 @@ extension ViewController: UITableViewDataSource {
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return "List of Walks"
+    "List of Walks"
   }
 }
