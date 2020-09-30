@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -29,7 +33,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
   // MARK: - Properties
   lazy var dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -54,7 +57,6 @@ class ViewController: UIViewController {
 
 // MARK: - IBActions
 extension ViewController {
-
   @IBAction func add(_ sender: UIBarButtonItem) {
     walks.append(Date())
     tableView.reloadData()
@@ -63,19 +65,22 @@ extension ViewController {
 
 // MARK: UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return walks.count
+    walks.count
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath
+  ) -> UITableViewCell {
     let date = walks[indexPath.row]
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "Cell", for: indexPath)
     cell.textLabel?.text = dateFormatter.string(from: date)
     return cell
   }
 
   func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return "List of Walks"
+    "List of Walks"
   }
 }
