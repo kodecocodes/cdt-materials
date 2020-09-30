@@ -33,7 +33,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
   // MARK: - Properties
   lazy var dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -58,7 +57,6 @@ class ViewController: UIViewController {
 
 // MARK: - IBActions
 extension ViewController {
-
   @IBAction func add(_ sender: UIBarButtonItem) {
     walks.append(Date())
     tableView.reloadData()
@@ -67,14 +65,17 @@ extension ViewController {
 
 // MARK: UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     walks.count
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath
+  ) -> UITableViewCell {
     let date = walks[indexPath.row]
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "Cell", for: indexPath)
     cell.textLabel?.text = dateFormatter.string(from: date)
     return cell
   }

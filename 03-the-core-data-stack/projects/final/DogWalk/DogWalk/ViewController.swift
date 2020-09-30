@@ -34,7 +34,6 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
   // MARK: - Properties
   lazy var dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
@@ -62,14 +61,14 @@ class ViewController: UIViewController {
 
     do {
       let results = try coreDataStack.managedContext.fetch(dogFetch)
-      if results.count > 0 {
-        // Fido found, use Fido
-        currentDog = results.first
-      } else {
+      if results.isEmpty {
         // Fido not found, create Fido
         currentDog = Dog(context: coreDataStack.managedContext)
         currentDog?.name = dogName
         coreDataStack.saveContext()
+      } else {
+        // Fido found, use Fido
+        currentDog = results.first
       }
     } catch let error as NSError {
       print("Fetch error: \(error) description: \(error.userInfo)")
@@ -79,14 +78,13 @@ class ViewController: UIViewController {
 
 // MARK: - IBActions
 extension ViewController {
-
   @IBAction func add(_ sender: UIBarButtonItem) {
-
     let walk = Walk(context: coreDataStack.managedContext)
     walk.date = Date()
 
     if let dog = currentDog,
-      let walks = dog.walks?.mutableCopy() as? NSMutableOrderedSet {
+      let walks = dog.walks?.mutableCopy()
+        as? NSMutableOrderedSet {
         walks.add(walk)
         dog.walks = walks
     }
@@ -98,14 +96,16 @@ extension ViewController {
 
 // MARK: UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     currentDog?.walks?.count ?? 0
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+  func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath
+  ) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "Cell", for: indexPath)
 
     guard let walk = currentDog?.walks?[indexPath.row] as? Walk,
       let walkDate = walk.date as Date? else {
@@ -124,10 +124,14 @@ extension ViewController: UITableViewDataSource {
     true
   }
 
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-
-    guard let walkToRemove = currentDog?.walks?[indexPath.row] as? Walk,
-          editingStyle == .delete else {
+  func tableView(
+    _ tableView: UITableView,
+    commit editingStyle: UITableViewCell.EditingStyle,
+    forRowAt indexPath: IndexPath
+  ) {
+    guard let walkToRemove =
+      currentDog?.walks?[indexPath.row] as? Walk,
+      editingStyle == .delete else {
       return
     }
 

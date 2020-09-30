@@ -76,6 +76,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE0EF94322FDDF4D00D0800D /* Build configuration list for PBXNativeTarget "DogWalk" */;
 			buildPhases = (
+				79D2514825250EDA00FF17D1 /* ShellScript */,
 				FE0EF92822FDDF4C00D0800D /* Sources */,
 				FE0EF92922FDDF4C00D0800D /* Frameworks */,
 				FE0EF92A22FDDF4C00D0800D /* Resources */,
@@ -134,6 +135,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79D2514825250EDA00FF17D1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FE0EF92822FDDF4C00D0800D /* Sources */ = {
