@@ -33,7 +33,6 @@
 import UIKit
 
 class FilterViewController: UITableViewController {
-
   @IBOutlet weak var firstPriceCategoryLabel: UILabel!
   @IBOutlet weak var secondPriceCategoryLabel: UILabel!
   @IBOutlet weak var thirdPriceCategoryLabel: UILabel!
@@ -58,22 +57,19 @@ class FilterViewController: UITableViewController {
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-
   }
 }
 
 // MARK: - IBActions
 extension FilterViewController {
-
   @IBAction func search(_ sender: UIBarButtonItem) {
-
+    // Add code here
   }
 }
 
-// MARK - UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension FilterViewController {
-
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+    // Add code here
   }
 }

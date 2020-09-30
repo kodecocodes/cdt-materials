@@ -34,7 +34,6 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
   // MARK: - Properties
   private let filterViewControllerSegueIdentifier = "toFilterViewController"
   private let venueCellIdentifier = "VenueCell"
@@ -69,8 +68,9 @@ class ViewController: UIViewController {
     let venueFetchRequest: NSFetchRequest<Venue> = Venue.fetchRequest()
     fetchRequest = venueFetchRequest
 
-    asyncFetchRequest = NSAsynchronousFetchRequest<Venue>(fetchRequest: venueFetchRequest) {
-      [unowned self] (result: NSAsynchronousFetchResult) in
+    asyncFetchRequest = NSAsynchronousFetchRequest<Venue>(
+      fetchRequest: venueFetchRequest
+    ) { [unowned self] result in
       guard let venues = result.finalResult else {
         return
       }
@@ -92,7 +92,6 @@ class ViewController: UIViewController {
 
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
     guard segue.identifier == filterViewControllerSegueIdentifier,
       let navController = segue.destination as? UINavigationController,
       let filterVC = navController.topViewController as? FilterViewController else {
@@ -106,16 +105,13 @@ class ViewController: UIViewController {
 
 // MARK: - IBActions
 extension ViewController {
-
   @IBAction func unwindToVenueListViewController(_ segue: UIStoryboardSegue) {
   }
 }
 
 // MARK: - Helper methods
 extension ViewController {
-
   func fetchAndReload() {
-
     guard let fetchRequest = fetchRequest else {
       return
     }
@@ -131,7 +127,6 @@ extension ViewController {
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     venues.count
   }
@@ -148,9 +143,7 @@ extension ViewController: UITableViewDataSource {
 
 // MARK: - FilterViewControllerDelegate
 extension ViewController: FilterViewControllerDelegate {
-
   func filterViewController(filter: FilterViewController, didSelectPredicate predicate: NSPredicate?, sortDescriptor: NSSortDescriptor?) {
-
     guard let fetchRequest = fetchRequest else {
       return
     }
@@ -167,9 +160,8 @@ extension ViewController: FilterViewControllerDelegate {
   }
 }
 
-// MARK - Data loading
+// MARK: - Data loading
 extension ViewController {
-  
   func importJSONSeedDataIfNeeded() {
     let fetchRequest = NSFetchRequest<Venue>(entityName: "Venue")
     let count = try! coreDataStack.managedContext.count(for: fetchRequest)
@@ -206,7 +198,7 @@ extension ViewController {
 
       let locationDict = jsonDictionary["location"] as! [String: Any]
       let priceDict = jsonDictionary["price"] as! [String: Any]
-      let statsDict =  jsonDictionary["stats"] as! [String: Any]
+      let statsDict = jsonDictionary["stats"] as! [String: Any]
 
       let location = Location(context: coreDataStack.managedContext)
       location.address = locationDict["address"] as? String

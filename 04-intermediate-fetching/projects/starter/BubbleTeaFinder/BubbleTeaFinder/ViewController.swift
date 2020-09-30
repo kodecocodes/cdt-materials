@@ -61,14 +61,12 @@ class ViewController: UIViewController {
 
 // MARK: - IBActions
 extension ViewController {
-
   @IBAction func unwindToVenueListViewController(_ segue: UIStoryboardSegue) {
   }
 }
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     10
   }
@@ -81,9 +79,8 @@ extension ViewController: UITableViewDataSource {
   }
 }
 
-// MARK - Data loading
-extension ViewController {
-  
+// MARK: - Data loading
+extension ViewController {  
   func importJSONSeedDataIfNeeded() {
     let fetchRequest = NSFetchRequest<Venue>(entityName: "Venue")
     let count = try! coreDataStack.managedContext.count(for: fetchRequest)

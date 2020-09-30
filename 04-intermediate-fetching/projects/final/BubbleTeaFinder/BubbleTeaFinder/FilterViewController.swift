@@ -38,7 +38,6 @@ protocol FilterViewControllerDelegate: class {
 }
 
 class FilterViewController: UITableViewController {
-
   @IBOutlet weak var firstPriceCategoryLabel: UILabel!
   @IBOutlet weak var secondPriceCategoryLabel: UILabel!
   @IBOutlet weak var thirdPriceCategoryLabel: UILabel!
@@ -116,18 +115,19 @@ class FilterViewController: UITableViewController {
 
 // MARK: - IBActions
 extension FilterViewController {
-
   @IBAction func search(_ sender: UIBarButtonItem) {
-    delegate?.filterViewController(filter: self, didSelectPredicate: selectedPredicate, sortDescriptor: selectedSortDescriptor)
+    delegate?.filterViewController(
+      filter: self,
+      didSelectPredicate: selectedPredicate,
+      sortDescriptor: selectedSortDescriptor
+    )
     dismiss(animated: true)
   }
 }
 
-// MARK - UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension FilterViewController {
-
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
     guard let cell = tableView.cellForRow(at: indexPath) else {
       return
     }
@@ -161,9 +161,7 @@ extension FilterViewController {
 }
 
 extension FilterViewController {
-
   func populateCheapVenueCountLabel() {
-
     let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Venue")
     fetchRequest.resultType = .countResultType
     fetchRequest.predicate = cheapVenuePredicate
@@ -179,7 +177,6 @@ extension FilterViewController {
   }
 
   func populateModerateVenueCountLabel() {
-
     let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Venue")
     fetchRequest.resultType = .countResultType
     fetchRequest.predicate = moderateVenuePredicate
@@ -195,7 +192,6 @@ extension FilterViewController {
   }
 
   func populateExpensiveVenueCountLabel() {
-
     let fetchRequest: NSFetchRequest<Venue> = Venue.fetchRequest()
     fetchRequest.predicate = expensiveVenuePredicate
 
@@ -209,7 +205,6 @@ extension FilterViewController {
   }
 
   func populateDealsCountLabel() {
-
     let fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Venue")
     fetchRequest.resultType = .dictionaryResultType
 

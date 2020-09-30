@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -129,6 +129,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE0EF99622FF3B2800D0800D /* Build configuration list for PBXNativeTarget "BubbleTeaFinder" */;
 			buildPhases = (
+				79D251552525213A00FF17D1 /* Run Script */,
 				FE0EF97B22FF3B2700D0800D /* Sources */,
 				FE0EF97C22FF3B2700D0800D /* Frameworks */,
 				FE0EF97D22FF3B2700D0800D /* Resources */,
@@ -158,7 +159,7 @@
 				};
 			};
 			buildConfigurationList = FE0EF97A22FF3B2700D0800D /* Build configuration list for PBXProject "BubbleTeaFinder" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -189,6 +190,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79D251552525213A00FF17D1 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FE0EF97B22FF3B2700D0800D /* Sources */ = {
