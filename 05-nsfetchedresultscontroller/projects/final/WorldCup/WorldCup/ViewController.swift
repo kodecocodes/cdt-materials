@@ -158,10 +158,10 @@ extension ViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let team = fetchedResultsController.object(at: indexPath)
     team.wins += 1
-//    if var snapshot = dataSource?.snapshot() {
-//      snapshot.reloadItems([team.objectID])
-//      dataSource?.apply(snapshot, animatingDifferences: false)
-//    }
+    if var snapshot = dataSource?.snapshot() {
+      snapshot.reloadItems([team.objectID])
+      dataSource?.apply(snapshot, animatingDifferences: false)
+    }
     coreDataStack.saveContext()
   }
 
