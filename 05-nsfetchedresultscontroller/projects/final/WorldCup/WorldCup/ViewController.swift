@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,11 +34,10 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
   // MARK: - Properties
-  fileprivate let teamCellIdentifier = "teamCellReuseIdentifier"
+  private let teamCellIdentifier = "teamCellReuseIdentifier"
   lazy var  coreDataStack = CoreDataStack(modelName: "WorldCup")
-  var dataSource: UITableViewDiffableDataSource<String, Team>?
+  var dataSource: UITableViewDiffableDataSource<String, NSManagedObjectID>?
 
   lazy var fetchedResultsController: NSFetchedResultsController<Team> = {
     let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
@@ -66,7 +69,7 @@ class ViewController: UIViewController {
     importJSONSeedDataIfNeeded()
     dataSource = setupDataSource()
   }
-  
+
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     UIView.performWithoutAnimation {
@@ -87,9 +90,7 @@ class ViewController: UIViewController {
 
 // MARK: - IBActions
 extension ViewController {
-
   @IBAction func addTeam(_ sender: Any) {
-
     let alertController = UIAlertController(title: "Secret Team", message: "Add a new team", preferredStyle: .alert)
 
     alertController.addTextField { textField in
@@ -100,8 +101,7 @@ extension ViewController {
       textField.placeholder = "Qualifying Zone"
     }
 
-    let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
-
+    let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] _ in
       guard let nameTextField = alertController.textFields?.first,
         let zoneTextField = alertController.textFields?.last else {
           return
@@ -123,17 +123,21 @@ extension ViewController {
 
 // MARK: - Internal
 extension ViewController {
-
-  func setupDataSource() -> UITableViewDiffableDataSource<String, Team> {
-    return UITableViewDiffableDataSource(tableView: tableView) { [unowned self](tableView, indexPath, team) -> UITableViewCell? in
+  func setupDataSource() -> UITableViewDiffableDataSource<String, NSManagedObjectID> {
+    UITableViewDiffableDataSource(
+      tableView: tableView
+    ) { [unowned self] tableView, indexPath, managedObjectID
+      -> UITableViewCell? in
       let cell = tableView.dequeueReusableCell(withIdentifier: self.teamCellIdentifier, for: indexPath)
-      self.configure(cell: cell, for: team)
+
+      if let team = try? coreDataStack.managedContext.existingObject(with: managedObjectID) as? Team {
+        self.configure(cell: cell, for: team)
+      }
       return cell
     }
   }
 
   func configure(cell: UITableViewCell, for team: Team) {
-
     guard let cell = cell as? TeamCell else {
       return
     }
@@ -151,20 +155,17 @@ extension ViewController {
 
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
     let team = fetchedResultsController.object(at: indexPath)
-    team.wins = team.wins + 1
-
-    let cell = tableView.cellForRow(at: indexPath) as! TeamCell
-    configure(cell: cell, for: team)
-
+    team.wins += 1
+//    if var snapshot = dataSource?.snapshot() {
+//      snapshot.reloadItems([team.objectID])
+//      dataSource?.apply(snapshot, animatingDifferences: false)
+//    }
     coreDataStack.saveContext()
   }
 
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
     let sectionInfo = fetchedResultsController.sections?[section]
 
     let titleLabel = UILabel()
@@ -175,15 +176,13 @@ extension ViewController: UITableViewDelegate {
   }
 
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 20
+    20
   }
 }
 
 // MARK: - Helper methods
 extension ViewController {
-
   func importJSONSeedDataIfNeeded() {
-
     let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
     let count = try? coreDataStack.managedContext.count(for: fetchRequest)
 
@@ -195,8 +194,8 @@ extension ViewController {
     importJSONSeedData()
   }
 
+  // swiftlint:disable force_unwrapping force_cast force_try
   func importJSONSeedData() {
-
     let jsonURL = Bundle.main.url(forResource: "seed", withExtension: "json")!
     let jsonData = try! Data(contentsOf: jsonURL)
 
@@ -218,38 +217,17 @@ extension ViewController {
 
       coreDataStack.saveContext()
       print("Imported \(jsonArray.count) teams")
-
     } catch let error as NSError {
       print("Error importing teams: \(error)")
     }
   }
+  // swiftlint:enable force_unwrapping force_cast force_try
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension ViewController: NSFetchedResultsControllerDelegate {
-
-  func controller(
-    _ controller: NSFetchedResultsController<NSFetchRequestResult>,
-    didChangeContentWith
-    snapshot: NSDiffableDataSourceSnapshotReference) {
-
-    var diff = NSDiffableDataSourceSnapshot<String, Team>()
-    snapshot.sectionIdentifiers.forEach { section in
-
-      //1
-      diff.appendSections([section as! String])
-
-      //2
-      let items = snapshot.itemIdentifiersInSection(withIdentifier: section)
-        .map { (objectId: Any) -> Team in
-          let oid =  objectId as! NSManagedObjectID
-          return controller.managedObjectContext.object(with: oid) as! Team
-      }
-
-      //3
-      diff.appendItems(items, toSection: section as? String)
-    }
-
-    dataSource?.apply(diff)
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
+    let snapshot = snapshot as NSDiffableDataSourceSnapshot<String, NSManagedObjectID>
+    dataSource?.apply(snapshot)
   }
 }

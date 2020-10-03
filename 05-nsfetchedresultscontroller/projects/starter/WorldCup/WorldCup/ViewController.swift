@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,9 +34,8 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
   // MARK: - Properties
-  fileprivate let teamCellIdentifier = "teamCellReuseIdentifier"
+  private let teamCellIdentifier = "teamCellReuseIdentifier"
   lazy var  coreDataStack = CoreDataStack(modelName: "WorldCup")
 
   // MARK: - IBOutlets
@@ -49,9 +52,7 @@ class ViewController: UIViewController {
 
 // MARK: - Internal
 extension ViewController {
-
   func configure(cell: UITableViewCell, for indexPath: IndexPath) {
-
     guard let cell = cell as? TeamCell else {
       return
     }
@@ -64,17 +65,15 @@ extension ViewController {
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+    1
   }
 
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 20
+    20
   }
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
     let cell = tableView.dequeueReusableCell(withIdentifier: teamCellIdentifier, for: indexPath)
     configure(cell: cell, for: indexPath)
     return cell
@@ -83,7 +82,6 @@ extension ViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   }
 }
@@ -91,9 +89,7 @@ extension ViewController: UITableViewDelegate {
 
 // MARK: - Helper methods
 extension ViewController {
-
   func importJSONSeedDataIfNeeded() {
-
     let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
     let count = try? coreDataStack.managedContext.count(for: fetchRequest)
 
@@ -105,8 +101,8 @@ extension ViewController {
     importJSONSeedData()
   }
 
+  // swiftlint:disable force_unwrapping force_cast force_try
   func importJSONSeedData() {
-
     let jsonURL = Bundle.main.url(forResource: "seed", withExtension: "json")!
     let jsonData = try! Data(contentsOf: jsonURL)
 
@@ -128,9 +124,9 @@ extension ViewController {
 
       coreDataStack.saveContext()
       print("Imported \(jsonArray.count) teams")
-
     } catch let error as NSError {
       print("Error importing teams: \(error)")
     }
   }
+  // swiftlint:enable force_unwrapping force_cast force_try
 }
