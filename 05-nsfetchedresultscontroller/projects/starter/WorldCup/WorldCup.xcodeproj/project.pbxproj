@@ -96,6 +96,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEAFE647230AF7800058378D /* Build configuration list for PBXNativeTarget "WorldCup" */;
 			buildPhases = (
+				79D2517B25289F8700FF17D1 /* ShellScript */,
 				FEAFE62F230AF77E0058378D /* Sources */,
 				FEAFE630230AF77E0058378D /* Frameworks */,
 				FEAFE631230AF77E0058378D /* Resources */,
@@ -155,6 +156,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79D2517B25289F8700FF17D1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FEAFE62F230AF77E0058378D /* Sources */ = {

@@ -33,7 +33,6 @@
 import UIKit
 
 class TeamCell: UITableViewCell {
-
   // MARK: - IBOutlets
   @IBOutlet weak var teamLabel: UILabel!
   @IBOutlet weak var scoreLabel: UILabel!

@@ -34,5 +34,4 @@ import CoreData
 
 @objc(Team)
 public class Team: NSManagedObject {
-
 }

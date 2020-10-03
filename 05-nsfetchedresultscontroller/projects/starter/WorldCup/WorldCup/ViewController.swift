@@ -34,9 +34,8 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
   // MARK: - Properties
-  fileprivate let teamCellIdentifier = "teamCellReuseIdentifier"
+  private let teamCellIdentifier = "teamCellReuseIdentifier"
   lazy var  coreDataStack = CoreDataStack(modelName: "WorldCup")
 
   // MARK: - IBOutlets
@@ -53,9 +52,7 @@ class ViewController: UIViewController {
 
 // MARK: - Internal
 extension ViewController {
-
   func configure(cell: UITableViewCell, for indexPath: IndexPath) {
-
     guard let cell = cell as? TeamCell else {
       return
     }
@@ -68,7 +65,6 @@ extension ViewController {
 
 // MARK: - UITableViewDataSource
 extension ViewController: UITableViewDataSource {
-
   func numberOfSections(in tableView: UITableView) -> Int {
     1
   }
@@ -86,7 +82,6 @@ extension ViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
   }
 }
@@ -94,9 +89,7 @@ extension ViewController: UITableViewDelegate {
 
 // MARK: - Helper methods
 extension ViewController {
-
   func importJSONSeedDataIfNeeded() {
-
     let fetchRequest: NSFetchRequest<Team> = Team.fetchRequest()
     let count = try? coreDataStack.managedContext.count(for: fetchRequest)
 
@@ -108,8 +101,8 @@ extension ViewController {
     importJSONSeedData()
   }
 
+  // swiftlint:disable force_unwrapping force_cast force_try
   func importJSONSeedData() {
-
     let jsonURL = Bundle.main.url(forResource: "seed", withExtension: "json")!
     let jsonData = try! Data(contentsOf: jsonURL)
 
@@ -131,9 +124,9 @@ extension ViewController {
 
       coreDataStack.saveContext()
       print("Imported \(jsonArray.count) teams")
-
     } catch let error as NSError {
       print("Error importing teams: \(error)")
     }
   }
+  // swiftlint:enable force_unwrapping force_cast force_try
 }
