@@ -33,10 +33,9 @@
 import UIKit
 
 class AttachPhotoViewController: UIViewController {
-
   // MARK: - Properties
-  var note : Note?
-  lazy var imagePicker : UIImagePickerController = {
+  var note: Note?
+  lazy var imagePicker: UIImagePickerController = {
     let picker = UIImagePickerController()
     picker.sourceType = .photoLibrary
     picker.delegate = self

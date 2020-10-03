@@ -38,7 +38,6 @@ protocol UsesCoreDataObjects: class {
 }
 
 class CoreDataStack {
-
   private let modelName: String
 
   init(modelName: String) {
@@ -51,11 +50,11 @@ class CoreDataStack {
   }
 
   var storeName: String = "UnCloudNotesDataModel"
-  var storeURL : URL {
+  var storeURL: URL {
     let storePaths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
     let storePath = storePaths[0] as NSString
     let fileManager = FileManager.default
-    
+
     do {
       try fileManager.createDirectory(
         atPath: storePath as String,
@@ -64,21 +63,21 @@ class CoreDataStack {
     } catch {
       print("Error creating storePath \(storePath): \(error)")
     }
-    
+
     let sqliteFilePath = storePath
       .appendingPathComponent(storeName + ".sqlite")
     return URL(fileURLWithPath: sqliteFilePath)
   }
-  
+
   lazy var storeDescription: NSPersistentStoreDescription = {
     let description = NSPersistentStoreDescription(url: self.storeURL)
     return description
   }()
-  
+
   private lazy var storeContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: self.modelName)
     container.persistentStoreDescriptions = [self.storeDescription]
-    container.loadPersistentStores { (storeDescription, error) in
+    container.loadPersistentStores { _, error in
       if let error = error {
         fatalError("Unresolved error \(error)")
       }

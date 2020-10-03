@@ -37,7 +37,6 @@ protocol NoteDisplayable: class {
 }
 
 class NoteDetailViewController: UIViewController, NoteDisplayable {
-
   // MARK: - Properties
   var note: Note? {
     didSet {
@@ -46,8 +45,8 @@ class NoteDetailViewController: UIViewController, NoteDisplayable {
   }
 
   // MARK: - IBOutlets
-  @IBOutlet fileprivate var titleField: UILabel!
-  @IBOutlet fileprivate var bodyField: UITextView!
+  @IBOutlet private var titleField: UILabel!
+  @IBOutlet private var bodyField: UITextView!
 
   // MARK: - View Life Cycle
   override func viewWillAppear(_ animated: Bool) {
@@ -58,7 +57,6 @@ class NoteDetailViewController: UIViewController, NoteDisplayable {
 
 // MARK: - Internal
 extension NoteDetailViewController {
-
   func updateNoteInfo() {
     guard isViewLoaded,
       let note = note else {

@@ -35,18 +35,25 @@ import CoreData
 import UIKit
 
 class Note: NSManagedObject {
+  //swiftlint:disable implicitly_unwrapped_optional
   @NSManaged var title: String
   @NSManaged var body: String
   @NSManaged var dateCreated: Date!
   @NSManaged var displayIndex: NSNumber!
   @NSManaged var attachments: Set<Attachment>?
+  //swiftlint:enable implicitly_unwrapped_optional
 
   override func awakeFromInsert() {
     super.awakeFromInsert()
     dateCreated = Date()
   }
 
-  var image : UIImage? {
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<Note> {
+    return NSFetchRequest<Note>(entityName: "Note")
+  }
+
+  var image: UIImage? {
     return latestAttachment?.image
   }
 
@@ -57,7 +64,7 @@ class Note: NSManagedObject {
     }
 
     return Array(attachments).reduce(startingAttachment) {
-        $0.dateCreated.compare($1.dateCreated) == .orderedAscending ? $0 : $1
+      $0.dateCreated.compare($1.dateCreated) == .orderedAscending ? $0 : $1
     }
   }
 }

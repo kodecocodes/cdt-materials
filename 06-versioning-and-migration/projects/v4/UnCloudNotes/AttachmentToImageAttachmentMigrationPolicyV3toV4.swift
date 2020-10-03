@@ -35,15 +35,14 @@ import CoreData
 import UIKit
 
 let errorDomain = "Migration"
-
+//swiftlint:disable:next type_name
 class AttachmentToImageAttachmentMigrationPolicyV3toV4: NSEntityMigrationPolicy {
-
   override func createDestinationInstances(forSource sInstance: NSManagedObject, in mapping: NSEntityMapping, manager: NSMigrationManager) throws {
-
     let description = NSEntityDescription.entity(forEntityName: "ImageAttachment", in: manager.destinationContext)
+    //swiftlint:disable:next force_unwrapping
     let newAttachment = ImageAttachment(entity: description!, insertInto: manager.destinationContext)
 
-    func traversePropertyMappings(block: (NSPropertyMapping, String) -> ()) throws {
+    func traversePropertyMappings(block: (NSPropertyMapping, String) -> Void) throws {
       if let attributeMappings = mapping.attributeMappings {
         for propertyMapping in attributeMappings {
           if let destinationName = propertyMapping.name {

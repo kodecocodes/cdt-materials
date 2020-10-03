@@ -34,7 +34,6 @@ import UIKit
 import CoreData
 
 class CreateNoteViewController: UIViewController, UsesCoreDataObjects {
-
   // MARK: - Properties
   var managedObjectContext: NSManagedObjectContext?
   lazy var note: Note? = {
@@ -43,8 +42,8 @@ class CreateNoteViewController: UIViewController, UsesCoreDataObjects {
   }()
 
   // MARK: - IBOutlets
-  @IBOutlet fileprivate var titleField: UITextField!
-  @IBOutlet fileprivate var bodyField: UITextView!
+  @IBOutlet private var titleField: UITextField!
+  @IBOutlet private var bodyField: UITextView!
   @IBOutlet private var attachPhotoButton: UIButton!
   @IBOutlet private var attachedPhoto: UIImageView!
 
@@ -53,7 +52,7 @@ class CreateNoteViewController: UIViewController, UsesCoreDataObjects {
     super.viewDidAppear(animated)
     titleField.becomeFirstResponder()
   }
-  
+
   // MARK: - Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let nextViewController = segue.destination as? NoteDisplayable else { return }
@@ -64,7 +63,6 @@ class CreateNoteViewController: UIViewController, UsesCoreDataObjects {
 
 // MARK: - IBActions
 extension CreateNoteViewController {
-
   @IBAction func saveNote() {
     guard let note = note,
       let managedObjectContext = managedObjectContext else {
@@ -88,7 +86,6 @@ extension CreateNoteViewController {
 
 // MARK: - UITextFieldDelegate
 extension CreateNoteViewController: UITextFieldDelegate {
-
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     saveNote()
     textField.resignFirstResponder()

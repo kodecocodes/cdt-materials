@@ -34,16 +34,19 @@ import UIKit
 import CoreData
 
 class NotesListViewController: UITableViewController {
-
   // MARK: - Properties
-  fileprivate lazy var stack: CoreDataStack = CoreDataStack(modelName: "UnCloudNotesDataModel")
+  private lazy var stack = CoreDataStack(modelName: "UnCloudNotesDataModel")
 
-  fileprivate lazy var notes: NSFetchedResultsController<Note> = {
+  private lazy var notes: NSFetchedResultsController<Note> = {
     let context = self.stack.managedContext
-    let request = Note.fetchRequest() as! NSFetchRequest<Note>
+    let request: NSFetchRequest<Note> = Note.fetchRequest()
     request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Note.dateCreated), ascending: false)]
 
-    let notes = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    let notes = NSFetchedResultsController(
+      fetchRequest: request,
+      managedObjectContext: context,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
     notes.delegate = self
     return notes
   }()
@@ -77,7 +80,6 @@ class NotesListViewController: UITableViewController {
 
 // MARK: - IBActions
 extension NotesListViewController {
-
   @IBAction func unwindToNotesList(_ segue: UIStoryboardSegue) {
     print("Unwinding to Notes List")
 
@@ -87,28 +89,29 @@ extension NotesListViewController {
 
 // MARK: - UITableViewDataSource
 extension NotesListViewController {
-
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let objects = notes.fetchedObjects
     return objects?.count ?? 0
   }
 
+  // swiftlint:disable force_cast
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let note = notes.object(at: indexPath)
     let cell: NoteTableViewCell
     if note.image == nil {
       cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
     } else {
-      cell = tableView.dequeueReusableCell(withIdentifier: "NoteCellWithImage", for: indexPath) as! NoteImageTableViewCell
+      cell = tableView.dequeueReusableCell(withIdentifier: "NoteCellWithImage", for: indexPath)
+        as! NoteImageTableViewCell
     }
     cell.note = note
     return cell
   }
+  // swiftlint:enable force_cast
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension NotesListViewController: NSFetchedResultsControllerDelegate {
-
   func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
   }
 

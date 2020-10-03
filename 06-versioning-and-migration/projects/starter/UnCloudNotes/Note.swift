@@ -1,3 +1,4 @@
+// swiftlint:disable all
 /// Copyright (c) 2020 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -43,5 +44,10 @@ class Note: NSManagedObject {
   override func awakeFromInsert() {
     super.awakeFromInsert()
     dateCreated = Date()
+  }
+  
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<Note> {
+    return NSFetchRequest<Note>(entityName: "Note")
   }
 }

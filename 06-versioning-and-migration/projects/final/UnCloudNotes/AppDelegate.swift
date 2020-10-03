@@ -34,7 +34,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
   var window: UIWindow?
 
   func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
@@ -47,7 +46,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: - UISplitViewControllerDelegate
 extension AppDelegate: UISplitViewControllerDelegate {
-
   func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
     guard let secondaryAsNoteDetail = secondaryViewController as? NoteDetailViewController else {
       return false
