@@ -38,5 +38,4 @@ public class Activity: NSManagedObject {
   enum ActivityType: String {
     case poop, pee, walk
   }
-
 }

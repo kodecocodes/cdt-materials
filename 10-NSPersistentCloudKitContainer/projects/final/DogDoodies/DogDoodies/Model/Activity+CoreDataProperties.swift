@@ -33,7 +33,6 @@
 import Foundation
 import CoreData
 
-
 extension Activity {
   
   @nonobjc public class func fetchRequest() -> NSFetchRequest<Activity> {

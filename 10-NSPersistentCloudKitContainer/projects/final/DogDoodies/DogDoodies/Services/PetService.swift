@@ -40,7 +40,6 @@ struct PetService {
     let pet = Pet(context: context)
     pet.name = name
     pet.animalType = "dog"
-
     return pet
   }
 
@@ -68,7 +67,7 @@ struct PetService {
   func latestActivity(for activityType: Activity.ActivityType) -> NSFetchRequest<Activity> {
     let fetchRequest: NSFetchRequest<Activity> = Activity.fetchRequest()
 
-    let activityTypePredicate = NSPredicate(format: "activityType == %@", argumentArray: [ activityType.rawValue ])
+    let activityTypePredicate = NSPredicate(format: "activityType == %@", argumentArray: [activityType.rawValue])
 
     if let pet = selectedPet() {
       let petPredicate = NSPredicate(format: "pet == %@", pet)
@@ -77,7 +76,7 @@ struct PetService {
       fetchRequest.predicate = activityTypePredicate
     }
 
-    fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "date", ascending: false) ]
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     fetchRequest.fetchLimit = 1
 
     return fetchRequest
@@ -91,7 +90,7 @@ struct PetService {
       fetchRequest.predicate = petPredicate
     }
 
-    fetchRequest.sortDescriptors = [ NSSortDescriptor(key: "date", ascending: false) ]
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
 
     return fetchRequest
   }

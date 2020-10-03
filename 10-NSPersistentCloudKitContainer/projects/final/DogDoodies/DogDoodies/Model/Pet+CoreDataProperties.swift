@@ -33,7 +33,6 @@
 import Foundation
 import CoreData
 
-
 extension Pet {
 
   @nonobjc public class func fetchRequest() -> NSFetchRequest<Pet> {

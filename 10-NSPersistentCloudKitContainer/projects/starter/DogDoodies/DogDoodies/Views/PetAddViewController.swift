@@ -33,20 +33,22 @@
 import UIKit
 
 class PetAddViewController: UIViewController {
-    @IBOutlet var petNameTextField: UITextField!
-    var coreDataStack: CoreDataStack?
 
-    @IBAction func addPetTapped(sender: UIButton) {
-        guard let coreDataStack = coreDataStack else {
-            return
-        }
-        
-        let petService = PetService(context: coreDataStack.managedContext)
-        let petName = petNameTextField.text ?? ""
-        _ = petService.createPet(name: petName)
-        
-        coreDataStack.saveContext()
-        
-        performSegue(withIdentifier: "doneAddingPet", sender: self)
+  @IBOutlet var petNameTextField: UITextField!
+
+  var coreDataStack: CoreDataStack?
+
+  @IBAction func addPetTapped(sender: UIButton) {
+    guard let coreDataStack = coreDataStack else {
+      return
     }
+
+    let petService = PetService(context: coreDataStack.managedContext)
+    let petName = petNameTextField.text ?? ""
+    _ = petService.createPet(name: petName)
+
+    coreDataStack.saveContext()
+
+    performSegue(withIdentifier: "doneAddingPet", sender: self)
+  }
 }
