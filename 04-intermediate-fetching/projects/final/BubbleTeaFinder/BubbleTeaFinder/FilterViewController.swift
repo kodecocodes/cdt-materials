@@ -60,6 +60,7 @@ class FilterViewController: UITableViewController {
   @IBOutlet weak var priceSortCell: UITableViewCell!
 
   // MARK: - Properties
+  // swiftlint:disable:next implicitly_unwrapped_optional
   var coreDataStack: CoreDataStack!
   weak var delegate: FilterViewControllerDelegate?
   var selectedSortDescriptor: NSSortDescriptor?
@@ -127,6 +128,7 @@ extension FilterViewController {
 
 // MARK: - UITableViewDelegate
 extension FilterViewController {
+  // swiftlint:disable:next cyclomatic_complexity
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     guard let cell = tableView.cellForRow(at: indexPath) else {
       return
@@ -168,7 +170,7 @@ extension FilterViewController {
 
     do {
       let countResult = try coreDataStack.managedContext.fetch(fetchRequest)
-      let count = countResult.first!.intValue
+      let count = countResult.first?.intValue ?? 0
       let pluralized = count == 1 ? "place" : "places"
       firstPriceCategoryLabel.text = "\(count) bubble tea \(pluralized)"
     } catch let error as NSError {
@@ -183,7 +185,7 @@ extension FilterViewController {
 
     do {
       let countResult = try coreDataStack.managedContext.fetch(fetchRequest)
-      let count = countResult.first!.intValue
+      let count = countResult.first?.intValue ?? 0
       let pluralized = count == 1 ? "place" : "places"
       secondPriceCategoryLabel.text = "\(count) bubble tea \(pluralized)"
     } catch let error as NSError {
@@ -219,8 +221,8 @@ extension FilterViewController {
 
     do {
       let results = try coreDataStack.managedContext.fetch(fetchRequest)
-      let resultDict = results.first!
-      let numDeals = resultDict["sumDeals"] as! Int
+      let resultDict = results.first
+      let numDeals = resultDict?["sumDeals"] as? Int ?? 0
       let pluralized = numDeals == 1 ?  "deal" : "deals"
       numDealsLabel.text = "\(numDeals) \(pluralized)"
     } catch let error as NSError {

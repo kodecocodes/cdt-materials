@@ -59,8 +59,8 @@ class ViewController: UIViewController {
     batchUpdate.resultType = .updatedObjectsCountResultType
 
     do {
-      let batchResult = try coreDataStack.managedContext.execute(batchUpdate) as! NSBatchUpdateResult
-      print("Records updated \(batchResult.result!)")
+      let batchResult = try coreDataStack.managedContext.execute(batchUpdate) as? NSBatchUpdateResult
+      print("Records updated \(String(describing: batchResult?.result))")
     } catch let error as NSError {
       print("Could not update \(error), \(error.userInfo)")
     }
@@ -152,8 +152,8 @@ extension ViewController: FilterViewControllerDelegate {
     fetchRequest.sortDescriptors = nil
     fetchRequest.predicate = predicate
 
-    if let sr = sortDescriptor {
-      fetchRequest.sortDescriptors = [sr]
+    if let sort = sortDescriptor {
+      fetchRequest.sortDescriptors = [sort]
     }
 
     fetchAndReload()
@@ -164,49 +164,50 @@ extension ViewController: FilterViewControllerDelegate {
 extension ViewController {
   func importJSONSeedDataIfNeeded() {
     let fetchRequest = NSFetchRequest<Venue>(entityName: "Venue")
-    let count = try! coreDataStack.managedContext.count(for: fetchRequest)
-
-    guard count == 0 else { return }
 
     do {
-      let results = try coreDataStack.managedContext.fetch(fetchRequest)
-      results.forEach { coreDataStack.managedContext.delete($0) }
-
-      coreDataStack.saveContext()
-      importJSONSeedData()
+      let venueCount = try coreDataStack.managedContext.count(for: fetchRequest)
+      guard venueCount == 0 else { return }
+      try importJSONSeedData()
     } catch let error as NSError {
       print("Error fetching: \(error), \(error.userInfo)")
     }
   }
 
-  func importJSONSeedData() {
+  func importJSONSeedData() throws {
+    // swiftlint:disable:next force_unwrapping
     let jsonURL = Bundle.main.url(forResource: "seed", withExtension: "json")!
-    let jsonData = try! Data(contentsOf: jsonURL)
+    let jsonData = try Data(contentsOf: jsonURL)
 
-    let jsonDict = try! JSONSerialization.jsonObject(with: jsonData, options: [.allowFragments]) as! [String: Any]
-    let responseDict = jsonDict["response"] as! [String: Any]
-    let jsonArray = responseDict["venues"] as! [[String: Any]]
+    guard
+      let jsonDict = try JSONSerialization.jsonObject(with: jsonData, options: [.fragmentsAllowed]) as? [String: Any],
+      let responseDict = jsonDict["response"] as? [String: Any],
+      let jsonArray = responseDict["venues"] as? [[String: Any]]
+    else {
+      return
+    }
 
     for jsonDictionary in jsonArray {
+      guard
+        let contactDict = jsonDictionary["contact"] as? [String: String],
+        let specialsDict = jsonDictionary["specials"] as? [String: Any],
+        let locationDict = jsonDictionary["location"] as? [String: Any],
+        let priceDict = jsonDictionary["price"] as? [String: Any],
+        let statsDict = jsonDictionary["stats"] as? [String: Any]
+      else {
+        continue
+      }
+
       let venueName = jsonDictionary["name"] as? String
-      let contactDict = jsonDictionary["contact"] as! [String: String]
-
       let venuePhone = contactDict["phone"]
-
-      let specialsDict = jsonDictionary["specials"] as! [String: Any]
-      let specialCount = specialsDict["count"] as? NSNumber
-
-      let locationDict = jsonDictionary["location"] as! [String: Any]
-      let priceDict = jsonDictionary["price"] as! [String: Any]
-      let statsDict = jsonDictionary["stats"] as! [String: Any]
+      let specialCount = specialsDict["count"] as? Int32 ?? 0
 
       let location = Location(context: coreDataStack.managedContext)
       location.address = locationDict["address"] as? String
       location.city = locationDict["city"] as? String
       location.state = locationDict["state"] as? String
       location.zipcode = locationDict["postalCode"] as? String
-      let distance = locationDict["distance"] as? NSNumber
-      location.distance = distance!.floatValue
+      location.distance = locationDict["distance"] as? Float ?? 0
 
       let category = Category(context: coreDataStack.managedContext)
 
@@ -214,15 +215,13 @@ extension ViewController {
       priceInfo.priceCategory = priceDict["currency"] as? String
 
       let stats = Stats(context: coreDataStack.managedContext)
-      let checkins = statsDict["checkinsCount"] as? NSNumber
-      stats.checkinsCount = checkins!.int32Value
-      let tipCount = statsDict["tipCount"] as? NSNumber
-      stats.tipCount = tipCount!.int32Value
+      stats.checkinsCount = statsDict["checkinsCount"] as? Int32 ?? 0
+      stats.tipCount = statsDict["tipCount"] as? Int32 ?? 0
 
       let venue = Venue(context: coreDataStack.managedContext)
       venue.name = venueName
       venue.phone = venuePhone
-      venue.specialCount = specialCount!.int32Value
+      venue.specialCount = specialCount
       venue.location = location
       venue.category = category
       venue.priceInfo = priceInfo
