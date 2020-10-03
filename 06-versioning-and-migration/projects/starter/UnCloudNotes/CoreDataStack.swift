@@ -1,15 +1,15 @@
-/// Copyright (c) 2019 Razeware LLC
-///
+/// Copyright (c) 2020 Razeware LLC
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,6 +17,10 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
+/// 
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
 ///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -34,7 +38,6 @@ protocol UsesCoreDataObjects: class {
 }
 
 class CoreDataStack {
-
   private let modelName: String
 
   init(modelName: String) {
@@ -47,11 +50,11 @@ class CoreDataStack {
   }
 
   var storeName: String = "UnCloudNotesDataModel"
-  var storeURL : URL {
+  var storeURL: URL {
     let storePaths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true)
     let storePath = storePaths[0] as NSString
     let fileManager = FileManager.default
-    
+
     do {
       try fileManager.createDirectory(
         atPath: storePath as String,
@@ -60,21 +63,21 @@ class CoreDataStack {
     } catch {
       print("Error creating storePath \(storePath): \(error)")
     }
-    
+
     let sqliteFilePath = storePath
       .appendingPathComponent(storeName + ".sqlite")
     return URL(fileURLWithPath: sqliteFilePath)
   }
-  
+
   lazy var storeDescription: NSPersistentStoreDescription = {
     let description = NSPersistentStoreDescription(url: self.storeURL)
     return description
   }()
-  
+
   private lazy var storeContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: self.modelName)
     container.persistentStoreDescriptions = [self.storeDescription]
-    container.loadPersistentStores { (storeDescription, error) in
+    container.loadPersistentStores { _, error in
       if let error = error {
         fatalError("Unresolved error \(error)")
       }

@@ -1,15 +1,15 @@
-/// Copyright (c) 2019 Razeware LLC
-///
+/// Copyright (c) 2020 Razeware LLC
+/// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
 /// in the Software without restriction, including without limitation the rights
 /// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 /// copies of the Software, and to permit persons to whom the Software is
 /// furnished to do so, subject to the following conditions:
-///
+/// 
 /// The above copyright notice and this permission notice shall be included in
 /// all copies or substantial portions of the Software.
-///
+/// 
 /// Notwithstanding the foregoing, you may not use, copy, modify, merge, publish,
 /// distribute, sublicense, create a derivative work, and/or sell copies of the
 /// Software in any work that is designed, intended, or marketed for pedagogical or
@@ -17,6 +17,10 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
+/// 
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
 ///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -30,16 +34,19 @@ import UIKit
 import CoreData
 
 class NotesListViewController: UITableViewController {
-
   // MARK: - Properties
-  fileprivate lazy var stack: CoreDataStack = CoreDataStack(modelName: "UnCloudNotesDataModel")
+  private lazy var stack = CoreDataStack(modelName: "UnCloudNotesDataModel")
 
-  fileprivate lazy var notes: NSFetchedResultsController<Note> = {
+  private lazy var notes: NSFetchedResultsController<Note> = {
     let context = self.stack.managedContext
-    let request = Note.fetchRequest() as! NSFetchRequest<Note>
+    let request: NSFetchRequest<Note> = Note.fetchRequest()
     request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Note.dateCreated), ascending: false)]
 
-    let notes = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+    let notes = NSFetchedResultsController(
+      fetchRequest: request,
+      managedObjectContext: context,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
     notes.delegate = self
     return notes
   }()
@@ -73,7 +80,6 @@ class NotesListViewController: UITableViewController {
 
 // MARK: - IBActions
 extension NotesListViewController {
-
   @IBAction func unwindToNotesList(_ segue: UIStoryboardSegue) {
     print("Unwinding to Notes List")
 
@@ -83,13 +89,13 @@ extension NotesListViewController {
 
 // MARK: - UITableViewDataSource
 extension NotesListViewController {
-
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let objects = notes.fetchedObjects
     return objects?.count ?? 0
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //swiftlint:disable:next force_cast
     let cell = tableView.dequeueReusableCell(withIdentifier: "NoteCell", for: indexPath) as! NoteTableViewCell
     cell.note = notes.object(at: indexPath)
     return cell
@@ -98,7 +104,6 @@ extension NotesListViewController {
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension NotesListViewController: NSFetchedResultsControllerDelegate {
-
   func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
   }
 
