@@ -34,7 +34,6 @@ import Foundation
 import CoreData
 
 public final class ReservationService {
-
   // MARK: Properties
   let managedObjectContext: NSManagedObjectContext
   let coreDataStack: CoreDataStack
@@ -48,7 +47,6 @@ public final class ReservationService {
 
 // MARK: Public
 extension ReservationService {
-
   public func reserveCampSite(_ campSite: CampSite, camper: Camper, date: Date, numberOfNights: Int) -> (reservation: Reservation?, error: NSError?) {
     let reservation = Reservation(context: managedObjectContext)
     reservation.camper = camper
@@ -63,13 +61,14 @@ extension ReservationService {
     reservation.dateTo = toDate
 
     // Some complex logic here to determine if reservation is valid or if there are conflicts
-    var registrationError: NSError? = nil
+    var registrationError: NSError?
 
     if numberOfNights <= 0 {
       reservation.status = "Invalid"
-      registrationError = NSError(domain: "CampingManager",
-                                  code: 5,
-                                  userInfo: ["Problem": "Invalid number of days"])
+      registrationError = NSError(
+        domain: "CampingManager",
+        code: 5,
+        userInfo: ["Problem": "Invalid number of days"])
     } else {
       reservation.status = "Reserved"
     }

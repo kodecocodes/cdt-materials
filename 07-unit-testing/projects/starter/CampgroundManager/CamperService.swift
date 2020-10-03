@@ -34,7 +34,6 @@ import Foundation
 import CoreData
 
 public final class CamperService {
-
   // MARK: Properties
   let managedObjectContext: NSManagedObjectContext
   let coreDataStack: CoreDataStack
@@ -48,7 +47,6 @@ public final class CamperService {
 
 // MARK: Public
 extension CamperService {
-
   public func addCamper(_ name: String, phoneNumber: String) -> Camper? {
     let camper = Camper(context: managedObjectContext)
     camper.fullName = name

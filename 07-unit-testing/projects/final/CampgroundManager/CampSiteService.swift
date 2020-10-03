@@ -34,7 +34,6 @@ import Foundation
 import CoreData
 
 public final class CampSiteService {
-
   // MARK: Properties
   let managedObjectContext: NSManagedObjectContext
   let coreDataStack: CoreDataStack
@@ -48,7 +47,6 @@ public final class CampSiteService {
 
 // MARK: Public
 extension CampSiteService {
-
   public func addCampSite(_ siteNumber: NSNumber, electricity: Bool, water: Bool) -> CampSite {
     let campSite = CampSite(context: managedObjectContext)
     campSite.siteNumber = siteNumber
@@ -66,15 +64,15 @@ extension CampSiteService {
 
   public func getCampSite(_ siteNumber: NSNumber) -> CampSite? {
     let fetchRequest: NSFetchRequest<CampSite> = CampSite.fetchRequest()
-    fetchRequest.predicate = NSPredicate(format: "%K = %@",
-                                         argumentArray: [#keyPath(CampSite.siteNumber), siteNumber])
+    fetchRequest.predicate = NSPredicate(
+      format: "%K = %@",
+      argumentArray: [#keyPath(CampSite.siteNumber), siteNumber])
     let results: [CampSite]?
     do {
       results = try managedObjectContext.fetch(fetchRequest)
     } catch {
       return nil
     }
-    
     return results?.first
   }
 
@@ -84,7 +82,7 @@ extension CampSiteService {
 
     var results: [CampSite]
     do {
-      try results = managedObjectContext.fetch(fetchRequest) 
+      try results = managedObjectContext.fetch(fetchRequest)
     } catch {
       results = []
     }
@@ -95,7 +93,7 @@ extension CampSiteService {
   public func getNextCampSiteNumber() -> NSNumber {
     let sites = getCampSites()
 
-    if sites.count > 0,
+    if !sites.isEmpty ,
       let lastSiteNumber = sites.last?.siteNumber {
         return NSNumber(value: lastSiteNumber.intValue + 1)
     }

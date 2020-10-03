@@ -1,3 +1,4 @@
+// swiftlint:disable force_unwrapping implicitly_unwrapped_optional
 /// Copyright (c) 2020 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,7 +37,6 @@ import CampgroundManager
 import CoreData
 
 class CampSiteServiceTests: XCTestCase {
-
   // MARK: Properties
   var campSiteService: CampSiteService!
   var coreDataStack: CoreDataStack!
@@ -66,8 +66,7 @@ class CampSiteServiceTests: XCTestCase {
 
     expectation(
       forNotification: .NSManagedObjectContextDidSave,
-      object: coreDataStack.mainContext) {
-        notification in
+      object: coreDataStack.mainContext) { _ in
         return true
     }
 
@@ -96,18 +95,20 @@ class CampSiteServiceTests: XCTestCase {
   }
 
   func testGetCampSiteWithMatchingSiteNumber() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
 
     let campSite = campSiteService.getCampSite(1)
     XCTAssertNotNil(campSite, "A campsite should be returned")
   }
 
   func testGetCampSiteNoMatchingSiteNumber() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
 
     let campSite = campSiteService.getCampSite(2)
     XCTAssertNil(campSite, "No campsite should be returned")
@@ -116,13 +117,14 @@ class CampSiteServiceTests: XCTestCase {
   func testGetCampSitesNoSites() {
     let sites = campSiteService.getCampSites()
 
-    XCTAssertTrue(sites.count == 0, "There should be no sites.")
+    XCTAssertTrue(sites.isEmpty, "There should be no sites.")
   }
 
   func testGetCampSitesOneSite() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
 
     let sites = campSiteService.getCampSites()
 
@@ -130,12 +132,14 @@ class CampSiteServiceTests: XCTestCase {
   }
 
   func testGetCampSitesMultipleSite() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
-    _ = campSiteService.addCampSite(2,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
+    _ = campSiteService.addCampSite(
+      2,
+      electricity: true,
+      water: true)
 
     let sites = campSiteService?.getCampSites()
 
@@ -143,9 +147,10 @@ class CampSiteServiceTests: XCTestCase {
   }
 
   func testDeleteCampSite() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
 
     var fetchedCampSite = campSiteService.getCampSite(1)
 
@@ -165,9 +170,10 @@ class CampSiteServiceTests: XCTestCase {
   }
 
   func testGetNextCampSiteNumberOneSite() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
 
     let siteNumber = campSiteService.getNextCampSiteNumber()
 
@@ -175,27 +181,32 @@ class CampSiteServiceTests: XCTestCase {
   }
 
   func testGetNextCampSiteNumberOneSiteGapFrom1() {
-    _ = campSiteService.addCampSite(10,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      10,
+      electricity: true,
+      water: true)
     let siteNumber = campSiteService.getNextCampSiteNumber()
 
     XCTAssertTrue(siteNumber == 11, "This should be the second campsite number")
   }
 
   func testGetNextCampSiteNumberMultipleSites() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
-    _ = campSiteService.addCampSite(10,
-                                    electricity: true,
-                                    water: true)
-    _ = campSiteService.addCampSite(30,
-                                    electricity: true,
-                                    water: true)
-    _ = campSiteService.addCampSite(31,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
+    _ = campSiteService.addCampSite(
+      10,
+      electricity: true,
+      water: true)
+    _ = campSiteService.addCampSite(
+      30,
+      electricity: true,
+      water: true)
+    _ = campSiteService.addCampSite(
+      31,
+      electricity: true,
+      water: true)
 
     let siteNumber = campSiteService.getNextCampSiteNumber()
 

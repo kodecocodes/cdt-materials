@@ -36,10 +36,12 @@ import CoreData
 open class CoreDataStack {
   public static let modelName = "CampgroundManager"
   public static let model: NSManagedObjectModel = {
+    // swiftlint:disable force_unwrapping
     let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd")!
     return NSManagedObjectModel(contentsOf: modelURL)!
+    // swiftlint:enable force_unwrapping
   }()
-  
+
   public init() {
   }
 
@@ -48,9 +50,8 @@ open class CoreDataStack {
   }()
 
   public lazy var storeContainer: NSPersistentContainer = {
-
     let container = NSPersistentContainer(name: CoreDataStack.modelName, managedObjectModel: CoreDataStack.model)
-    container.loadPersistentStores { (storeDescription, error) in
+    container.loadPersistentStores { _, error in
       if let error = error as NSError? {
         fatalError("Unresolved error \(error), \(error.userInfo)")
       }

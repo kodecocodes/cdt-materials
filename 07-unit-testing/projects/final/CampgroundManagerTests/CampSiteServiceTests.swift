@@ -1,3 +1,4 @@
+// swiftlint:disable force_unwrapping implicitly_unwrapped_optional
 /// Copyright (c) 2020 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,7 +37,6 @@ import CampgroundManager
 import CoreData
 
 class CampSiteServiceTests: XCTestCase {
-
   // MARK: Properties
   var campSiteService: CampSiteService!
   var coreDataStack: CoreDataStack!
@@ -66,8 +66,7 @@ class CampSiteServiceTests: XCTestCase {
 
     expectation(
       forNotification: .NSManagedObjectContextDidSave,
-      object: coreDataStack.mainContext) {
-        notification in
+      object: coreDataStack.mainContext) { _ in
         return true
     }
 
@@ -90,18 +89,20 @@ class CampSiteServiceTests: XCTestCase {
   }
 
   func testGetCampSiteWithMatchingSiteNumber() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
 
     let campSite = campSiteService.getCampSite(1)
     XCTAssertNotNil(campSite, "A campsite should be returned")
   }
 
   func testGetCampSiteNoMatchingSiteNumber() {
-    _ = campSiteService.addCampSite(1,
-                                    electricity: true,
-                                    water: true)
+    _ = campSiteService.addCampSite(
+      1,
+      electricity: true,
+      water: true)
 
     let campSite = campSiteService.getCampSite(2)
     XCTAssertNil(campSite, "No campsite should be returned")

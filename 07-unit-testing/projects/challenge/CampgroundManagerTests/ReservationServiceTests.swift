@@ -1,3 +1,4 @@
+// swiftlint:disable force_unwrapping implicitly_unwrapped_optional
 /// Copyright (c) 2020 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,7 +37,6 @@ import XCTest
 import CampgroundManager
 
 class ReservationServiceTests: XCTestCase {
-
   // MARK: Properties
   var campSiteService: CampSiteService!
   var camperService: CamperService!
@@ -68,39 +68,47 @@ class ReservationServiceTests: XCTestCase {
   }
 
   func testReserveCampSitePositiveNumberOfDays() {
-    let camper = camperService.addCamper("Johnny Appleseed",
-                                         phoneNumber: "408-555-1234")!
-    let campSite = campSiteService.addCampSite(15,
-                                               electricity: false,
-                                               water: false)
+    let camper = camperService.addCamper(
+      "Johnny Appleseed",
+      phoneNumber: "408-555-1234")!
+    let campSite = campSiteService.addCampSite(
+      15,
+      electricity: false,
+      water: false)
 
-    let result = reservationService.reserveCampSite(campSite,
-                                                    camper: camper,
-                                                    date: Date(),
-                                                    numberOfNights: 5)
+    let result = reservationService.reserveCampSite(
+      campSite,
+      camper: camper,
+      date: Date(),
+      numberOfNights: 5)
 
     XCTAssertNotNil(result.reservation, "Reservation should not be nil")
     XCTAssertNil(result.error, "No error should be present")
-    XCTAssertTrue(result.reservation?.status == "Reserved",
-                  "Status should be Reserved")
+    XCTAssertTrue(
+      result.reservation?.status == "Reserved",
+      "Status should be Reserved")
   }
 
   func testReserveCampSiteNegativeNumberOfDays() {
-    let camper = camperService.addCamper("Johnny Appleseed",
-                                         phoneNumber: "408-555-1234")!
-    let campSite = campSiteService.addCampSite(15,
-                                               electricity: false,
-                                               water: false)
+    let camper = camperService.addCamper(
+      "Johnny Appleseed",
+      phoneNumber: "408-555-1234")!
+    let campSite = campSiteService.addCampSite(
+      15,
+      electricity: false,
+      water: false)
 
-    let result = reservationService!.reserveCampSite(campSite,
-                                                     camper: camper,
-                                                     date: Date(),
-                                                     numberOfNights: -1)
+    let result = reservationService!.reserveCampSite(
+      campSite,
+      camper: camper,
+      date: Date(),
+      numberOfNights: -1)
 
     XCTAssertNotNil(result.reservation, "Reservation should not be nil")
     XCTAssertNotNil(result.error, "No error should be present")
-    XCTAssertTrue(result.error?.userInfo["Problem"] as? String
-      == "Invalid number of days", "Error problem should be present")
+    XCTAssertTrue(
+      result.error?.userInfo["Problem"] as? String == "Invalid number of days",
+      "Error problem should be present")
     XCTAssertTrue(result.reservation?.status == "Invalid", "Status should be Invalid")
   }
 }

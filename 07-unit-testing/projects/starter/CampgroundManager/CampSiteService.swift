@@ -34,7 +34,6 @@ import Foundation
 import CoreData
 
 public final class CampSiteService {
-
   // MARK: Properties
   let managedObjectContext: NSManagedObjectContext
   let coreDataStack: CoreDataStack
@@ -48,7 +47,6 @@ public final class CampSiteService {
 
 // MARK: Public
 extension CampSiteService {
-
   public func addCampSite(_ siteNumber: NSNumber, electricity: Bool, water: Bool) -> CampSite {
     let campSite = CampSite(context: managedObjectContext)
     campSite.siteNumber = siteNumber
@@ -76,7 +74,7 @@ extension CampSiteService {
 
     var results: [CampSite]
     do {
-      try results = managedObjectContext.fetch(fetchRequest) 
+      try results = managedObjectContext.fetch(fetchRequest)
     } catch {
       results = []
     }
@@ -87,7 +85,7 @@ extension CampSiteService {
   public func getNextCampSiteNumber() -> NSNumber {
     let sites = getCampSites()
 
-    if sites.count > 0,
+    if !sites.isEmpty,
       let lastSiteNumber = sites.last?.siteNumber {
         return NSNumber(value: lastSiteNumber.intValue + 1)
     }

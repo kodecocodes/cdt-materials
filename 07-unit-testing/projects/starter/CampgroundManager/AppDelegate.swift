@@ -34,23 +34,26 @@ import UIKit
 import CoreData
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
   // MARK: Properties
   var window: UIWindow?
   let coreDataStack = CoreDataStack()
-  
-  func application(_ application: UIApplication,
-                   willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+
+  func application(
+    _ application: UIApplication,
+    willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+  ) -> Bool {
     let storyboard = UIStoryboard(name: "Main", bundle: nil) // Main is the name of storyboard
     window = UIWindow()
     window?.rootViewController = storyboard.instantiateInitialViewController()
     window?.makeKeyAndVisible()
-    
+
     return true
   }
 
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
+  ) -> Bool {
     guard let splitViewController = window?.rootViewController as? UISplitViewController,
       let navigationController = splitViewController.viewControllers.last as? UINavigationController else {
         fatalError("Application storyboard is not setup correctly, application mis-configuration")
@@ -71,10 +74,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: UISplitViewControllerDelegate
 extension AppDelegate: UISplitViewControllerDelegate {
-
-  func splitViewController(_ splitViewController: UISplitViewController,
-                           collapseSecondary secondaryViewController: UIViewController,
-                           onto primaryViewController: UIViewController) -> Bool {
+  func splitViewController(
+    _ splitViewController: UISplitViewController,
+    collapseSecondary secondaryViewController: UIViewController,
+    onto primaryViewController: UIViewController
+  ) -> Bool {
     guard let secondaryAsNavController = secondaryViewController as? UINavigationController,
       let topAsDetailController = secondaryAsNavController.topViewController as? DetailViewController,
       topAsDetailController.detailItem == nil else {

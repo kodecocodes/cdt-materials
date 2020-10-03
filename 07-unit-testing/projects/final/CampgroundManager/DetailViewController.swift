@@ -33,7 +33,6 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
   // MARK: Properties
   var detailItem: CampSite? {
     didSet {
@@ -55,7 +54,6 @@ class DetailViewController: UIViewController {
 
 // MARK: Internal
 extension DetailViewController {
-
   /// Update the user interface for the detail item.
   func configureView() {
     guard let detailItem = detailItem,

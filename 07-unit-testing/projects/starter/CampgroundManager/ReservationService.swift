@@ -34,7 +34,6 @@ import Foundation
 import CoreData
 
 public final class ReservationService {
-
   // MARK: Properties
   let managedObjectContext: NSManagedObjectContext
   let coreDataStack: CoreDataStack
@@ -48,7 +47,6 @@ public final class ReservationService {
 
 // MARK: Public
 extension ReservationService {
-
   public func reserveCampSite(_ campSite: CampSite, camper: Camper, date: Date, numberOfNights: Int) -> (reservation: Reservation?, error: NSError?) {
     let reservation = Reservation(context: managedObjectContext)
     reservation.camper = camper
