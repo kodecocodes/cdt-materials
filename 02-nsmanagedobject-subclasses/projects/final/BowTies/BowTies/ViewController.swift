@@ -34,7 +34,6 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
   // MARK: - IBOutlets
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var imageView: UIImageView!
@@ -47,9 +46,10 @@ class ViewController: UIViewController {
   @IBOutlet weak var rateButton: UIButton!
 
   // MARK: Properties
+  // swiftlint:disable implicitly_unwrapped_optional
   var managedContext: NSManagedObjectContext!
   var currentBowTie: BowTie!
-  
+  // swiftlint:enable implicitly_unwrapped_optional
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -60,14 +60,15 @@ class ViewController: UIViewController {
     insertSampleData()
 
     let request: NSFetchRequest<BowTie> = BowTie.fetchRequest()
-    let firstTitle = segmentedControl.titleForSegment(at: 0)!
+    let firstTitle = segmentedControl.titleForSegment(at: 0) ?? ""
     request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(BowTie.searchKey), firstTitle])
 
     do {
       let results = try managedContext.fetch(request)
-      currentBowTie = results.first
-
-      populate(bowtie: results.first!)
+      if let tie = results.first {
+        currentBowTie = tie
+        populate(bowtie: tie)
+      }
     } catch let error as NSError {
       print("Could not fetch \(error), \(error.userInfo)")
     }
@@ -84,10 +85,9 @@ class ViewController: UIViewController {
     request.predicate = NSPredicate(format: "%K = %@", argumentArray: [#keyPath(BowTie.searchKey), selectedValue])
 
     do {
-      let results =  try managedContext.fetch(request)
-      currentBowTie =  results.first
+      let results = try managedContext.fetch(request)
+      currentBowTie = results.first
       populate(bowtie: currentBowTie)
-
     } catch let error as NSError {
       print("Could not fetch \(error), \(error.userInfo)")
     }
@@ -106,18 +106,18 @@ class ViewController: UIViewController {
   }
 
   @IBAction func rate(_ sender: UIButton) {
+    let alert = UIAlertController(title: "New Rating", message: "Rate this bow tie", preferredStyle: .alert)
 
-    let alert = UIAlertController(title: "New Rating",  message: "Rate this bow tie", preferredStyle: .alert)
-
-    alert.addTextField { (textField) in
+    alert.addTextField { textField in
       textField.keyboardType = .decimalPad
     }
 
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
-    let saveAction = UIAlertAction(title: "Save", style: .default) {
-      [unowned self] action in
-
+    let saveAction = UIAlertAction(
+      title: "Save",
+      style: .default
+    ) { [unowned self] _ in
       if let textField = alert.textFields?.first {
         self.update(rating: textField.text)
       }
@@ -129,14 +129,14 @@ class ViewController: UIViewController {
     present(alert, animated: true)
   }
 
+  // swiftlint:disable force_unwrapping force_cast
   func insertSampleData() {
-
     let fetch: NSFetchRequest<BowTie> = BowTie.fetchRequest()
     fetch.predicate = NSPredicate(format: "searchKey != nil")
 
-    let count = try! managedContext.count(for: fetch)
+    let tieCount = (try? managedContext.count(for: fetch)) ?? 0
 
-    if count > 0 {
+    if tieCount > 0 {
       // SampleData.plist data already in Core Data
       return
     }
@@ -165,14 +165,14 @@ class ViewController: UIViewController {
       bowtie.isFavorite = btDict["isFavorite"] as! Bool
       bowtie.url = URL(string: btDict["url"] as! String)
     }
-    try! managedContext.save()
+    try? managedContext.save()
   }
-
+// swiftlint:enable force_unwrapping force_cast
   func populate(bowtie: BowTie) {
-
-    guard let imageData = bowtie.photoData as Data?,
-          let lastWorn = bowtie.lastWorn as Date?,
-          let tintColor = bowtie.tintColor else {
+    guard
+      let imageData = bowtie.photoData as Data?,
+      let lastWorn = bowtie.lastWorn as Date?,
+      let tintColor = bowtie.tintColor else {
       return
     }
 
@@ -194,9 +194,9 @@ class ViewController: UIViewController {
   }
 
   func update(rating: String?) {
-
-    guard let ratingString = rating,
-          let rating = Double(ratingString) else {
+    guard
+      let ratingString = rating,
+      let rating = Double(ratingString) else {
       return
     }
 
@@ -204,12 +204,10 @@ class ViewController: UIViewController {
       currentBowTie.rating = rating
       try managedContext.save()
       populate(bowtie: currentBowTie)
-
     } catch let error as NSError {
-      
       if error.domain == NSCocoaErrorDomain &&
-          (error.code == NSValidationNumberTooLargeError ||
-            error.code == NSValidationNumberTooSmallError) {
+        (error.code == NSValidationNumberTooLargeError ||
+        error.code == NSValidationNumberTooSmallError) {
         rate(rateButton)
       } else {
         print("Could not save \(error), \(error.userInfo)")
@@ -219,18 +217,18 @@ class ViewController: UIViewController {
 }
 
 private extension UIColor {
-
-  static func color(dict: [String : Any]) -> UIColor? {
-    
-    guard let red = dict["red"] as? NSNumber,
-          let green = dict["green"] as? NSNumber,
-          let blue = dict["blue"] as? NSNumber else {
+  static func color(dict: [String: Any]) -> UIColor? {
+    guard
+      let red = dict["red"] as? NSNumber,
+      let green = dict["green"] as? NSNumber,
+      let blue = dict["blue"] as? NSNumber else {
       return nil
     }
 
-    return UIColor(red: CGFloat(truncating: red) / 255.0,
-                   green: CGFloat(truncating: green) / 255.0,
-                   blue: CGFloat(truncating: blue) / 255.0,
-                   alpha: 1)
+    return UIColor(
+      red: CGFloat(truncating: red) / 255.0,
+      green: CGFloat(truncating: green) / 255.0,
+      blue: CGFloat(truncating: blue) / 255.0,
+      alpha: 1)
   }
 }

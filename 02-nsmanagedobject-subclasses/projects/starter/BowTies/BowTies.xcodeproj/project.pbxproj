@@ -82,6 +82,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEC6D48B22ECFEB1004D739C /* Build configuration list for PBXNativeTarget "BowTies" */;
 			buildPhases = (
+				79D251612528707000FF17D1 /* ShellScript */,
 				FEC6D47022ECFEB0004D739C /* Sources */,
 				FEC6D47122ECFEB0004D739C /* Frameworks */,
 				FEC6D47222ECFEB0004D739C /* Resources */,
@@ -141,6 +142,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79D251612528707000FF17D1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FEC6D47022ECFEB0004D739C /* Sources */ = {

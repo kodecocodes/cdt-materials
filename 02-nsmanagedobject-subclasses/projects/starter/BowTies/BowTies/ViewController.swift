@@ -33,7 +33,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-
   // MARK: - IBOutlets
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var imageView: UIImageView!
@@ -44,7 +43,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var favoriteLabel: UILabel!
   @IBOutlet weak var wearButton: UIButton!
   @IBOutlet weak var rateButton: UIButton!
-  
+
   // MARK: - View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -53,14 +52,14 @@ class ViewController: UIViewController {
   // MARK: - IBActions
 
   @IBAction func segmentedControl(_ sender: UISegmentedControl) {
-
+    // Add code here
   }
 
   @IBAction func wear(_ sender: UIButton) {
-
+    // Add code here
   }
 
   @IBAction func rate(_ sender: UIButton) {
-
+    // Add code here
   }
 }

@@ -33,7 +33,6 @@
 import UIKit
 
 class ColorAttributeTransformer: NSSecureUnarchiveFromDataTransformer {
-
   override static var allowedTopLevelClasses: [AnyClass] {
     [UIColor.self]
   }
