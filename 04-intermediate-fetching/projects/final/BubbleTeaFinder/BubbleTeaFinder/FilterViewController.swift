@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -18,6 +18,10 @@
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
 ///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -34,7 +38,6 @@ protocol FilterViewControllerDelegate: class {
 }
 
 class FilterViewController: UITableViewController {
-
   @IBOutlet weak var firstPriceCategoryLabel: UILabel!
   @IBOutlet weak var secondPriceCategoryLabel: UILabel!
   @IBOutlet weak var thirdPriceCategoryLabel: UILabel!
@@ -57,6 +60,7 @@ class FilterViewController: UITableViewController {
   @IBOutlet weak var priceSortCell: UITableViewCell!
 
   // MARK: - Properties
+  // swiftlint:disable:next implicitly_unwrapped_optional
   var coreDataStack: CoreDataStack!
   weak var delegate: FilterViewControllerDelegate?
   var selectedSortDescriptor: NSSortDescriptor?
@@ -112,18 +116,20 @@ class FilterViewController: UITableViewController {
 
 // MARK: - IBActions
 extension FilterViewController {
-
   @IBAction func search(_ sender: UIBarButtonItem) {
-    delegate?.filterViewController(filter: self, didSelectPredicate: selectedPredicate, sortDescriptor: selectedSortDescriptor)
+    delegate?.filterViewController(
+      filter: self,
+      didSelectPredicate: selectedPredicate,
+      sortDescriptor: selectedSortDescriptor
+    )
     dismiss(animated: true)
   }
 }
 
-// MARK - UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension FilterViewController {
-
+  // swiftlint:disable:next cyclomatic_complexity
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
     guard let cell = tableView.cellForRow(at: indexPath) else {
       return
     }
@@ -157,16 +163,14 @@ extension FilterViewController {
 }
 
 extension FilterViewController {
-
   func populateCheapVenueCountLabel() {
-
     let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Venue")
     fetchRequest.resultType = .countResultType
     fetchRequest.predicate = cheapVenuePredicate
 
     do {
       let countResult = try coreDataStack.managedContext.fetch(fetchRequest)
-      let count = countResult.first!.intValue
+      let count = countResult.first?.intValue ?? 0
       let pluralized = count == 1 ? "place" : "places"
       firstPriceCategoryLabel.text = "\(count) bubble tea \(pluralized)"
     } catch let error as NSError {
@@ -175,14 +179,13 @@ extension FilterViewController {
   }
 
   func populateModerateVenueCountLabel() {
-
     let fetchRequest = NSFetchRequest<NSNumber>(entityName: "Venue")
     fetchRequest.resultType = .countResultType
     fetchRequest.predicate = moderateVenuePredicate
 
     do {
       let countResult = try coreDataStack.managedContext.fetch(fetchRequest)
-      let count = countResult.first!.intValue
+      let count = countResult.first?.intValue ?? 0
       let pluralized = count == 1 ? "place" : "places"
       secondPriceCategoryLabel.text = "\(count) bubble tea \(pluralized)"
     } catch let error as NSError {
@@ -191,7 +194,6 @@ extension FilterViewController {
   }
 
   func populateExpensiveVenueCountLabel() {
-
     let fetchRequest: NSFetchRequest<Venue> = Venue.fetchRequest()
     fetchRequest.predicate = expensiveVenuePredicate
 
@@ -205,7 +207,6 @@ extension FilterViewController {
   }
 
   func populateDealsCountLabel() {
-
     let fetchRequest = NSFetchRequest<NSDictionary>(entityName: "Venue")
     fetchRequest.resultType = .dictionaryResultType
 
@@ -220,8 +221,8 @@ extension FilterViewController {
 
     do {
       let results = try coreDataStack.managedContext.fetch(fetchRequest)
-      let resultDict = results.first!
-      let numDeals = resultDict["sumDeals"] as! Int
+      let resultDict = results.first
+      let numDeals = resultDict?["sumDeals"] as? Int ?? 0
       let pluralized = numDeals == 1 ?  "deal" : "deals"
       numDealsLabel.text = "\(numDeals) \(pluralized)"
     } catch let error as NSError {
