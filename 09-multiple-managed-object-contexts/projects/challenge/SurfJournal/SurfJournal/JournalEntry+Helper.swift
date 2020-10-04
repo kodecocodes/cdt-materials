@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,6 @@ import Foundation
 import CoreData
 
 extension JournalEntry {
-
   func stringForDate() -> String {
     guard let date = date else { return "" }
 
@@ -51,6 +50,14 @@ extension JournalEntry {
       coalescedRating = ""
     }
 
-    return "\(stringForDate()),\(coalescedHeight),\(coalescedPeriod),\(coalescedWind),\(coalescedLocation),\(coalescedRating)\n"
+    return [
+      stringForDate(),
+      coalescedHeight,
+      coalescedPeriod,
+      coalescedWind,
+      coalescedLocation,
+      coalescedRating,
+      "\n"
+    ].joined(separator: ",")
   }
 }

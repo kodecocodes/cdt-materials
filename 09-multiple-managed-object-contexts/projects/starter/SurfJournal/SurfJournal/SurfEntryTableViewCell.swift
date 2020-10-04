@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,6 @@
 import UIKit
 
 class SurfEntryTableViewCell: UITableViewCell {
-
   // MARK: IBOutlets
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var starOneImageView: UIImageView!
@@ -42,5 +41,4 @@ class SurfEntryTableViewCell: UITableViewCell {
   @IBOutlet weak var starThreeFilledImageView: UIImageView!
   @IBOutlet weak var starFourFilledImageView: UIImageView!
   @IBOutlet weak var starFiveFilledImageView: UIImageView!
-
 }

@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,16 +30,16 @@ import UIKit
 import CoreData
 
 // MARK: JournalEntryDelegate
-protocol JournalEntryDelegate {
+protocol JournalEntryDelegate: AnyObject {
   func didFinish(viewController: JournalEntryViewController, didSave: Bool)
 }
 
 class JournalEntryViewController: UITableViewController {
-
   // MARK: Properties
   var journalEntry: JournalEntry?
+  //swiftlint:disable:next implicitly_unwrapped_optional
   var context: NSManagedObjectContext!
-  var delegate:JournalEntryDelegate?
+  weak var delegate: JournalEntryDelegate?
 
   // MARK: IBOutlets
   @IBOutlet weak var heightTextField: UITextField!
@@ -58,7 +58,6 @@ class JournalEntryViewController: UITableViewController {
 
 // MARK: Private
 private extension JournalEntryViewController {
-
   func configureView() {
     guard let journalEntry = journalEntry else { return }
 
@@ -82,13 +81,12 @@ private extension JournalEntryViewController {
     entry.period = periodTextField.text
     entry.wind = windTextField.text
     entry.location = locationTextField.text
-    entry.rating = NSNumber(value:ratingSegmentedControl.selectedSegmentIndex + 1)
+    entry.rating = NSNumber(value: ratingSegmentedControl.selectedSegmentIndex + 1)
   }
 }
 
 // MARK: IBActions
 extension JournalEntryViewController {
-
   @IBAction func cancelButtonWasTapped(_ sender: UIBarButtonItem) {
     delegate?.didFinish(viewController: self, didSave: false)
   }

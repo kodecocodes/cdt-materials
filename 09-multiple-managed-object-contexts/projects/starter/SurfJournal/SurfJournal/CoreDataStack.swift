@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -29,7 +29,6 @@
 import CoreData
 
 class CoreDataStack {
-
   // MARK: Properties
   private let modelName: String
 
@@ -38,10 +37,9 @@ class CoreDataStack {
   }()
 
   lazy var storeContainer: NSPersistentContainer = {
-
     let container = NSPersistentContainer(name: self.modelName)
     self.seedCoreDataContainerIfFirstLaunch()
-    container.loadPersistentStores { (storeDescription, error) in
+    container.loadPersistentStores { _, error in
       if let error = error as NSError? {
         fatalError("Unresolved error \(error), \(error.userInfo)")
       }
@@ -58,7 +56,6 @@ class CoreDataStack {
 
 // MARK: Internal
 extension CoreDataStack {
-
   func saveContext () {
     guard mainContext.hasChanges else { return }
 
@@ -72,9 +69,8 @@ extension CoreDataStack {
 
 // MARK: Private
 private extension CoreDataStack {
-
+  //swiftlint:disable force_unwrapping
   func seedCoreDataContainerIfFirstLaunch() {
-
     // 1
     let previouslyLaunched = UserDefaults.standard.bool(forKey: "previouslyLaunched")
     if !previouslyLaunched {
@@ -116,4 +112,5 @@ private extension CoreDataStack {
       print("Seeded Core Data")
     }
   }
+  //swiftlint:enable force_unwrapping
 }

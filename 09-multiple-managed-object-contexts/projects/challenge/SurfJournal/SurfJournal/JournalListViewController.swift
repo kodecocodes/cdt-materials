@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,14 +30,14 @@ import UIKit
 import CoreData
 
 class JournalListViewController: UITableViewController {
-
   // MARK: Properties
+  //swiftlint:disable:next implicitly_unwrapped_optional
   var coreDataStack: CoreDataStack!
   var fetchedResultsController: NSFetchedResultsController<JournalEntry> = NSFetchedResultsController()
 
   // MARK: IBOutlets
   @IBOutlet weak var exportButton: UIBarButtonItem!
-  
+
   // MARK: View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -66,9 +66,7 @@ class JournalListViewController: UITableViewController {
       detailViewController.journalEntry = childEntry
       detailViewController.context = childContext
       detailViewController.delegate = self
-
     } else if segue.identifier == "SegueListToDetailAdd" {
-
       guard let navigationController = segue.destination as? UINavigationController,
         let detailViewController = navigationController.topViewController as? JournalEntryViewController else {
           fatalError("Application storyboard mis-configuration")
@@ -88,7 +86,6 @@ class JournalListViewController: UITableViewController {
 
 // MARK: IBActions
 extension JournalListViewController {
-
   @IBAction func exportButtonTapped(_ sender: UIBarButtonItem) {
     exportCSVFile()
   }
@@ -96,13 +93,13 @@ extension JournalListViewController {
 
 // MARK: Private
 private extension JournalListViewController {
-
   func configureView() {
     fetchedResultsController = journalListFetchedResultsController()
   }
-  
+
   func exportCSVFile() {
     navigationItem.leftBarButtonItem = activityIndicatorBarButtonItem()
+
     // 1
     coreDataStack.storeContainer.performBackgroundTask { context in
       var results: [JournalEntry] = []
@@ -181,12 +178,13 @@ private extension JournalListViewController {
 
 // MARK: NSFetchedResultsController
 private extension JournalListViewController {
-
   func journalListFetchedResultsController() -> NSFetchedResultsController<JournalEntry> {
-    let fetchedResultController = NSFetchedResultsController(fetchRequest: surfJournalFetchRequest(),
-                                                             managedObjectContext: coreDataStack.mainContext,
-                                                             sectionNameKeyPath: nil,
-                                                             cacheName: nil)
+    let fetchedResultController = NSFetchedResultsController(
+      fetchRequest: surfJournalFetchRequest(),
+      managedObjectContext: coreDataStack.mainContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil
+    )
     fetchedResultController.delegate = self
 
     do {
@@ -199,7 +197,7 @@ private extension JournalListViewController {
   }
 
   func surfJournalFetchRequest() -> NSFetchRequest<JournalEntry> {
-    let fetchRequest:NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
+    let fetchRequest: NSFetchRequest<JournalEntry> = JournalEntry.fetchRequest()
     fetchRequest.fetchBatchSize = 20
 
     let sortDescriptor = NSSortDescriptor(key: #keyPath(JournalEntry.date), ascending: false)
@@ -211,7 +209,6 @@ private extension JournalListViewController {
 
 // MARK: NSFetchedResultsControllerDelegate
 extension JournalListViewController: NSFetchedResultsControllerDelegate {
-
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.reloadData()
   }
@@ -219,7 +216,6 @@ extension JournalListViewController: NSFetchedResultsControllerDelegate {
 
 // MARK: UITableViewDataSource
 extension JournalListViewController {
-
   override func numberOfSections(in tableView: UITableView) -> Int {
     return fetchedResultsController.sections?.count ?? 0
   }
@@ -227,8 +223,9 @@ extension JournalListViewController {
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return fetchedResultsController.sections?[section].numberOfObjects ?? 0
   }
-  
+
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //swiftlint:disable:next force_cast
     let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SurfEntryTableViewCell
     configureCell(cell, indexPath: indexPath)
     return cell
@@ -237,7 +234,7 @@ extension JournalListViewController {
   private func configureCell(_ cell: SurfEntryTableViewCell, indexPath: IndexPath) {
     let surfJournalEntry = fetchedResultsController.object(at: indexPath)
     cell.dateLabel.text = surfJournalEntry.stringForDate()
-    
+
     guard let rating = surfJournalEntry.rating?.int32Value else { return }
 
     switch rating {
@@ -291,7 +288,6 @@ extension JournalListViewController {
 
 // MARK: JournalEntryDelegate
 extension JournalListViewController: JournalEntryDelegate {
-
   func didFinish(viewController: JournalEntryViewController, didSave: Bool) {
     // 1
     guard didSave,
