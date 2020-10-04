@@ -30,17 +30,15 @@ import Foundation
 import CoreData
 
 public class Sale: NSManagedObject {
-
 }
 
 extension Sale {
-
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<Sale> {
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<Sale> {
     return NSFetchRequest<Sale>(entityName: "Sale")
   }
 
   @NSManaged public var amount: NSNumber?
   @NSManaged public var date: Date?
   @NSManaged public var employee: Employee?
-
 }

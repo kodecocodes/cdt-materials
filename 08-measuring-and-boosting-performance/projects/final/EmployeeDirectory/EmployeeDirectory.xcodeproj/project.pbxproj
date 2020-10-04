@@ -229,6 +229,7 @@
 				4A68F21619772956005A0865 /* Sources */,
 				4A68F21719772956005A0865 /* Frameworks */,
 				4A68F21819772956005A0865 /* Resources */,
+				79D2518E2529C59B00FF17D1 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -331,6 +332,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79D2518E2529C59B00FF17D1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4A68F21619772956005A0865 /* Sources */ = {

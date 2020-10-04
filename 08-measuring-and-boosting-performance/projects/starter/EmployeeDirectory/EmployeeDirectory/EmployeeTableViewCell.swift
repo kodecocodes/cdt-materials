@@ -29,7 +29,6 @@
 import UIKit
 
 class EmployeeTableViewCell: UITableViewCell {
-
   // MARK: IBOutlets
   @IBOutlet var pictureImageView: UIImageView!
   @IBOutlet var nameLabel: UILabel!

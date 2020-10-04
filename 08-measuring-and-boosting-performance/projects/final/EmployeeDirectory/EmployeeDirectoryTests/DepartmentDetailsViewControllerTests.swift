@@ -31,10 +31,11 @@ import XCTest
 @testable import EmployeeDirectory
 
 class DepartmentDetailsViewControllerTests: XCTestCase {
-  
   func testTotalEmployeesFetchPerformance() {
-    measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
-      
+    measureMetrics(
+      [.wallClockTime],
+      automaticallyStartMeasuring: false
+    ) {
       let departmentDetails = DepartmentDetailsViewController()
       departmentDetails.coreDataStack = CoreDataStack(modelName: "EmployeeDirectory")
       startMeasuring()

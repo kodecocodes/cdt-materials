@@ -30,7 +30,6 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
-
   // MARK: Properties
   private let modelName: String
 
@@ -39,9 +38,8 @@ class CoreDataStack {
   }()
 
   private lazy var storeContainer: NSPersistentContainer = {
-
     let container = NSPersistentContainer(name: self.modelName)
-    container.loadPersistentStores { (storeDescription, error) in
+    container.loadPersistentStores { _, error in
       if let error = error {
         fatalError("Unresolved error \(error), \(error.localizedDescription)")
       }
@@ -57,7 +55,6 @@ class CoreDataStack {
 
 // MARK: Internal
 extension CoreDataStack {
-
   func saveContext () {
     guard mainContext.hasChanges else { return }
 

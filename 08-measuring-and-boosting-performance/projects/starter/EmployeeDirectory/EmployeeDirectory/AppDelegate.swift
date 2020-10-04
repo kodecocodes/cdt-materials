@@ -31,27 +31,31 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
   var window: UIWindow?
   lazy var coreDataStack = CoreDataStack(modelName: "EmployeeDirectory")
 
   let amountToImport = 50
   let addSalesRecords = true
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]?) -> Bool {
-
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
     importJSONSeedDataIfNeeded()
 
-    guard let tabController = window?.rootViewController as? UITabBarController,
+    guard
+      let tabController = window?.rootViewController as? UITabBarController,
       let employeeListNavigationController = tabController.viewControllers?[0] as? UINavigationController,
-      let employeeListViewController = employeeListNavigationController.topViewController as? EmployeeListViewController else {
+      let employeeListViewController = employeeListNavigationController.topViewController
+        as? EmployeeListViewController else {
         fatalError("Application storyboard mis-configuration. Application is mis-configured")
     }
 
     employeeListViewController.coreDataStack = coreDataStack
 
     guard let departmentListNavigationController = tabController.viewControllers?[1] as? UINavigationController,
-      let departmentListViewController = departmentListNavigationController.topViewController as? DepartmentListViewController else {
+      let departmentListViewController = departmentListNavigationController.topViewController
+        as? DepartmentListViewController else {
         fatalError("Application storyboard mis-configuration. Application is mis-configured")
     }
 
@@ -67,7 +71,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 // MARK: Data Import
 extension AppDelegate {
-
   func importJSONSeedDataIfNeeded() {
     var importRequired = false
 
@@ -101,14 +104,13 @@ extension AppDelegate {
     }
 
     if importRequired {
-
       let deleteRequest = NSBatchDeleteRequest(fetchRequest: Employee.fetchRequest())
       deleteRequest.resultType = .resultTypeCount
 
       let deletedObjectCount: Int
       do {
-        let resultBox = try coreDataStack.mainContext.execute(deleteRequest) as! NSBatchDeleteResult
-        deletedObjectCount = resultBox.result as! Int
+        let resultBox = try coreDataStack.mainContext.execute(deleteRequest) as? NSBatchDeleteResult
+        deletedObjectCount = resultBox?.result as? Int ?? 0
       } catch let nserror as NSError {
         print("Error: \(nserror.localizedDescription)")
         abort()
@@ -121,8 +123,8 @@ extension AppDelegate {
     }
   }
 
+  //swiftlint:disable force_unwrapping force_try force_cast
   func importJSONSeedData(_ records: Int) {
-
     let jsonURL = Bundle.main.url(forResource: "seed", withExtension: "json")!
     let jsonData = try! Data(contentsOf: jsonURL)
 
@@ -139,7 +141,6 @@ extension AppDelegate {
 
     var counter = 0
     for jsonDictionary in jsonArray {
-
       counter += 1
 
       let guid = jsonDictionary["guid"] as! String
@@ -156,8 +157,9 @@ extension AppDelegate {
       let pictureComponents = picture.components(separatedBy: ".")
       let pictureFileName = pictureComponents[0]
       let pictureFileExtension = pictureComponents[1]
-      let pictureURL = Bundle.main.url(forResource: pictureFileName,
-                                       withExtension: pictureFileExtension)!
+      let pictureURL = Bundle.main.url(
+        forResource: pictureFileName,
+        withExtension: pictureFileExtension)!
       let pictureData = try! Data(contentsOf: pictureURL)
 
       let employee = Employee(context: coreDataStack.mainContext)
@@ -193,7 +195,6 @@ extension AppDelegate {
   }
 
   func imageDataScaledToHeight(_ imageData: Data, height: CGFloat) -> Data {
-
     let image = UIImage(data: imageData)!
     let oldHeight = image.size.height
     let scaleFactor = height / oldHeight
@@ -208,13 +209,14 @@ extension AppDelegate {
 
     return newImage!.jpegData(compressionQuality: 0.8)!
   }
+  //swiftlint:enable force_unwrapping force_try force_cast
 
   func addSalesRecordsToEmployee(_ employee: Employee) {
-    let numberOfSales = 1000 + arc4random_uniform(5000)
+    let numberOfSales = 1000 + .random(in: 0...5000)
     for _ in 0...numberOfSales {
       let sale = Sale(context: coreDataStack.mainContext)
       sale.employee = employee
-      sale.amount = NSNumber(value: 3000 + arc4random_uniform(20000))
+      sale.amount = NSNumber(value: 3000 + .random(in: 0...20000))
     }
     print("added \(String(describing: employee.sales?.count)) sales")
   }

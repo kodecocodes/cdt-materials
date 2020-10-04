@@ -31,7 +31,6 @@ import XCTest
 @testable import EmployeeDirectory
 
 class DepartmentListViewControllerTests: XCTestCase {
-
   func testTotalEmployeesPerDepartment() {
     measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
       let departmentList = DepartmentListViewController()

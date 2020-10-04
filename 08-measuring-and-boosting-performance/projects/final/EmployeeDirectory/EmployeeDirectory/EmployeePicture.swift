@@ -29,12 +29,11 @@
 import Foundation
 import CoreData
 public class EmployeePicture: NSManagedObject {
-
 }
 
 extension EmployeePicture {
-
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<EmployeePicture> {
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<EmployeePicture> {
     return NSFetchRequest<EmployeePicture>(entityName: "EmployeePicture")
   }
 

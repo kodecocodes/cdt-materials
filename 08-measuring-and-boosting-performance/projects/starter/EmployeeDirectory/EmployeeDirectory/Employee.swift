@@ -30,12 +30,11 @@ import Foundation
 import CoreData
 
 public class Employee: NSManagedObject {
-
 }
 
 extension Employee {
-
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<Employee> {
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<Employee> {
     return NSFetchRequest<Employee>(entityName: "Employee")
   }
 
@@ -51,12 +50,10 @@ extension Employee {
   @NSManaged public var startDate: Date?
   @NSManaged public var vacationDays: NSNumber?
   @NSManaged public var sales: NSSet?
-
 }
 
 // MARK: Generated accessors for sales
 extension Employee {
-
   @objc(addSalesObject:)
   @NSManaged public func addToSales(_ value: Sale)
 
@@ -68,5 +65,4 @@ extension Employee {
 
   @objc(removeSales:)
   @NSManaged public func removeFromSales(_ values: NSSet)
-
 }
