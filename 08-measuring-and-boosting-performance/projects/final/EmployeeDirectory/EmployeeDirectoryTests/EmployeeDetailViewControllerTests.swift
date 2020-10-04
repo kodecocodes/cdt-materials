@@ -1,4 +1,5 @@
-/// Copyright (c) 2019 Razeware LLC
+//swiftlint:disable force_cast force_unwrapping
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -32,10 +33,11 @@ import CoreData
 @testable import EmployeeDirectory
 
 class EmployeeDetailViewControllerTests: XCTestCase {
-  
   func testCountSales() {
-    measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
-      
+    measureMetrics(
+      [.wallClockTime],
+      automaticallyStartMeasuring: false
+    ) {
       let employee = getEmployee()
       let employeeDetails = EmployeeDetailViewController()
       startMeasuring()
@@ -43,7 +45,7 @@ class EmployeeDetailViewControllerTests: XCTestCase {
       stopMeasuring()
     }
   }
-  
+
   func testCountSalesFast() {
     measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
       let employee = getEmployee()
@@ -53,7 +55,7 @@ class EmployeeDetailViewControllerTests: XCTestCase {
       stopMeasuring()
     }
   }
-  
+
   func testCountSalesSimple() {
     measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
       let employee = getEmployee()
@@ -63,12 +65,12 @@ class EmployeeDetailViewControllerTests: XCTestCase {
       stopMeasuring()
     }
   }
-  
+
   func getEmployee() -> Employee {
     let coreDataStack = CoreDataStack(modelName: "EmployeeDirectory")
-    
+
     let request: NSFetchRequest<Employee> = Employee.fetchRequest()
-    
+
     request.sortDescriptors = [NSSortDescriptor(key: "guid", ascending: true)]
     request.fetchBatchSize = 1
     let results: [AnyObject]?

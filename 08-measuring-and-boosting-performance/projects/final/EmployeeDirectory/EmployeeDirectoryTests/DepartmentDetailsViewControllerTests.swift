@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -31,10 +31,11 @@ import XCTest
 @testable import EmployeeDirectory
 
 class DepartmentDetailsViewControllerTests: XCTestCase {
-  
   func testTotalEmployeesFetchPerformance() {
-    measureMetrics([.wallClockTime], automaticallyStartMeasuring: false) {
-      
+    measureMetrics(
+      [.wallClockTime],
+      automaticallyStartMeasuring: false
+    ) {
       let departmentDetails = DepartmentDetailsViewController()
       departmentDetails.coreDataStack = CoreDataStack(modelName: "EmployeeDirectory")
       startMeasuring()

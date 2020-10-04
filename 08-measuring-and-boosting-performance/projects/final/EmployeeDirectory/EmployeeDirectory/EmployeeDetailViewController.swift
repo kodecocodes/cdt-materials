@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,9 +30,8 @@ import UIKit
 import CoreData
 
 class EmployeeDetailViewController: UIViewController {
-
   // MARK: - Properties
-  fileprivate lazy var dateFormatter: DateFormatter = {
+  private lazy var dateFormatter: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateFormat = "MM/dd/yyyy"
     return formatter
@@ -60,7 +59,6 @@ class EmployeeDetailViewController: UIViewController {
 
   // MARK: Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
     guard segue.identifier == "SegueEmployeeDetailToEmployeePicture",
       let controller = segue.destination as? EmployeePictureViewController else {
         return
@@ -72,21 +70,24 @@ class EmployeeDetailViewController: UIViewController {
 
 // MARK: Private
 private extension EmployeeDetailViewController {
-
   func configureView() {
     guard let employee = employee else { return }
 
     title = employee.name
 
-    let image = UIImage(data: employee.pictureThumbnail!)
-    headShotImageView.image = image
+    if let picture = employee.pictureThumbnail {
+      let image = UIImage(data: picture)
+      headShotImageView.image = image
+    }
 
     nameLabel.text = employee.name
     departmentLabel.text = employee.department
     emailLabel.text = employee.email
     phoneNumberLabel.text = employee.phone
 
-    startDateLabel.text = dateFormatter.string(from: employee.startDate!)
+    if let startDate = employee.startDate {
+      startDateLabel.text = dateFormatter.string(from: startDate)
+    }
 
     vacationDaysLabel.text = employee.vacationDays?.stringValue
 
@@ -98,18 +99,17 @@ private extension EmployeeDetailViewController {
 
 // MARK: Internal
 extension EmployeeDetailViewController {
-
   func salesCountForEmployee(_ employee: Employee) -> String {
-    
     let fetchRequest: NSFetchRequest<Sale> = Sale.fetchRequest()
-    fetchRequest.predicate = NSPredicate(format: "%K = %@",
-                                         argumentArray: [#keyPath(Sale.employee),
-                                                         employee])
+    fetchRequest.predicate = NSPredicate(
+      format: "%K = %@",
+      argumentArray: [#keyPath(Sale.employee), employee]
+    )
 
-    let context = employee.managedObjectContext!
+    let context = employee.managedObjectContext
     do {
-      let results = try context.fetch(fetchRequest)
-      return "\(results.count)"
+      let results = try context?.fetch(fetchRequest)
+      return "\(results?.count ?? 0)"
     } catch let error as NSError {
       print("Error: \(error.localizedDescription)")
       return "0"
@@ -121,17 +121,16 @@ extension EmployeeDetailViewController {
     let predicate = NSPredicate(
       format: "%K == %@", #keyPath(Sale.employee), employee)
     fetchRequest.predicate = predicate
-    let context = employee.managedObjectContext!
+    let context = employee.managedObjectContext
     do {
-      let results = try context.count(for: fetchRequest)
-      return "\(results)"
+      let results = try context?.count(for: fetchRequest)
+      return "\(results ?? 0)"
     } catch let error as NSError {
       print("Error: \(error.localizedDescription)")
       return "0" }
   }
 
-  func salesCountForEmployeeSimple(_ employee: Employee)
-    -> String {
-      return "\(employee.sales!.count)"
+  func salesCountForEmployeeSimple(_ employee: Employee) -> String {
+    "\(employee.sales?.count ?? 0)"
   }
 }

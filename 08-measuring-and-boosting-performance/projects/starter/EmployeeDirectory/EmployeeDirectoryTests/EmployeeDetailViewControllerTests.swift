@@ -1,4 +1,5 @@
-/// Copyright (c) 2019 Razeware LLC
+//swiftlint:disable force_cast force_unwrapping
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -32,19 +33,19 @@ import CoreData
 @testable import EmployeeDirectory
 
 class EmployeeDetailViewControllerTests: XCTestCase {
-
   func testCountSales() {
-    measureMetrics([.wallClockTime],
-                   automaticallyStartMeasuring: false) {
-
-                    let employee = getEmployee()
-                    let employeeDetails = EmployeeDetailViewController()
-                    startMeasuring()
-                    _ = employeeDetails.salesCountForEmployee(employee)
-                    stopMeasuring()
+    measureMetrics(
+      [.wallClockTime],
+      automaticallyStartMeasuring: false
+    ) {
+      let employee = getEmployee()
+      let employeeDetails = EmployeeDetailViewController()
+      startMeasuring()
+      _ = employeeDetails.salesCountForEmployee(employee)
+      stopMeasuring()
     }
   }
-  
+
   func getEmployee() -> Employee {
     let coreDataStack = CoreDataStack(modelName: "EmployeeDirectory")
 

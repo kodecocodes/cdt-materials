@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,23 +30,21 @@ import UIKit
 import CoreData
 
 class DepartmentListViewController: UITableViewController {
-
-  // MARK: - Properties
+  // MARK: Properties
+  //swiftlint:disable:next implicitly_unwrapped_optional
   var coreDataStack: CoreDataStack!
   var items: [[String: String]] = []
 
-  // MARK: - View Life Cycle
+  // MARK: View Life Cycle
   override func viewDidLoad() {
     super.viewDidLoad()
 
     items = totalEmployeesPerDepartmentFast()
   }
 
-  // MARK: - Navigation
+  // MARK: Navigation
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
     if segue.identifier == "SegueDepartmentListToDepartmentDetails" {
-
       guard let tableViewCell = sender as? UITableViewCell,
         let indexPath = tableView.indexPath(for: tableViewCell),
         let controller = segue.destination as? DepartmentDetailsViewController else {
@@ -58,9 +56,7 @@ class DepartmentListViewController: UITableViewController {
 
       controller.coreDataStack = coreDataStack
       controller.department = department
-
     } else if segue.identifier == "SegueDepartmentsListToEmployeeList" {
-
       guard let indexPath = tableView.indexPathForSelectedRow,
         let controller = segue.destination as? EmployeeListViewController else {
           return
@@ -75,32 +71,32 @@ class DepartmentListViewController: UITableViewController {
   }
 }
 
-// MARK: - Internal
+// MARK: Internal
 extension DepartmentListViewController {
-
   func totalEmployeesPerDepartment() -> [[String: String]] {
-
     // 1
     let fetchRequest: NSFetchRequest<Employee> = Employee.fetchRequest()
-    
-    var fetchResults: [Employee] = []
+
+    let fetchResults: [Employee]
     do {
       fetchResults = try coreDataStack.mainContext.fetch(fetchRequest)
     } catch let error as NSError {
       print("ERROR: \(error.localizedDescription)")
       return [[String: String]]()
     }
-    
+
     // 2
     var uniqueDepartments: [String: Int] = [:]
-    for employee in fetchResults where employee.department != nil {
-      uniqueDepartments[employee.department!, default: 0] += 1
+    for department in fetchResults.compactMap({ $0.department }) {
+      uniqueDepartments[department, default: 0] += 1
     }
-    
+
     // 3
-    return uniqueDepartments.map { (department, headCount) in
-      ["department": department,
-       "headCount": String(headCount)]
+    return uniqueDepartments.map { department, headCount in
+      [
+        "department": department,
+        "headCount": String(headCount)
+      ]
     }
   }
 
@@ -110,9 +106,10 @@ extension DepartmentListViewController {
     expressionDescription.name = "headCount"
     //2
     let arguments = [NSExpression(forKeyPath: "department")]
-    expressionDescription.expression =
-      NSExpression(forFunction: "count:",
-                   arguments: arguments)
+    expressionDescription.expression = NSExpression(
+      forFunction: "count:",
+      arguments: arguments
+    )
     //3
     let fetchRequest: NSFetchRequest<NSDictionary> = NSFetchRequest(entityName: "Employee")
     fetchRequest.propertiesToFetch = ["department", expressionDescription]
@@ -127,23 +124,22 @@ extension DepartmentListViewController {
       print("ERROR: \(error.localizedDescription)")
       return []
     }
-    return fetchResults as! [[String: String]]
+    return fetchResults as? [[String: String]] ?? []
   }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: UITableViewDataSource
 extension DepartmentListViewController {
-
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return items.count
+    items.count
   }
 
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
     let departmentDictionary: [String: String] = items[indexPath.row]
 
-    let cell = tableView.dequeueReusableCell(withIdentifier: "DepartmentCellReuseIdentifier",
-                                             for: indexPath)
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: "DepartmentCellReuseIdentifier",
+      for: indexPath)
 
     cell.textLabel?.text = departmentDictionary["department"]
     cell.detailTextLabel?.text = departmentDictionary["headCount"]

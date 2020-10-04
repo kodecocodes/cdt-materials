@@ -1,4 +1,4 @@
-/// Copyright (c) 2019 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,17 +30,15 @@ import Foundation
 import CoreData
 
 public class Sale: NSManagedObject {
-
 }
 
 extension Sale {
-
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<Sale> {
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<Sale> {
     return NSFetchRequest<Sale>(entityName: "Sale")
   }
 
   @NSManaged public var amount: NSNumber?
   @NSManaged public var date: Date?
   @NSManaged public var employee: Employee?
-
 }
