@@ -30,8 +30,8 @@ import Foundation
 import CoreData
 
 class JournalEntry: NSManagedObject {
-  
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<JournalEntry> {
+  @nonobjc
+  public class func fetchRequest() -> NSFetchRequest<JournalEntry> {
     return NSFetchRequest<JournalEntry>(entityName: "JournalEntry")
   }
 

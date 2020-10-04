@@ -29,7 +29,6 @@
 import CoreData
 
 class CoreDataStack {
-
   // MARK: Properties
   private let modelName: String
 
@@ -38,10 +37,9 @@ class CoreDataStack {
   }()
 
   lazy var storeContainer: NSPersistentContainer = {
-
     let container = NSPersistentContainer(name: self.modelName)
     self.seedCoreDataContainerIfFirstLaunch()
-    container.loadPersistentStores { (storeDescription, error) in
+    container.loadPersistentStores { _, error in
       if let error = error as NSError? {
         fatalError("Unresolved error \(error), \(error.userInfo)")
       }
@@ -58,7 +56,6 @@ class CoreDataStack {
 
 // MARK: Internal
 extension CoreDataStack {
-
   func saveContext () {
     guard mainContext.hasChanges else { return }
 
@@ -72,18 +69,17 @@ extension CoreDataStack {
 
 // MARK: Private
 private extension CoreDataStack {
-
+  //swiftlint:disable force_unwrapping
   func seedCoreDataContainerIfFirstLaunch() {
-    
     // 1
     let previouslyLaunched = UserDefaults.standard.bool(forKey: "previouslyLaunched")
     if !previouslyLaunched {
       UserDefaults.standard.set(true, forKey: "previouslyLaunched")
-      
+
       // Default directory where the CoreDataStack will store its files
       let directory = NSPersistentContainer.defaultDirectoryURL()
       let url = directory.appendingPathComponent(modelName + ".sqlite")
-      
+
       // 2: Copying the SQLite file
       let seededDatabaseURL = Bundle.main.url(forResource: modelName, withExtension: "sqlite")!
       _ = try? FileManager.default.removeItem(at: url)
@@ -92,7 +88,7 @@ private extension CoreDataStack {
       } catch let nserror as NSError {
         fatalError("Error: \(nserror.localizedDescription)")
       }
-      
+
       // 3: Copying the SHM file
       let seededSHMURL = Bundle.main.url(forResource: modelName, withExtension: "sqlite-shm")!
       let shmURL = directory.appendingPathComponent(modelName + ".sqlite-shm")
@@ -102,7 +98,7 @@ private extension CoreDataStack {
       } catch let nserror as NSError {
         fatalError("Error: \(nserror.localizedDescription)")
       }
-      
+
       // 4: Copying the WAL file
       let seededWALURL = Bundle.main.url(forResource: modelName, withExtension: "sqlite-wal")!
       let walURL = directory.appendingPathComponent(modelName + ".sqlite-wal")
@@ -112,8 +108,9 @@ private extension CoreDataStack {
       } catch let nserror as NSError {
         fatalError("Error: \(nserror.localizedDescription)")
       }
-      
+
       print("Seeded Core Data")
     }
   }
+  //swiftlint:enable force_unwrapping
 }

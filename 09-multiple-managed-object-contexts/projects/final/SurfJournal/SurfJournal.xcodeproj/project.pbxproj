@@ -115,6 +115,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A42A8851997F44400398605 /* Build configuration list for PBXNativeTarget "SurfJournal" */;
 			buildPhases = (
+				79D251A12529E7B200FF17D1 /* ShellScript */,
 				4A42A8631997F44300398605 /* Sources */,
 				4A42A8641997F44300398605 /* Frameworks */,
 				4A42A8651997F44300398605 /* Resources */,
@@ -176,6 +177,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		79D251A12529E7B200FF17D1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -f ~/com.raywenderlich.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/com.raywenderlich.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4A42A8631997F44300398605 /* Sources */ = {

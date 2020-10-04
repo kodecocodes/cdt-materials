@@ -30,7 +30,6 @@ import Foundation
 import CoreData
 
 extension JournalEntry {
-
   func stringForDate() -> String {
     guard let date = date else { return "" }
 
@@ -51,6 +50,14 @@ extension JournalEntry {
       coalescedRating = ""
     }
 
-    return "\(stringForDate()),\(coalescedHeight),\(coalescedPeriod),\(coalescedWind),\(coalescedLocation),\(coalescedRating)\n"
+    return [
+      stringForDate(),
+      coalescedHeight,
+      coalescedPeriod,
+      coalescedWind,
+      coalescedLocation,
+      coalescedRating,
+      "\n"
+    ].joined(separator: ",")
   }
 }
