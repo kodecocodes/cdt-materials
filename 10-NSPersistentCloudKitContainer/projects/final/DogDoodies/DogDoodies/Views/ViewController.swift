@@ -34,13 +34,13 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
   @IBOutlet weak var petNameLabel: UILabel!
   @IBOutlet weak var poopLabel: UILabel!
   @IBOutlet weak var peeLabel: UILabel!
   @IBOutlet weak var walkLabel: UILabel!
 
   let coreDataStack: CoreDataStack = {
+    //swiftlint:disable:next force_cast
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let coreDataStack = appDelegate.coreDataStack
     return coreDataStack
@@ -64,17 +64,19 @@ class ViewController: UIViewController {
     super.viewDidLoad()
 
     loadSelectedPet()
-    timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+    timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
       self?.updateButtonsWithTime()
     }
   }
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "SelectPet",
-       let viewController = segue.destination as? PetsTableViewController {
+    if
+      segue.identifier == "SelectPet",
+      let viewController = segue.destination as? PetsTableViewController {
       viewController.coreDataStack = coreDataStack
-    } else if segue.identifier == "Activities",
-              let viewController = segue.destination as? ActivitiesTableViewController {
+    } else if
+      segue.identifier == "Activities",
+      let viewController = segue.destination as? ActivitiesTableViewController {
       viewController.coreDataStack = coreDataStack
       viewController.pet = selectedPet
     }
@@ -121,7 +123,6 @@ class ViewController: UIViewController {
 }
 
 extension ViewController {
-
   @IBAction func selectedAction(sender: UIButton) {
     let activity = Activity(context: coreDataStack.managedContext)
     activity.date = Date()
@@ -150,7 +151,6 @@ extension ViewController {
 }
 
 extension ViewController {
-
   func loadSelectedPet() {
     let petService = PetService(context: coreDataStack.managedContext)
     selectedPet = petService.selectedPet()
@@ -159,29 +159,31 @@ extension ViewController {
       return
     }
 
-    poopFRC = NSFetchedResultsController(fetchRequest: petService.latestActivity(for: .poop),
-                                         managedObjectContext: coreDataStack.managedContext,
-                                         sectionNameKeyPath: nil,
-                                         cacheName: nil)
+    poopFRC = NSFetchedResultsController(
+      fetchRequest: petService.latestActivity(for: .poop),
+      managedObjectContext: coreDataStack.managedContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
     poopFRC?.delegate = self
     try? poopFRC?.performFetch()
-    peeFRC = NSFetchedResultsController(fetchRequest: petService.latestActivity(for: .pee),
-                                        managedObjectContext: coreDataStack.managedContext,
-                                        sectionNameKeyPath: nil,
-                                        cacheName: nil)
+    peeFRC = NSFetchedResultsController(
+      fetchRequest: petService.latestActivity(for: .pee),
+      managedObjectContext: coreDataStack.managedContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
     peeFRC?.delegate = self
     try? peeFRC?.performFetch()
-    walkFRC = NSFetchedResultsController(fetchRequest: petService.latestActivity(for: .walk),
-                                         managedObjectContext: coreDataStack.managedContext,
-                                         sectionNameKeyPath: nil,
-                                         cacheName: nil)
+    walkFRC = NSFetchedResultsController(
+      fetchRequest: petService.latestActivity(for: .walk),
+      managedObjectContext: coreDataStack.managedContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
     walkFRC?.delegate = self
     try? walkFRC?.performFetch()
   }
 }
 
 extension ViewController: NSFetchedResultsControllerDelegate {
-
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
   }
 }

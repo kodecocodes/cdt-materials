@@ -1,3 +1,4 @@
+//swiftlint:disable all
 /// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -33,8 +34,9 @@
 import Foundation
 import CoreData
 
+
 extension Activity {
-  
+
   @nonobjc public class func fetchRequest() -> NSFetchRequest<Activity> {
     return NSFetchRequest<Activity>(entityName: "Activity")
   }

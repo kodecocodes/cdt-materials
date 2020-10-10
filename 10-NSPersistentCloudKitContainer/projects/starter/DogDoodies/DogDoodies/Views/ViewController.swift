@@ -102,7 +102,7 @@ class ViewController: UIViewController {
     }
 
     let calendar = Calendar.current
-    let components: Set<Calendar.Component> = [ .day, .hour, .minute, .second ]
+    let components: Set<Calendar.Component> = [.day, .hour, .minute, .second]
     let difference = calendar.dateComponents(components, from: date, to: Date())
 
     if let day = difference.day, day > 0 {

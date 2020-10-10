@@ -40,7 +40,6 @@ struct PetService {
     let pet = Pet(context: context)
     pet.name = name
     pet.animalType = "dog"
-
     return pet
   }
 

@@ -34,8 +34,8 @@ import UIKit
 import CoreData
 
 class PetsTableViewController: UITableViewController {
-
-  var dataSource: UITableViewDiffableDataSource<String, Pet>?
+  var dataSource: UITableViewDiffableDataSource<String, NSManagedObjectID>?
+  //swiftlint:disable:next implicitly_unwrapped_optional
   var coreDataStack: CoreDataStack!
 
   lazy var fetchedResultsController: NSFetchedResultsController<Pet> = {
@@ -75,11 +75,13 @@ class PetsTableViewController: UITableViewController {
   // MARK: - Navigation
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "AddPet",
-       let controller = segue.destination as? PetAddViewController {
+    if
+      segue.identifier == "AddPet",
+      let controller = segue.destination as? PetAddViewController {
       controller.coreDataStack = coreDataStack
-    } else if segue.identifier == "SelectedPet",
-              let indexPath = tableView.indexPathForSelectedRow {
+    } else if
+      segue.identifier == "SelectedPet",
+      let indexPath = tableView.indexPathForSelectedRow {
       let pet = fetchedResultsController.object(at: indexPath)
 
       let petService = PetService(context: coreDataStack.managedContext)
@@ -94,15 +96,14 @@ class PetsTableViewController: UITableViewController {
   }
 
   @IBAction func doneAddingPet(unwindSegue: UIStoryboardSegue) {
-
   }
 }
 
 extension PetsTableViewController {
-
-  func setupDataSource() -> UITableViewDiffableDataSource<String, Pet> {
-    UITableViewDiffableDataSource(tableView: tableView) { [unowned self](tableView, indexPath, pet) -> UITableViewCell? in
+  func setupDataSource() -> UITableViewDiffableDataSource<String, NSManagedObjectID> {
+    UITableViewDiffableDataSource(tableView: tableView) { [unowned self] tableView, indexPath, _ in
       let cell = tableView.dequeueReusableCell(withIdentifier: "PetName", for: indexPath)
+      let pet = self.fetchedResultsController.object(at: indexPath)
       self.configure(cell: cell, for: pet)
       return cell
     }
@@ -115,23 +116,11 @@ extension PetsTableViewController {
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension PetsTableViewController: NSFetchedResultsControllerDelegate {
-
-  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                  didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-
-    var diff = NSDiffableDataSourceSnapshot<String, Pet>()
-    snapshot.sectionIdentifiers.forEach { section in
-      diff.appendSections([section as! String])
-
-      let items = snapshot.itemIdentifiersInSection(withIdentifier: section)
-        .map { (objectId: Any) -> Pet in
-          let oid =  objectId as! NSManagedObjectID
-          return controller.managedObjectContext.object(with: oid) as! Pet
-        }
-
-      diff.appendItems(items, toSection: section as? String)
-    }
-
-    dataSource?.apply(diff)
+  func controller(
+    _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+    didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference
+  ) {
+    let snapshot = snapshot as NSDiffableDataSourceSnapshot<String, NSManagedObjectID>
+    dataSource?.apply(snapshot)
   }
 }

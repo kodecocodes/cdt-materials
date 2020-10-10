@@ -81,15 +81,13 @@ extension ActivitiesTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-      if editingStyle == .delete {
-        if let activityID = itemIdentifier(for: indexPath) {
-          if
-            let context = coreDataStack?.managedContext,
-            let activity = try? context.existingObject(with: activityID) {
-              context.delete(activity)
-              coreDataStack?.saveContext()
-          }
-        }
+      if
+        editingStyle == .delete,
+        let activityID = itemIdentifier(for: indexPath),
+        let context = coreDataStack?.managedContext,
+        let activity = try? context.existingObject(with: activityID) {
+        context.delete(activity)
+        coreDataStack?.saveContext()
       }
     }
   }
