@@ -45,10 +45,10 @@ struct PetService {
   }
 
   func selectedPet() -> Pet? {
-    guard let url =
-            UserDefaults.standard.url(forKey: PetService.selectedPetKey),
-          let coordinator = context.persistentStoreCoordinator,
-          let objectID = coordinator.managedObjectID(forURIRepresentation: url)
+    guard
+      let url = UserDefaults.standard.url(forKey: PetService.selectedPetKey),
+      let coordinator = context.persistentStoreCoordinator,
+      let objectID = coordinator.managedObjectID(forURIRepresentation: url)
     else {
       return nil
     }

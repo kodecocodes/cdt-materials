@@ -34,9 +34,9 @@ import UIKit
 import CoreData
 
 class ActivitiesTableViewController: UITableViewController {
-
   var pet: Pet?
-  var dataSource: UITableViewDiffableDataSource<String, Activity>?
+  var dataSource: UITableViewDiffableDataSource<String, NSManagedObjectID>?
+  //swiftlint:disable:next implicitly_unwrapped_optional
   var coreDataStack: CoreDataStack!
 
   lazy var fetchedResultsController: NSFetchedResultsController<Activity> = {
@@ -73,8 +73,7 @@ class ActivitiesTableViewController: UITableViewController {
 }
 
 extension ActivitiesTableViewController {
-
-  class DataSource: UITableViewDiffableDataSource<String, Activity> {
+  class DataSource: UITableViewDiffableDataSource<String, NSManagedObjectID> {
     var coreDataStack: CoreDataStack?
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -83,11 +82,12 @@ extension ActivitiesTableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
       if editingStyle == .delete {
-        if let activity = itemIdentifier(for: indexPath) {
-          if let coreDataStack = coreDataStack {
-            let context = coreDataStack.managedContext
-            context.delete(activity)
-            coreDataStack.saveContext()
+        if let activityID = itemIdentifier(for: indexPath) {
+          if
+            let context = coreDataStack?.managedContext,
+            let activity = try? context.existingObject(with: activityID) {
+              context.delete(activity)
+              coreDataStack?.saveContext()
           }
         }
       }
@@ -100,9 +100,9 @@ extension ActivitiesTableViewController {
     dateFormatter.dateStyle = .medium
     dateFormatter.timeStyle = .medium
 
-    let dataSource = DataSource(tableView: tableView) { (tableView, indexPath, activity) -> UITableViewCell? in
+    let dataSource = DataSource(tableView: tableView) { [unowned self] tableView, indexPath, _ in
       let cell = tableView.dequeueReusableCell(withIdentifier: "Activity", for: indexPath)
-
+      let activity = self.fetchedResultsController.object(at: indexPath)
       switch activity.activityType {
       case "poop":
         cell.textLabel?.text = "💩"
@@ -129,23 +129,11 @@ extension ActivitiesTableViewController {
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension ActivitiesTableViewController: NSFetchedResultsControllerDelegate {
-  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                  didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-
-    var diff = NSDiffableDataSourceSnapshot<String, Activity>()
-    snapshot.sectionIdentifiers.forEach { section in
-
-      diff.appendSections([section as! String])
-
-      let items = snapshot.itemIdentifiersInSection(withIdentifier: section)
-        .map { (objectId: Any) -> Activity in
-          let oid =  objectId as! NSManagedObjectID
-          return controller.managedObjectContext.object(with: oid) as! Activity
-        }
-
-      diff.appendItems(items, toSection: section as? String)
-    }
-
-    dataSource?.apply(diff)
+  func controller(
+    _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+    didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference
+  ) {
+    let snapshot = snapshot as NSDiffableDataSourceSnapshot<String, NSManagedObjectID>
+    dataSource?.apply(snapshot)
   }
 }
