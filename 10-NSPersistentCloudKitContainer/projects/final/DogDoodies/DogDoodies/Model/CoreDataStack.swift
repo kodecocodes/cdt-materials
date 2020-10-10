@@ -34,7 +34,6 @@ import Foundation
 import CoreData
 
 class CoreDataStack {
-
   private let modelName: String
 
   init(modelName: String) {
@@ -46,20 +45,19 @@ class CoreDataStack {
   }()
 
   private lazy var storeContainer: NSPersistentContainer = {
-
     let container = NSPersistentCloudKitContainer(name: self.modelName)
-    container.loadPersistentStores { (storeDescription, error) in
+    container.loadPersistentStores { _, error in
       if let error = error as NSError? {
         print("Unresolved error \(error), \(error.userInfo)")
       }
     }
-    
+
     container.viewContext.automaticallyMergesChangesFromParent = true
     do {
-        try container.viewContext.setQueryGenerationFrom(.current)
+      try container.viewContext.setQueryGenerationFrom(.current)
     } catch {
-        fatalError("###\(#function): Failed to pin viewContext to the current generation:\(error)")
-    }    
+      fatalError("###\(#function): Failed to pin viewContext to the current generation:\(error)")
+    }
     return container
   }()
 

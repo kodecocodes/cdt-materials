@@ -34,105 +34,93 @@ import UIKit
 import CoreData
 
 class PetsTableViewController: UITableViewController {
-    var dataSource: UITableViewDiffableDataSource<String, Pet>?
-    var coreDataStack: CoreDataStack!
-    
-    lazy var fetchedResultsController: NSFetchedResultsController<Pet> = {
-        let fetchRequest: NSFetchRequest<Pet> = Pet.fetchRequest()
-        let sort = NSSortDescriptor(key: #keyPath(Pet.name), ascending: true)
-        
-        fetchRequest.sortDescriptors = [sort]
-        
-        let fetchedResultsController = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: coreDataStack.managedContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        
-        fetchedResultsController.delegate = self
-        return fetchedResultsController
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        dataSource = setupDataSource()
-    }
+  var dataSource: UITableViewDiffableDataSource<String, NSManagedObjectID>?
+  //swiftlint:disable:next implicitly_unwrapped_optional
+  var coreDataStack: CoreDataStack!
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+  lazy var fetchedResultsController: NSFetchedResultsController<Pet> = {
+    let fetchRequest: NSFetchRequest<Pet> = Pet.fetchRequest()
+    let sort = NSSortDescriptor(key: #keyPath(Pet.name), ascending: true)
 
-        UIView.performWithoutAnimation {
-          do {
-            try fetchedResultsController.performFetch()
-          } catch let error as NSError {
-            print("Fetching error: \(error), \(error.userInfo)")
-          }
-        }
+    fetchRequest.sortDescriptors = [sort]
+
+    let fetchedResultsController = NSFetchedResultsController(
+      fetchRequest: fetchRequest,
+      managedObjectContext: coreDataStack.managedContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
+
+    fetchedResultsController.delegate = self
+    return fetchedResultsController
+  }()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    dataSource = setupDataSource()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    UIView.performWithoutAnimation {
+      do {
+        try fetchedResultsController.performFetch()
+      } catch let error as NSError {
+        print("Fetching error: \(error), \(error.userInfo)")
+      }
     }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "AddPet",
-            let controller = segue.destination as? PetAddViewController {
-            controller.coreDataStack = coreDataStack
-        } else if segue.identifier == "SelectedPet",
-            let indexPath = tableView.indexPathForSelectedRow {
-            let pet = fetchedResultsController.object(at: indexPath)
-            
-            let petService = PetService(context: coreDataStack.managedContext)
-            petService.selectPet(pet)
-        }
+  }
+
+  // MARK: - Navigation
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if
+      segue.identifier == "AddPet",
+      let controller = segue.destination as? PetAddViewController {
+      controller.coreDataStack = coreDataStack
+    } else if
+      segue.identifier == "SelectedPet",
+      let indexPath = tableView.indexPathForSelectedRow {
+      let pet = fetchedResultsController.object(at: indexPath)
+
+      let petService = PetService(context: coreDataStack.managedContext)
+      petService.selectPet(pet)
     }
-    
-    // MARK: - UITableViewDelegate methods
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    @IBAction func doneAddingPet(unwindSegue: UIStoryboardSegue) {
-        
-    }
+  }
+
+  // MARK: - UITableViewDelegate methods
+
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    tableView.deselectRow(at: indexPath, animated: true)
+  }
+
+  @IBAction func doneAddingPet(unwindSegue: UIStoryboardSegue) {
+  }
 }
 
 extension PetsTableViewController {
-    func setupDataSource() -> UITableViewDiffableDataSource<String, Pet> {
-        return UITableViewDiffableDataSource(tableView: tableView) { [unowned self] (tableView, indexPath, pet) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PetName", for: indexPath)
-            self.configure(cell: cell, for: pet)
-            return cell
-        }
+  func setupDataSource() -> UITableViewDiffableDataSource<String, NSManagedObjectID> {
+    UITableViewDiffableDataSource(tableView: tableView) { [unowned self] tableView, indexPath, _ in
+      let cell = tableView.dequeueReusableCell(withIdentifier: "PetName", for: indexPath)
+      let pet = self.fetchedResultsController.object(at: indexPath)
+      self.configure(cell: cell, for: pet)
+      return cell
     }
-    
-    func configure(cell: UITableViewCell, for pet: Pet) {
-        
-        cell.textLabel?.text = pet.name
-    }
+  }
+
+  func configure(cell: UITableViewCell, for pet: Pet) {
+    cell.textLabel?.text = pet.name
+  }
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension PetsTableViewController: NSFetchedResultsControllerDelegate {
-    func controller(
-        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
-        didChangeContentWith
-        snapshot: NSDiffableDataSourceSnapshotReference) {
-        
-        var diff = NSDiffableDataSourceSnapshot<String, Pet>()
-        snapshot.sectionIdentifiers.forEach { section in
-            
-            diff.appendSections([section as! String])
-
-            let items = snapshot.itemIdentifiersInSection(withIdentifier: section)
-                .map { (objectId: Any) -> Pet in
-                    let oid =  objectId as! NSManagedObjectID
-                    return controller.managedObjectContext.object(with: oid) as! Pet
-            }
-
-            diff.appendItems(items, toSection: section as? String)
-        }
-        
-        dataSource?.apply(diff)
-    }
+  func controller(
+    _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+    didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference
+  ) {
+    let snapshot = snapshot as NSDiffableDataSourceSnapshot<String, NSManagedObjectID>
+    dataSource?.apply(snapshot)
+  }
 }

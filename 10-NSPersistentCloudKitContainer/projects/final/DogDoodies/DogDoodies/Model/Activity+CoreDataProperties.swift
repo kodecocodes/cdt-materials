@@ -1,3 +1,4 @@
+//swiftlint:disable all
 /// Copyright (c) 2020 Razeware LLC
 ///
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -36,13 +37,13 @@ import CoreData
 
 extension Activity {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Activity> {
-        return NSFetchRequest<Activity>(entityName: "Activity")
-    }
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<Activity> {
+    return NSFetchRequest<Activity>(entityName: "Activity")
+  }
 
-    @NSManaged public var activityType: String?
-    @NSManaged public var date: Date?
-    @NSManaged public var notes: String?
-    @NSManaged public var pet: Pet?
+  @NSManaged public var activityType: String?
+  @NSManaged public var date: Date?
+  @NSManaged public var notes: String?
+  @NSManaged public var pet: Pet?
 
 }

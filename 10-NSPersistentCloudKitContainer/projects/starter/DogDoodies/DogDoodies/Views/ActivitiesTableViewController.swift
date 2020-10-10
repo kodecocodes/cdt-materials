@@ -34,119 +34,104 @@ import UIKit
 import CoreData
 
 class ActivitiesTableViewController: UITableViewController {
-    var pet: Pet?
-    var dataSource: UITableViewDiffableDataSource<String, Activity>?
-    var coreDataStack: CoreDataStack!
-    
-    lazy var fetchedResultsController: NSFetchedResultsController<Activity> = {
-        let petService = PetService(context: coreDataStack.managedContext)
-        let fetchRequest = petService.activitiesFetchRequest(for: pet)
-        
-        let fetchedResultsController = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: coreDataStack.managedContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        
-        fetchedResultsController.delegate = self
-        return fetchedResultsController
-    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        dataSource = setupDataSource()
-    }
+  var pet: Pet?
+  var dataSource: UITableViewDiffableDataSource<String, NSManagedObjectID>?
+  //swiftlint:disable:next implicitly_unwrapped_optional
+  var coreDataStack: CoreDataStack!
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+  lazy var fetchedResultsController: NSFetchedResultsController<Activity> = {
+    let petService = PetService(context: coreDataStack.managedContext)
+    let fetchRequest = petService.activitiesFetchRequest(for: pet)
 
-        UIView.performWithoutAnimation {
-          do {
-            try fetchedResultsController.performFetch()
-          } catch let error as NSError {
-            print("Fetching error: \(error), \(error.userInfo)")
-          }
-        }
+    let fetchedResultsController = NSFetchedResultsController(
+      fetchRequest: fetchRequest,
+      managedObjectContext: coreDataStack.managedContext,
+      sectionNameKeyPath: nil,
+      cacheName: nil)
+
+    fetchedResultsController.delegate = self
+    return fetchedResultsController
+  }()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    dataSource = setupDataSource()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+
+    UIView.performWithoutAnimation {
+      do {
+        try fetchedResultsController.performFetch()
+      } catch let error as NSError {
+        print("Fetching error: \(error), \(error.userInfo)")
+      }
     }
+  }
 }
 
 extension ActivitiesTableViewController {
-    class DataSource: UITableViewDiffableDataSource<String, Activity> {
-        var coreDataStack: CoreDataStack?
-        
-        override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-            return true
-        }
+  class DataSource: UITableViewDiffableDataSource<String, NSManagedObjectID> {
+    var coreDataStack: CoreDataStack?
 
-        override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-            if editingStyle == .delete {
-                if let activity = itemIdentifier(for: indexPath) {
-                    if let coreDataStack = coreDataStack {
-                        let context = coreDataStack.managedContext
-                        context.delete(activity)
-                        coreDataStack.saveContext()
-                    }
-                }
-            }
-        }
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+      true
     }
-    
-    func setupDataSource() -> DataSource {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale.current
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
-        
-        let dataSource = DataSource(tableView: tableView) { (tableView, indexPath, activity) -> UITableViewCell? in
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Activity", for: indexPath)
-            
-            switch activity.activityType {
-            case "poop":
-                cell.textLabel?.text = "💩"
-            case "pee":
-                cell.textLabel?.text = "💦"
-            case "walk":
-                cell.textLabel?.text = "🚶‍♂️"
-            default:
-                cell.textLabel?.text = ""
-            }
-            
-            if let date = activity.date {
-                let dateText = dateFormatter.string(from: date)
-                cell.detailTextLabel?.text = dateText
-            }
-            
-            return cell
-        }
-        dataSource.coreDataStack = coreDataStack
-        
-        return dataSource
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+      if
+        editingStyle == .delete,
+        let activityID = itemIdentifier(for: indexPath),
+        let context = coreDataStack?.managedContext,
+        let activity = try? context.existingObject(with: activityID) {
+        context.delete(activity)
+        coreDataStack?.saveContext()
+      }
     }
+  }
+
+  func setupDataSource() -> DataSource {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale.current
+    dateFormatter.dateStyle = .medium
+    dateFormatter.timeStyle = .medium
+
+    let dataSource = DataSource(tableView: tableView) { [unowned self] tableView, indexPath, _ in
+      let cell = tableView.dequeueReusableCell(withIdentifier: "Activity", for: indexPath)
+      let activity = self.fetchedResultsController.object(at: indexPath)
+      switch activity.activityType {
+      case "poop":
+        cell.textLabel?.text = "💩"
+      case "pee":
+        cell.textLabel?.text = "💦"
+      case "walk":
+        cell.textLabel?.text = "🚶‍♂️"
+      default:
+        cell.textLabel?.text = ""
+      }
+
+      if let date = activity.date {
+        let dateText = dateFormatter.string(from: date)
+        cell.detailTextLabel?.text = dateText
+      }
+
+      return cell
+    }
+    dataSource.coreDataStack = coreDataStack
+
+    return dataSource
+  }
 }
 
 // MARK: - NSFetchedResultsControllerDelegate
 extension ActivitiesTableViewController: NSFetchedResultsControllerDelegate {
-    func controller(
-        _ controller: NSFetchedResultsController<NSFetchRequestResult>,
-        didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-        
-        var diff = NSDiffableDataSourceSnapshot<String, Activity>()
-        snapshot.sectionIdentifiers.forEach { section in
-            
-            diff.appendSections([section as! String])
-
-            let items = snapshot.itemIdentifiersInSection(withIdentifier: section)
-                .map { (objectId: Any) -> Activity in
-                    let oid =  objectId as! NSManagedObjectID
-                    return controller.managedObjectContext.object(with: oid) as! Activity
-            }
-
-            diff.appendItems(items, toSection: section as? String)
-        }
-        
-        dataSource?.apply(diff)
-    }
+  func controller(
+    _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+    didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference
+  ) {
+    let snapshot = snapshot as NSDiffableDataSourceSnapshot<String, NSManagedObjectID>
+    dataSource?.apply(snapshot)
+  }
 }
-
-
