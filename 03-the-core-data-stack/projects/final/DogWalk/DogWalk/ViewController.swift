@@ -135,7 +135,7 @@ extension ViewController: UITableViewDataSource {
       return
     }
 
-    coreDataStack.managedContext.delete(walkToRemove)
+    currentDog?.removeFromWalks(walkToRemove)
     coreDataStack.saveContext()
     tableView.deleteRows(at: [indexPath], with: .automatic)
   }
